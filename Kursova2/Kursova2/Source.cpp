@@ -2,6 +2,6 @@
 
 void main()
 {
-	//gggg
-	//12345
+	Candidate c;
+	c.ShowCandidate();
 }
