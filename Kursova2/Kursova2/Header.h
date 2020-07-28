@@ -13,7 +13,10 @@ void Ukr()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 }
-
+void Color(int color)
+{
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+}
 class Person
 {
 private:
@@ -79,7 +82,7 @@ class Candidate
 private:
 	int num;
 	string party;
-	Person _candidate;
+	Person candidate;
 	int district;
 	int rating;
 	int votes;
@@ -97,13 +100,15 @@ public:
 		this->district = district;
 		this->rating = rating;
 		this->votes = votes;
-		_candidate.SetPerson(surname, name, patronymic);
+		candidate.SetPerson(surname, name, patronymic);
 	}
 	void ShowCandidate()
 	{
 		cout << "=============================================\n";
 		cout << left << setw(18) << "№ п/п" << num << endl;
-		cout << left << setw(18) << "ПІБ" << _candidate.GetSurname() << " " << _candidate.GetName() << " " << _candidate.GetPatronymic() << endl;
+		Color(14);
+		cout << left << setw(18) << "ПІБ" << candidate.GetSurname() << " " << candidate.GetName() << " " << candidate.GetPatronymic() << endl;
+		Color(7);
 		cout << left << setw(18) << "Партія" << party << endl;
 		cout << left << setw(18) << "Округ" << district << endl;
 		cout << left << setw(18) << "Дата реєстрації";
@@ -112,4 +117,26 @@ public:
 		cout << left << setw(18) << "Віддало голосів" << votes << endl;
 		cout << "=============================================\n";
 	}
+	friend ostream& operator<< (ostream& out, const Candidate& cand);
 };
+
+ostream& operator<< (ostream& out, const Candidate& cand)
+{
+	//out << "Point(" << point.m_x << ", " << point.m_y << ", " << point.m_z << ")";
+
+	cout << "=============================================\n";
+	cout << left << setw(18) << "№ п/п" << cand.num << endl;
+	Color(14);
+	//cout << left << setw(18) << "ПІБ" << candidate.GetSurname() << " " << candidate.GetName() << " " << candidate.GetPatronymic() << endl;
+	Color(7);
+	cout << left << setw(18) << "Партія" << cand.party << endl;
+	cout << left << setw(18) << "Округ" << cand.district << endl;
+	cout << left << setw(18) << "Дата реєстрації";
+	//cand.dateRegistry.ShowDate();
+	cout << left << setw(18) << "Рейтинг" << cand.rating << endl;
+	cout << left << setw(18) << "Віддало голосів" << cand.votes << endl;
+	cout << "=============================================\n";
+
+
+	return out;
+}
