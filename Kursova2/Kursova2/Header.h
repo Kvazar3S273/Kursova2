@@ -54,7 +54,9 @@ public:
 
 ostream& operator<< (ostream& out, const Person& pers)	//overload of operator << for person
 {
-	out << pers.surname << " " << pers.name << " " << pers.patronymic;
+	string pib;
+	pib = pers.surname + " " + pers.name + " " + pers.patronymic;
+	out << left << setw(27) << pib;
 	return out;
 }
 
@@ -87,7 +89,10 @@ public:
 
 ostream& operator<< (ostream& out, const Date& dt)	//overload of operator << for date
 {
-	out << dt.day << "-" << dt.month << "-" << dt.year << endl;
+	out << left << setw(2) << dt.day << "-";
+	if (dt.month <= 9) out << "0" << left << setw(1) << dt.month << "-";
+	else if (dt.month >= 10) out << left << setw(2) << dt.month << "-";
+	out << left << setw(4) << dt.year;
 	return out;
 }
 
@@ -134,9 +139,16 @@ public:
 	friend ostream& operator<< (ostream& out, const Candidate& cand);
 };
 
+void TableCap()
+{
+	cout << "===============================================================================================\n";
+	cout << "| № п/п |  Прізвище і'мя по-батькові  | Партія | Округ | Дата реєстрації | Рейтинг | Голоси |" << endl;
+	cout << "===============================================================================================\n";
+}
+
 ostream& operator<< (ostream& out, const Candidate& cand)	//overload of operator << for candidate
 {
-	out << "=============================================\n";
+	/*out << "=============================================\n";
 	out << left << setw(18) << "№ п/п" << cand.num << endl;
 	Color(14);
 	out << left << setw(18) << "ПІБ" << cand.candidate << endl;
@@ -146,6 +158,19 @@ ostream& operator<< (ostream& out, const Candidate& cand)	//overload of operator
 	out << left << setw(18) << "Дата реєстрації" << cand.dateRegistry;
 	out << left << setw(18) << "Рейтинг" << cand.rating << endl;
 	out << left << setw(18) << "Віддало голосів" << cand.votes << endl;
-	out << "=============================================\n";
+	out << "=============================================\n";*/
+
+	out << "| " << left << setw(5) << cand.num;
+	out << " | " << left << cand.candidate;
+	out << " | " << left << cand.party;
+	out << " | " << left << setw(5) << cand.district;
+	out << " | " << left << cand.dateRegistry;
+	out << " | " << left << setw(5) << cand.rating;
+	out << " | " << left << setw(5) << cand.votes << endl;
+	out << "-----------------------------------------------------------------------------------------------\n";
+
+
+
+
 	return out;
 }
