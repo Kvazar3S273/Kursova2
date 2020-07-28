@@ -141,9 +141,11 @@ public:
 
 void TableCap()
 {
-	cout << "===============================================================================================\n";
-	cout << "| № п/п |  Прізвище і'мя по-батькові  | Партія | Округ | Дата реєстрації | Рейтинг | Голоси |" << endl;
-	cout << "===============================================================================================\n";
+	cout << "=====================================================================================================\n";
+	Color(14);
+	cout << "| № п/п |  Прізвище і'мя по-батькові  |      Партія       | Округ | Дата реєстр. | Рейтинг | Голоси |" << endl;
+	Color(7);
+	cout << "=====================================================================================================\n";
 }
 
 ostream& operator<< (ostream& out, const Candidate& cand)	//overload of operator << for candidate
@@ -160,17 +162,13 @@ ostream& operator<< (ostream& out, const Candidate& cand)	//overload of operator
 	out << left << setw(18) << "Віддало голосів" << cand.votes << endl;
 	out << "=============================================\n";*/
 
-	out << "| " << left << setw(5) << cand.num;
+	out << "|   " << left << setw(3) << cand.num;
 	out << " | " << left << cand.candidate;
-	out << " | " << left << cand.party;
-	out << " | " << left << setw(5) << cand.district;
-	out << " | " << left << cand.dateRegistry;
-	out << " | " << left << setw(5) << cand.rating;
-	out << " | " << left << setw(5) << cand.votes << endl;
-	out << "-----------------------------------------------------------------------------------------------\n";
-
-
-
-
+	out << " | " << left << setw(17) << cand.party;
+	out << " |  " << left << setw(4) << cand.district;
+	out << " |  " << left << cand.dateRegistry;
+	out << "  |   " << left << setw(5) << cand.rating;
+	out << " | " << left << setw(6) << cand.votes << " |" << endl;
+	out << "-----------------------------------------------------------------------------------------------------\n";
 	return out;
 }
