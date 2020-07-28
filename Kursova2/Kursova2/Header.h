@@ -4,6 +4,7 @@
 #include <conio.h>
 #include <string>
 #include <vector>
+#include <iomanip>
 
 using namespace std;
 void Ukr()	
@@ -31,6 +32,19 @@ public:
 	string GetPatronymic()
 	{
 		return patronymic;
+	}
+	Person(){}
+	Person(string surname, string name, string patronymic)
+	{
+		this->surname = surname;
+		this->name = name;
+		this->patronymic = patronymic;
+	}
+	void SetPerson(string surname, string name, string patronymic)
+	{
+		this->surname = surname;
+		this->name = name;
+		this->patronymic = patronymic;
 	}
 };
 
@@ -71,25 +85,31 @@ private:
 	int votes;
 	Date dateRegistry;
 public:
-	//Candidate(/*num,candidate,party,district,dateRegistry,rating,votes*/)
-	//{
-	//	//this->candidate->surname = surname;
-
-	//}
-	void CreateCandidate()
+	
+	void CreateCandidate(int day, int month, int year, 
+						int num, string party, 
+						string surname, string name, string patronymic, 
+						int district, int rating, int votes)
 	{
-		dateRegistry.SetDate(12, 10, 2020);
+		dateRegistry.SetDate(day, month, year);
+		this->num = num;
+		this->party = party;
+		this->district = district;
+		this->rating = rating;
+		this->votes = votes;
+		_candidate.SetPerson(surname, name, patronymic);
 	}
 	void ShowCandidate()
 	{
-		cout << "===============================================\n";
-		cout << "№ п/п  " << num << endl;
-		cout << "ПІБ  " << _candidate.GetSurname() << " " << _candidate.GetName() << " " << _candidate.GetPatronymic() << endl;
-		cout << "Партія  " << party << endl;
-		cout << "Округ  " << district << endl;
-		cout << "Дата реєстрації  ";
+		cout << "=============================================\n";
+		cout << left << setw(18) << "№ п/п" << num << endl;
+		cout << left << setw(18) << "ПІБ" << _candidate.GetSurname() << " " << _candidate.GetName() << " " << _candidate.GetPatronymic() << endl;
+		cout << left << setw(18) << "Партія" << party << endl;
+		cout << left << setw(18) << "Округ" << district << endl;
+		cout << left << setw(18) << "Дата реєстрації";
 		dateRegistry.ShowDate();
-		cout << "Рейтинг  " << rating << endl;
-		cout << "Віддало голосів  " << votes << endl;
+		cout << left << setw(18) << "Рейтинг" << rating << endl;
+		cout << left << setw(18) << "Віддало голосів" << votes << endl;
+		cout << "=============================================\n";
 	}
 };
