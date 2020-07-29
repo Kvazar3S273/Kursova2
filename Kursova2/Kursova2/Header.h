@@ -1,10 +1,13 @@
 #pragma once
 #include <iostream>
+#include <fstream>
+#include <iterator>
 #include <Windows.h>
 #include <conio.h>
 #include <string>
 #include <vector>
 #include <iomanip>
+#include <algorithm>
 
 using namespace std;
 void Ukr()	
@@ -50,6 +53,7 @@ public:
 		this->patronymic = patronymic;
 	}
 	friend ostream& operator<< (ostream& out, const Person& pers);
+	friend istream& operator>> (istream& is,  Person& pers);
 };
 
 ostream& operator<< (ostream& out, const Person& pers)	//overload of operator << for person
@@ -59,6 +63,15 @@ ostream& operator<< (ostream& out, const Person& pers)	//overload of operator <<
 	out << left << setw(27) << pib;
 	return out;
 }
+
+istream& operator>> (istream& is,  Person& pers)	//overload of operator >> for person
+{
+	is >> pers.surname >> pers.name >> pers.patronymic;
+	return is;
+}
+
+
+
 
 class Date		//class of date (day, month, year)
 {
@@ -85,6 +98,7 @@ public:
 		cout << day << "-" << month << "-" << year << endl;
 	}
 	friend ostream& operator<< (ostream& out, const Date& dt);
+	friend istream& operator>> (istream& is, Date& dt);
 };
 
 ostream& operator<< (ostream& out, const Date& dt)	//overload of operator << for date
@@ -96,9 +110,15 @@ ostream& operator<< (ostream& out, const Date& dt)	//overload of operator << for
 	return out;
 }
 
+istream& operator>> (istream& is,  Date& dt)	//overload of operator >> for date
+{
+	is >> dt.day>>dt.month>>dt.year;
+	return is;
+}
+
 class Candidate		//class Candidate - the main class!!!
 {
-private:
+public:
 	int num;
 	string party;
 	Person candidate;
@@ -108,6 +128,14 @@ private:
 	Date dateRegistry;
 public:
 	
+	void Setnum()
+	{
+		this->num = num;
+	}
+	int Getnum()
+	{
+		return num;
+	}
 	void CreateCandidate(int day, int month, int year, 
 						int num, string party, 
 						string surname, string name, string patronymic, 
@@ -136,8 +164,28 @@ public:
 		cout << left << setw(18) << "Віддало голосів" << votes << endl;
 		cout << "=============================================\n";
 	}
+
 	friend ostream& operator<< (ostream& out, const Candidate& cand);
+	friend istream& operator>> (istream& is,  Candidate& cand);
+	
+
+	 Candidate & operator ==(Candidate& c)  //overload operator == for Candidate.
+	 {
+		 if(num==c.num)
+		 return *this;
+	 }
+		
+
+	 Candidate& operator !=(Candidate& c)  //overload operator != for Candidate.
+	 {
+		 if (num != c.num)
+			 return *this;
+	 }		
+
 };
+
+
+
 
 void TableCap()
 {
@@ -148,7 +196,7 @@ void TableCap()
 	cout << "=====================================================================================================\n";
 }
 
-ostream& operator<< (ostream& out, const Candidate& cand)	//overload of operator << for candidate
+   ostream& operator<< (ostream& out, const Candidate& cand)	//overload of operator << for candidate
 {
 	/*out << "=============================================\n";
 	out << left << setw(18) << "№ п/п" << cand.num << endl;
@@ -161,7 +209,7 @@ ostream& operator<< (ostream& out, const Candidate& cand)	//overload of operator
 	out << left << setw(18) << "Рейтинг" << cand.rating << endl;
 	out << left << setw(18) << "Віддало голосів" << cand.votes << endl;
 	out << "=============================================\n";*/
-
+	
 	out << "|   " << left << setw(3) << cand.num;
 	out << " | " << left << cand.candidate;
 	out << " | " << left << setw(17) << cand.party;
@@ -172,3 +220,10 @@ ostream& operator<< (ostream& out, const Candidate& cand)	//overload of operator
 	out << "-----------------------------------------------------------------------------------------------------\n";
 	return out;
 }
+
+istream& operator>>(istream& is,  Candidate& cand) 
+{
+	is >> cand.num >> cand.candidate >> cand.party >> cand.district >> cand.dateRegistry >> cand.rating >> cand.votes;
+	return is;
+}
+
