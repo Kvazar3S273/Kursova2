@@ -10,11 +10,11 @@ void main()
 	vector<Candidate> can;
 	vector<Candidate>::iterator it;
 
-	c1.CreateCandidate(14, 1, 2019, 2, "Корейці України", "Кім", "Чонг", "Ха", 13, 50, 15954);
+	/*c1.CreateCandidate(14, 1, 2019, 2, "Корейці України", "Кім", "Чонг", "Ха", 13, 50, 15954);
 	c2.CreateCandidate(18, 10, 2018, 3, "Зануди", "Муденко", "Леонард", "Кирилович", 11, 1, 4);
 	c3.CreateCandidate(18, 10, 2018, 4, "Петрики", "Лапки", "Гусячі", "Кирилович", 31, 1, 4);
 	c4.CreateCandidate(20, 20, 1900, 5, "Янукович", "Віктор", "Федорович", "Лижи", 25, 22, 8);
-	
+	*/
 	//read from file	
 	ifstream file;
     readFile(can, file);
@@ -23,10 +23,10 @@ void main()
 	/*fstream ifs("new.txt",ios_base::in);
 	copy(istream_iterator<Candidate>(ifs),istream_iterator<Candidate>(),back_inserter(can));
 	ifs.close();*/
-	can.push_back(c1);
+	/*can.push_back(c1);
 	can.push_back(c2);
 	can.push_back(c3);
-	can.push_back(c4);
+	can.push_back(c4);*/
 
 	
 
@@ -77,7 +77,7 @@ void main()
 	
 
 	//save to file
-	ofstream top("new.txt", ios_base::trunc || ios_base::out);
+	ofstream top("new.txt", ios_base::trunc);
 	copy(can.begin(), can.end(), ostream_iterator<Candidate>(top));
 	top.close();
 
