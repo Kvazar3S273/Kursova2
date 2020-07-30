@@ -184,7 +184,14 @@ public:
 
 };
 
-
+void readFile(vector <Candidate>& c, ifstream& file)
+{
+	file.open("new.txt");
+	for (Candidate can; file >> can;) {
+		c.push_back(can);
+	}
+	file.close();
+}
 
 
 void TableCap()

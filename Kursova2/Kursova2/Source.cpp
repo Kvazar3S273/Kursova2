@@ -14,11 +14,15 @@ void main()
 	c2.CreateCandidate(18, 10, 2018, 3, "Зануди", "Муденко", "Леонард", "Кирилович", 11, 1, 4);
 	c3.CreateCandidate(18, 10, 2018, 4, "Петрики", "Лапки", "Гусячі", "Кирилович", 31, 1, 4);
 	c4.CreateCandidate(20, 20, 1900, 5, "Янукович", "Віктор", "Федорович", "Лижи", 25, 22, 8);
-
+	
 	//read from file	
-	fstream ifs("new.txt",ios_base::in);
+	ifstream file;
+    readFile(can, file);
+
+
+	/*fstream ifs("new.txt",ios_base::in);
 	copy(istream_iterator<Candidate>(ifs),istream_iterator<Candidate>(),back_inserter(can));
-	ifs.close();
+	ifs.close();*/
 	can.push_back(c1);
 	can.push_back(c2);
 	can.push_back(c3);
@@ -64,9 +68,19 @@ void main()
 	cout << endl;
 
 
+	//sort(can.begin(), can.end(),
+	//	[](const Candidate& a, const Candidate& b) -> bool
+	//	{
+	//		return a.district > b.district;
+	//	});
+
+	
+
 	//save to file
-	ofstream out("new.txt", ios_base::trunc || ios_base::out);
-	copy(can.begin(), can.end(), ostream_iterator<Candidate>(out));
-	out.close();
+	ofstream top("new.txt", ios_base::trunc || ios_base::out);
+	copy(can.begin(), can.end(), ostream_iterator<Candidate>(top));
+	top.close();
+
+	
 	
 }
