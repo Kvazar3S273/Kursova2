@@ -89,9 +89,15 @@ public:
 	{
 		this->num = num;
 	}
-	int Getnum()
+
+	void Setdistrict()
 	{
-		return num;
+		this->district = district;
+	}
+
+	int Getdistrict()const
+	{
+		return district;
 	}
 	
 	void CreateCandidate(string date,
@@ -125,20 +131,38 @@ public:
 	friend ostream& operator<< (ostream& out, const Candidate& cand);
 	friend istream& operator>> (istream& is,  Candidate& cand);
 	
+	 //Candidate & operator ==(Candidate& c)  //overload operator == for Candidate.
+	 //{
+		// if(num==c.num)
+		// return *this;
+	 //}
+		//
 
-	 Candidate & operator ==(Candidate& c)  //overload operator == for Candidate.
+	 //Candidate& operator !=(Candidate& c)  //overload operator != for Candidate.
+	 //{
+		// if (num != c.num)
+		//	 return *this;
+	 //}
+
+	//================================================================================
+
+	friend bool operator == (const Candidate& c,const int &b)
 	 {
-		 if(num==c.num)
-		 return *this;
+		return (c.district == b);		 
 	 }
-		
-
-	 Candidate& operator !=(Candidate& c)  //overload operator != for Candidate.
+	friend bool operator != (const Candidate& c, const int& b)
 	 {
-		 if (num != c.num)
-			 return *this;
-	 }		
-
+		return (c.district != b);
+	 }
+	 bool operator()(const Candidate& c)const
+	 {
+		 return c.district == district;
+	 }
+	 bool operator<(Candidate& c)const
+	 {
+		 return c.district < district;
+	 }
+	 //====================================================================================	 
 };
 
 
@@ -152,6 +176,8 @@ bool compare_by_surname(Candidate& a, Candidate& b) //sort by surname.
 	return a.candidate.GetSurname() < b.candidate.GetSurname();
 
 }
+
+
 void readFile(vector <Candidate>& c, ifstream& file)
 {
 	file.open("new.txt");

@@ -6,12 +6,11 @@ void main()
 	Candidate c1;
 	vector<Candidate> can;
 	vector<Candidate>::iterator it;
-
+	vector<Candidate>::iterator it2;
 
 	//read from file	
 	ifstream file;
-    readFile(can, file);
-		
+    readFile(can, file);		
 
 	//out to console vector
 	TableCap();
@@ -23,12 +22,18 @@ void main()
 
 
 	//find in vector depending argument
-	/* int temp=1;
+	//==============================================================================
+	 int t;
 	 cout << "Enter argument";
-	 cin >> temp;*/
-	/*
-	 it = find_if(can.begin(), can.end(), [temp](const Candidate& c) { return c.district == temp; });
-	 cout << *it;//out to console*/
+	 cin >> t;
+	 it = find(can.begin(), can.end(), [&t](const Candidate& c) { return c.Getdistrict()==t; }); end(can);
+		 cout << (*it).num << endl;
+	//==============================================================================
+
+
+
+
+	//cout << *it;//out to console*/
 
 
 	//delete candidate to position
@@ -65,12 +70,12 @@ void main()
 	
 	
 	//out to console vector after operations.
-	TableCap();
-	for (it = can.begin(); it < can.end(); ++it)
-	{
-		cout << *it << endl;//out to console vector.
-	}
-	cout << endl;
+	//TableCap();
+	//for (it = can.begin(); it < can.end(); ++it)
+	//{
+	//	cout << *it << endl;//out to console vector.
+	//}
+	//cout << endl;
 
 
 	//save to file
