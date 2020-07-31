@@ -39,7 +39,51 @@ void main()
 	 //==================================================================================================
 	
 
+	 //----------------------------edit candidate
 
+	 cout << "\n\nEnter district of candidate to edit his info" << endl;
+	 int distr;
+	 cin >> distr;
+	 it = find(can.begin(), can.end(), distr);
+	 //cout << (*it).candidate << endl;
+	 cout << "What do you want to edit?\n";
+	 cout << "1 - date\n";
+	 cout << "2 - rating\n";
+	 cout << "3 - votes\n";
+	 int choice;
+	 cin >> choice;
+	 switch (choice)
+	 {
+	 case 1:
+	 {
+		 cout << "Enter new date\n";
+		 string newdate;
+		 cin >> newdate;
+		 (*it).date = newdate;
+		 break;
+	 }
+	 case 2:
+	 {
+		 cout << "Enter new rating\n";
+		 int newrating;
+		 cin >> newrating;
+		 (*it).rating = newrating;
+		 break;
+	 }
+	 case 3:
+	 {
+		 cout << "Enter new votes\n";
+		 int newvotes;
+		 cin >> newvotes;
+		 (*it).votes = newvotes;
+		 break;
+	 }
+
+	 default:
+		 cout << "Wrong choice!";
+		 break;
+	 }
+	 //--------------------------------end of edit candidate
 
 
 	//delete candidate to position
@@ -54,12 +98,12 @@ void main()
 	
 	
 	 //out to console vector after operations.
-	//TableCap();
-	//for (it = can.begin(); it < can.end(); ++it)
-	//{
-	//	cout << *it << endl;//out to console vector.
-	//}
-	//cout << endl;
+	TableCap();
+	for (it = can.begin(); it < can.end(); ++it)
+	{
+		cout << *it << endl;//out to console vector.
+	}
+	cout << endl;
 
 
 	//sort(can.begin(), can.end(),// sort by district.
