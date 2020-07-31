@@ -26,14 +26,20 @@ void main()
 	 int t;
 	 cout << "Enter argument";
 	 cin >> t;
-	 it = find(can.begin(), can.end(), [&t](const Candidate& c) { return c.Getdistrict()==t; }); end(can);
-		 cout << (*it).num << endl;
-	//==============================================================================
+	
+	 for (int g = 0; g < can.size(); g++)
+	 {
+		 if (can[g].district == t)
+			 cout << can[g].num << " " << can[g].party << " " << can[g].candidate.GetName() << " " << can[g].candidate.GetSurname() << '\n';
+	 }
+	 //count.
+	 cout << count_if(begin(can), end(can), [](const Candidate& cur)
+		 { return cur.district==11; });
+
+	 //==================================================================================================
+	
 
 
-
-
-	//cout << *it;//out to console*/
 
 
 	//delete candidate to position

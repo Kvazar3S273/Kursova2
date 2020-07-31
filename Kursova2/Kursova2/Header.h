@@ -130,20 +130,7 @@ public:
 
 	friend ostream& operator<< (ostream& out, const Candidate& cand);
 	friend istream& operator>> (istream& is,  Candidate& cand);
-	
-	 //Candidate & operator ==(Candidate& c)  //overload operator == for Candidate.
-	 //{
-		// if(num==c.num)
-		// return *this;
-	 //}
-		//
-
-	 //Candidate& operator !=(Candidate& c)  //overload operator != for Candidate.
-	 //{
-		// if (num != c.num)
-		//	 return *this;
-	 //}
-
+		
 	//================================================================================
 
 	friend bool operator == (const Candidate& c,const int &b)
@@ -154,10 +141,16 @@ public:
 	 {
 		return (c.district != b);
 	 }
-	 bool operator()(const Candidate& c)const
+	 /*bool operator()(const Candidate& c)const
 	 {
 		 return c.district == district;
-	 }
+	 }*/
+
+	bool operator()(int val)const
+	{
+		return val == district;
+	}
+
 	 bool operator<(Candidate& c)const
 	 {
 		 return c.district < district;
@@ -176,7 +169,10 @@ bool compare_by_surname(Candidate& a, Candidate& b) //sort by surname.
 	return a.candidate.GetSurname() < b.candidate.GetSurname();
 
 }
-
+bool right(int val,Candidate &c)
+{
+	return c.Getdistrict()==val;
+}
 
 void readFile(vector <Candidate>& c, ifstream& file)
 {
