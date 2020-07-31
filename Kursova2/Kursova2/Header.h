@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <iterator>
 #include <Windows.h>
 #include <conio.h>
@@ -72,50 +73,6 @@ istream& operator>> (istream& is,  Person& pers)	//overload of operator >> for p
 
 
 
-
-class Date		//class of date (day, month, year)
-{
-private:
-	int day;
-	int month;
-	int year;
-public:
-	Date() {}
-	Date(int day, int month, int year)
-	{
-		this->day = day;
-		this->month = month;
-		this->year = year;
-	}
-	void SetDate(int day, int month, int year)
-	{
-		this->day = day;
-		this->month = month;
-		this->year = year;
-	}
-	void ShowDate()
-	{
-		cout << day << "-" << month << "-" << year << endl;
-	}
-	friend ostream& operator<< (ostream& out, const Date& dt);
-	friend istream& operator>> (istream& is, Date& dt);
-};
-
-ostream& operator<< (ostream& out, const Date& dt)	//overload of operator << for date
-{
-	out << left << setw(2) << dt.day << "-";
-	if (dt.month <= 9) out << "0" << left << setw(1) << dt.month << "-";
-	else if (dt.month >= 10) out << left << setw(2) << dt.month << "-";
-	out << left << setw(4) << dt.year;
-	return out;
-}
-
-istream& operator>> (istream& is,  Date& dt)	//overload of operator >> for date
-{
-	is >> dt.day>>dt.month>>dt.year;
-	return is;
-}
-
 class Candidate		//class Candidate - the main class!!!
 {
 public:
@@ -125,7 +82,7 @@ public:
 	int district;
 	int rating;
 	int votes;
-	Date dateRegistry;
+	string date;
 public:
 	
 	void Setnum()
@@ -136,12 +93,13 @@ public:
 	{
 		return num;
 	}
-	void CreateCandidate(int day, int month, int year, 
-						int num, string party, 
-						string surname, string name, string patronymic, 
-						int district, int rating, int votes)
+	
+	void CreateCandidate(string date,
+		int num, string party,
+		string surname, string name, string patronymic,
+		int district, int rating, int votes)
 	{
-		dateRegistry.SetDate(day, month, year);
+		this->date = date;
 		this->num = num;
 		this->party = party;
 		this->district = district;
@@ -158,8 +116,7 @@ public:
 		Color(7);
 		cout << left << setw(18) << "Партія" << party << endl;
 		cout << left << setw(18) << "Округ" << district << endl;
-		cout << left << setw(18) << "Дата реєстрації";
-		dateRegistry.ShowDate();
+		cout << left << setw(18) << "Дата реєстрації" << date << endl;
 		cout << left << setw(18) << "Рейтинг" << rating << endl;
 		cout << left << setw(18) << "Віддало голосів" << votes << endl;
 		cout << "=============================================\n";
@@ -187,7 +144,8 @@ public:
 void readFile(vector <Candidate>& c, ifstream& file)
 {
 	file.open("new.txt");
-	for (Candidate can; file >> can;) {
+	for (Candidate can; file >> can;) 
+	{
 		c.push_back(can);
 	}
 	file.close();
@@ -217,20 +175,22 @@ void TableCap()
 	out << left << setw(18) << "Віддало голосів" << cand.votes << endl;
 	out << "=============================================\n";*/
 	
-	out << "|   " << left << setw(3) << cand.num;
-	out << " | " << left << cand.candidate;
-	out << " | " << left << setw(17) << cand.party;
-	out << " |  " << left << setw(4) << cand.district;
-	out << " |  " << left << cand.dateRegistry;
-	out << "  |   " << left << setw(5) << cand.rating;
-	out << " | " << left << setw(6) << cand.votes << " |" << endl;
-	out << "-----------------------------------------------------------------------------------------------------\n";
+	
+	out << left << setw(3) << cand.num;
+	out << left << cand.candidate;
+	out << left << setw(17) << cand.party;
+	out << left << setw(4) << cand.district;
+	out << left << setw(11) << cand.date;
+	out << left << setw(5) << cand.rating;
+	out << left << setw(6) << cand.votes << endl;
+	
+
 	return out;
 }
 
-istream& operator>>(istream& is,  Candidate& cand) 
-{
-	is >> cand.num >> cand.candidate >> cand.party >> cand.district >> cand.dateRegistry >> cand.rating >> cand.votes;
-	return is;
-}
 
+  istream& operator>>(istream& is, Candidate& cand)
+  {
+   is >> cand.num >> cand.candidate >> cand.party >> cand.district >> cand.date >> cand.rating >> cand.votes;
+   return is;
+  }
