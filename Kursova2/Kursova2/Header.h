@@ -141,6 +141,17 @@ public:
 
 };
 
+
+bool compare(Candidate& a, Candidate& b) //sort by name.
+{
+	return a.candidate.GetName() < b.candidate.GetName();
+
+}
+bool compare_by_surname(Candidate& a, Candidate& b) //sort by surname.
+{
+	return a.candidate.GetSurname() < b.candidate.GetSurname();
+
+}
 void readFile(vector <Candidate>& c, ifstream& file)
 {
 	file.open("new.txt");
