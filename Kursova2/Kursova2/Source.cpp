@@ -39,7 +39,7 @@ void main()
 	 //==================================================================================================
 	
 
-	 //----------------------------edit candidate
+	 //----------------------------edit candidate-------
 
 	 cout << "\n\nEnter district of candidate to edit his info" << endl;
 	 int distr;
