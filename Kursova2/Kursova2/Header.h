@@ -221,11 +221,13 @@ void readFile(vector <Candidate>& c, ifstream& file)
 
 void TableCap()
 {
-	cout << "=====================================================================================================\n";
+	cout << "========================================================================================================\n";
 	Color(14);
-	cout << "| № п/п |  Прізвище і'мя по-батькові  |      Партія       | Округ | Дата реєстр. | Рейтинг | Голоси |" << endl;
+	cout << "|      Прізвище, і'мя,       |      Назва        | Округ |  Номер   |     Дата     | Рейтинг |  К-сть  |" << endl;
+	cout << "|   по-батькові кандидата    |      партії       |       | в списку |  реєстрації  |    %    | голосів |" << endl;
 	Color(7);
-	cout << "=====================================================================================================\n";
+	cout << "========================================================================================================\n";
+
 }
 
    ostream& operator<< (ostream& out, const Candidate& cand)	//overload of operator << for candidate
@@ -242,15 +244,15 @@ void TableCap()
 	out << left << setw(18) << "Віддало голосів" << cand.votes << endl;
 	out << "=============================================\n";*/
 	
-	
-	out << left << setw(3) << cand.num;
+	out << setw(2) << " ";
 	out << left << cand.candidate;
-	out << left << setw(17) << cand.party;
-	out << left << setw(4) << cand.district;
-	out << left << setw(11) << cand.date;
-	out << left << setw(5) << cand.rating;
+	out << setw(2) << " ";
+	out << left << setw(22) << cand.party;
+	out << left << setw(9) << cand.district;
+	out << left << setw(9) << cand.num;
+	out << left << setw(16) << cand.date;
+	out << left << setw(9) << cand.rating;
 	out << left << setw(6) << cand.votes << endl;
-	
 
 	return out;
 }
@@ -258,6 +260,6 @@ void TableCap()
 
   istream& operator>>(istream& is, Candidate& cand)
   {
-   is >> cand.num >> cand.candidate >> cand.party >> cand.district >> cand.date >> cand.rating >> cand.votes;
+   is >> cand.candidate >> cand.party >> cand.district >> cand.num >> cand.date >> cand.rating >> cand.votes;
    return is;
   }
