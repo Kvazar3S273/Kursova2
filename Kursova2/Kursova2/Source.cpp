@@ -117,12 +117,12 @@ void main()
 	
 	
 	//out to console vector after operations.
-	//TableCap();
-	//for (it = can.begin(); it < can.end(); ++it)
-	//{
-	//	cout << *it << endl;//out to console vector.
-	//}
-	//cout << endl;
+	TableCap();
+	for (it = can.begin(); it < can.end(); ++it)
+	{
+		cout << *it << endl;//out to console vector.
+	}
+	cout << endl;
 
 
 	//----------------save to file----------

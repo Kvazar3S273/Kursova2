@@ -108,20 +108,20 @@ public:
 	{
 		Candidate c;
 	
-		cout << "Enter new num" << endl;
-		cin >> c.num;
-		cout << "Enter new party" << endl;
-		cin >> c.party;
-		cout << "enter new name" << endl;
+		cout << "Введіть через ентер прізвище, ім'я, по-батькові кандидата" << endl;
 		cin >> c.candidate;
-		cout << "Enter new dist" << endl;
+		cout << "Введіть партію кандидата (або безробітний)" << endl;
+		cin >> c.party;
+		cout << "Введіть округ кандидата" << endl;
 		cin >> c.district;
-		cout << "Enter new rat" << endl;
-		cin >> c.rating;
-		cout << "Enter new vot" << endl;
-		cin >> c.votes;
-		cout << "Enter new date" << endl;
+		cout << "Введіть номер кандидата в бюлетені" << endl;
+		cin >> c.num;
+		cout << "Введіть дату реєстрації кандидата у вигляді ДД-ММ-РРРР" << endl;
 		cin >> c.date;		
+		cout << "Введіть рейтинг кандидата" << endl;
+		cin >> c.rating;
+		cout << "Введіть кількість головів, відданих за кандидата" << endl;
+		cin >> c.votes;
 		can.push_back(c);
 
 	}
