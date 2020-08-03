@@ -76,6 +76,14 @@ istream& operator>> (istream& is,  Person& pers)	//overload of operator >> for p
 	return is;
 }
 
+bool operator == (const Person& c, const Person& b)
+{
+	/*return(c.num == b);
+	return(c.votes == b);
+	return (c.district == b);
+	return(c.rating == b);*/
+	return(c == b);
+}
 
 
 class Candidate		//class Candidate - the main class!!!
@@ -88,7 +96,7 @@ public:
 	int rating;
 	int votes;
 	string date;
-public:
+//public:
 		
 	void CreateCandidate(string date,
 		int num, string party,
@@ -103,7 +111,10 @@ public:
 		this->votes = votes;
 		candidate.SetPerson(surname, name, patronymic);
 	}
-
+	string GetSurname()
+	{
+		return(candidate.GetSurname());
+	}
 	void Add(vector<Candidate>& can)
 	{
 		Candidate c;
@@ -145,40 +156,40 @@ public:
 	friend bool operator == (const Candidate& c, const int& b);
 	friend bool operator != (const Candidate& c, const int& b); 
 	friend bool operator <(const Candidate& c, const Candidate& b);
+	
 	bool operator()(int val)const
 	{
-		return (val == district&& val == num&& 
-			val == rating&& val == votes);
+		return (val == district&& val == num&& val == rating&& val == votes);
 	}	 
 	
 };
 
 
-
 bool operator != (const Candidate& c, const int& b)
 {
-	return (c.district != b);
+	/*return (c.district != b);
 	return(c.num != b);
 	return(c.rating != b);
-	return(c.votes != b);
-
+	return(c.votes != b);*/
+	return(c.num != b || c.votes != b || c.district != b || c.rating != b);
 }
 bool operator<(const Candidate& c,const Candidate&b)
 {
-	return (c.district < b.district);
+	/*return (c.district < b.district);
 	return(c.num < b.num);
 	return(c.rating < b.rating);
-	return(c.votes < b.votes);
-
+	return(c.votes < b.votes);*/
+	return(c.num < b.num || c.votes < b.votes || c.district < b.district || c.rating < b.rating);
 }
  bool operator == (const Candidate& c, const int& b)
 {
-	 return (c.district == b);
-	 return(c.num == b);
-	 return(c.rating == b);
+	 /*return(c.num == b);
 	 return(c.votes == b);
-	
+	 return (c.district == b);
+	 return(c.rating == b);*/
+	 return(c.num == b || c.votes == b || c.district == b || c.rating == b);
 }
+ 
 //bool operator ==(const Candidate& c, const Candidate& b)//operator overload for int.
 //{
 //	return (c.district == b.district && c.num == b.num
