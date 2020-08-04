@@ -23,7 +23,7 @@ void Color(int color)
 }
 class Person	//class of person (surname, name, patronymic)
 {
-private:
+public:
 	string surname;
 	string name;
 	string patronymic;
@@ -59,9 +59,18 @@ public:
 		this->patronymic = patronymic;
 	}
 	friend ostream& operator<< (ostream& out, const Person& pers);
-	friend istream& operator>> (istream& is,  Person& pers);
+	friend istream& operator>> (istream& is,  Person& pers);	
+	//friend bool operator ==(const Person& a, const string& b);
+	
+
 };
 
+
+//bool operator==(const Person& a, const string& b)
+//{
+//	return a.name == b || a.patronymic == b || a.surname == b;
+//		
+//}
 ostream& operator<< (ostream& out, const Person& pers)	//overload of operator << for person
 {
 	string pib;
@@ -75,6 +84,7 @@ istream& operator>> (istream& is,  Person& pers)	//overload of operator >> for p
 	is >> pers.surname >> pers.name >> pers.patronymic;
 	return is;
 }
+
 
 
 
@@ -149,11 +159,29 @@ public:
 	{
 		return (val == district&& val == num&& 
 			val == rating&& val == votes);
+		
 	}	 
-	
+	friend bool operator==(const Candidate& a, const string& b);
+	friend bool operator!=(const Candidate& a, const string &b);
 };
 
+bool operator==(const Candidate& a, const string& b)
+{
+	return (a.candidate.name == b || a.candidate.patronymic == b || a.candidate.surname == b || a.date == b||a.party==b);
 
+}
+
+ bool operator!=(const Candidate& a, const string& b)
+ {
+	 return (a.candidate.name != b || a.candidate.patronymic != b || a.candidate.surname != b||
+		 a.date != b || a.party != b);
+
+ }
+
+ bool name(Candidate a, Candidate b)
+ {
+	 return a.candidate.GetSurname() == b.candidate.GetSurname();
+ }
 
 bool operator != (const Candidate& c, const int& b)
 {
@@ -179,11 +207,11 @@ bool operator<(const Candidate& c,const Candidate&b)
 	 return(c.votes == b);
 	
 }
-//bool operator ==(const Candidate& c, const Candidate& b)//operator overload for int.
+//bool operator ==(const Candidate& c, const string& b)//operator overload for int.
 //{
-//	return (c.district == b.district && c.num == b.num
-//		&& c.rating == b.rating && c.votes == b.votes&&
-//		c.date==b.date&&c.party==b.party);
+//	return( c.date == b || c.party == b);
+//	
+//	
 //}
 
 //bool operator !=(const Candidate& c, const Candidate& b)//operator overload for int.
@@ -196,7 +224,7 @@ bool operator<(const Candidate& c,const Candidate&b)
 
 
 
-bool compare(Candidate& a, Candidate& b) //sort by name.
+bool compared(Candidate& a, Candidate& b) //sort by name.
 {
 	return a.candidate.GetName() < b.candidate.GetName();
 

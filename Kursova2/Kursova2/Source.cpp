@@ -19,6 +19,13 @@ void main()
 		cout << *it<< endl;
 	}
 	cout << endl;
+	//---------------srting--------
+
+	 cout << "\n\nEnter district of candidate to edit his info" << endl;
+	 string name;
+	 cin >> name;
+	 it = find(can.begin(), can.end(),name);
+	 cout << (*it).candidate.name << endl;
 
 	//-----add new candidate-----	
 	//c1.Add(can);
@@ -113,16 +120,16 @@ void main()
 	//sort(can.begin(), can.end(),compare_by_surname);
 
 	//---------sort by name------
-	//sort(can.begin(), can.end(),compare);
+	//sort(can.begin(), can.end(),compared);
 	
 	
 	//out to console vector after operations.
-	TableCap();
-	for (it = can.begin(); it < can.end(); ++it)
-	{
-		cout << *it << endl;//out to console vector.
-	}
-	cout << endl;
+	//TableCap();
+	//for (it = can.begin(); it < can.end(); ++it)
+	//{
+	//	cout << *it << endl;//out to console vector.
+	//}
+	//cout << endl;
 
 
 	//----------------save to file----------
