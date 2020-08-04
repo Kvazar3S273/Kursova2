@@ -184,7 +184,7 @@ bool operator==(const Candidate& a, const string& b)
 
  }
 
- bool name(Candidate a, Candidate b)
+ bool name(Candidate a, Candidate b)//search by surname.
  {
 	 return a.candidate.GetSurname() == b.candidate.GetSurname();
  }
@@ -213,23 +213,6 @@ bool operator<(const Candidate& c,const Candidate&b)
 	 return(c.rating == b);*/
 	 return(c.num == b || c.votes == b || c.district == b || c.rating == b);
 }
- 
-//bool operator ==(const Candidate& c, const Candidate& b)//operator overload for int.
-//{
-//	return( c.date == b || c.party == b);
-//	
-//	
-//}
-
-//bool operator !=(const Candidate& c, const Candidate& b)//operator overload for int.
-//{
-//	return (c.district != b.district && c.num != b.num
-//		&& c.rating != b.rating && c.votes != b.votes&&
-//		c.date != b.date && c.party != b.party);
-//}
-
-
-
 
 bool compared(Candidate& a, Candidate& b) //sort by name.
 {
@@ -239,7 +222,6 @@ bool compared(Candidate& a, Candidate& b) //sort by name.
 bool compare_by_surname(Candidate& a, Candidate& b) //sort by surname.
 {
 	return a.candidate.GetSurname() < b.candidate.GetSurname();
-
 }
 
 
