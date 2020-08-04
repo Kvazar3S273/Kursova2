@@ -21,11 +21,11 @@ void main()
 	cout << endl;
 	//---------------search by surname(lambda func.)--------
 
-	 cout << "\n\nEnter district of candidate to edit his info" << endl;
-	 string name;
-	 cin >> name;
-	 it = find(can.begin(), can.end(),name);
-	 cout << (*it).candidate.name << endl;
+	 //cout << "\n\nEnter district of candidate to edit his info" << endl;
+	 //string name;
+	 //cin >> name;
+	 //it = find(can.begin(), can.end(),name);
+	 //cout << (*it).candidate.name << endl;
 
 	//-----add new candidate-----	
 	//c1.Add(can);
@@ -102,12 +102,20 @@ void main()
 	cin >> pos;
 	can.erase(can.begin() + pos - 1);*/
 
-	 //---------delete to argument--------
-	//int temp = 0;
-	//cout << "Enter num in list for delete";
-	//cin >> temp;
-    //can.erase(remove_if(can.begin(),can.end(), [temp](const Candidate& c) { return c.num ==temp;}), end(can));
-	
+	// ---------delete to argument--------
+	/*int temp = 0;
+	cout << "Enter num in list for delete";
+	cin >> temp;
+    can.erase(remove_if(can.begin(),can.end(), [temp](const Candidate& c) { return c.num ==temp;}), end(can));*/
+
+	//------------delete to surname----
+	//string surname;
+	//cout << "Enter surname for delete";
+	//cin >> surname;
+	//can.erase(remove_if(can.begin(), can.end(), [surname](const Candidate& c) { return c.candidate.surname == surname; }), end(can)); 
+
+
+
 	
 	//----------sort by district---------
 	//sort(can.begin(), can.end(),// sort by district.
@@ -124,12 +132,12 @@ void main()
 	
 	
 	//out to console vector after operations.
-	//TableCap();
-	//for (it = can.begin(); it < can.end(); ++it)
-	//{
-	//	cout << *it << endl;//out to console vector.
-	//}
-	//cout << endl;
+	TableCap();
+	for (it = can.begin(); it < can.end(); ++it)
+	{
+		cout << *it << endl;//out to console vector.
+	}
+	cout << endl;
 
 
 	//----------------save to file----------
