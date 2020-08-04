@@ -19,13 +19,14 @@ void main()
 		cout << *it<< endl;
 	}
 	cout << endl;
+	
+	
 	//---------------search by surname(lambda func.)--------
-
-	 //cout << "\n\nEnter district of candidate to edit his info" << endl;
-	 //string name;
-	 //cin >> name;
-	 //it = find(can.begin(), can.end(),name);
-	 //cout << (*it).candidate.name << endl;
+	//cout << "\n\nEnter district of candidate to edit his info" << endl;
+	//string name;
+	//cin >> name;
+	//it = find(can.begin(), can.end(),name);
+	//cout << (*it).candidate.name << endl;
 
 	//-----add new candidate-----	
 	//c1.Add(can);
@@ -51,48 +52,66 @@ void main()
 
 	 //-------------edit candidate-------
 
-	 //cout << "\n\nEnter district of candidate to edit his info" << endl;
-	 //int distr;
-	 //cin >> distr;
-	 //it = find(can.begin(), can.end(), distr);
-	 ////cout << (*it).candidate << endl;
-	 //cout << "What do you want to edit?\n";
-	 //cout << "1 - date\n";
-	 //cout << "2 - rating\n";
-	 //cout << "3 - votes\n";
-	 //int choice;
-	 //cin >> choice;
-	 //switch (choice)
-	 //{
-	 //case 1:
-	 //{
-		// cout << "Enter new date\n";
-		// string newdate;
-		// cin >> newdate;
-		// (*it).date = newdate;
-		// break;
-	 //}
-	 //case 2:
-	 //{
-		// cout << "Enter new rating\n";
-		// int newrating;
-		// cin >> newrating;
-		// (*it).rating = newrating;
-		// break;
-	 //}
-	 //case 3:
-	 //{
-		// cout << "Enter new votes\n";
-		// int newvotes;
-		// cin >> newvotes;
-		// (*it).votes = newvotes;
-		// break;
-	 //}
-
-	 //default:
-		// cout << "Wrong choice!";
-		// break;
-	 //}
+	 cout << "\n\nEnter surname of candidate to edit his info" << endl;
+	 string _surname;
+	 cin >> _surname;
+	 it = find(can.begin(), can.end(), _surname);
+	 //cout << (*it).candidate << endl;
+	 cout << "What do you want to edit?\n";
+	 cout << "1 - date\n";
+	 cout << "2 - rating\n";
+	 cout << "3 - votes\n";
+	 cout << "4 - party\n";
+	 int choice;
+	 cin >> choice;
+	 switch (choice)
+	 {
+	 case 1:
+	 {
+		 cout << "Enter new date\n";
+		 string newdate;
+		 cin >> newdate;
+		 (*it).date = newdate;
+		 break;
+	 }
+	 case 2:
+	 {
+		 cout << "Enter new rating\n";
+		 int newrating;
+		 cin >> newrating;
+		 (*it).rating = newrating;
+		 break;
+	 }
+	 case 3:
+	 {
+		 cout << "Enter new votes\n";
+		 int newvotes;
+		 cin >> newvotes;
+		 (*it).votes = newvotes;
+		 break;
+	 }
+	 case 4:
+	 {
+		 cout << "Enter new party\n";
+		 string newparty;
+		 cin.ignore(32767, '\n');
+		 getline(cin, newparty);
+		 (*it).party = newparty;
+		 break;
+	 }
+	 case 5:
+	 {
+		 cout << "Enter new party\n";
+		 string newparty;
+		 cin.ignore(32767, '\n');
+		 getline(cin, newparty);
+		 (*it).party = newparty;
+		 break;
+	 }
+	 default:
+		 cout << "Wrong choice!";
+		 break;
+	 }
 	 //--------------------------------end of edit candidate
 
 
@@ -108,11 +127,12 @@ void main()
 	cin >> temp;
     can.erase(remove_if(can.begin(),can.end(), [temp](const Candidate& c) { return c.num ==temp;}), end(can));*/
 
-	//------------delete to surname----
-	//string surname;
-	//cout << "Enter surname for delete";
-	//cin >> surname;
-	//can.erase(remove_if(can.begin(), can.end(), [surname](const Candidate& c) { return c.candidate.surname == surname; }), end(can)); 
+	//------------delete to surname----!!!!
+	/*string surname;
+	cout << "Enter surname for delete";
+	cin >> surname;
+	can.erase(remove_if(can.begin(), can.end(), [surname](const Candidate& c) 
+	{ return c.candidate.surname == surname; }), end(can)); */
 
 
 

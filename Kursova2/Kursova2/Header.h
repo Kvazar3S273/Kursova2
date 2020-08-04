@@ -126,7 +126,8 @@ public:
 		cout << "¬вед≥ть через ентер пр≥звище, ≥м'€, по-батьков≥ кандидата" << endl;
 		cin >> c.candidate;
 		cout << "¬вед≥ть парт≥ю кандидата (або безроб≥тний)" << endl;
-		cin >> c.party;
+		cin.ignore(32767, '\n');
+		getline(cin, c.party);
 		cout << "¬вед≥ть округ кандидата" << endl;
 		cin >> c.district;
 		cout << "¬вед≥ть номер кандидата в бюлетен≥" << endl;
@@ -135,7 +136,7 @@ public:
 		cin >> c.date;		
 		cout << "¬вед≥ть рейтинг кандидата" << endl;
 		cin >> c.rating;
-		cout << "¬вед≥ть к≥льк≥сть голов≥в, в≥дданих за кандидата" << endl;
+		cout << "¬вед≥ть к≥льк≥сть голос≥в, в≥дданих за кандидата" << endl;
 		cin >> c.votes;
 		can.push_back(c);
 
