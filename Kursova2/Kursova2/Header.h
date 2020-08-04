@@ -60,7 +60,7 @@ public:
 	}
 	friend ostream& operator<< (ostream& out, const Person& pers);
 	friend istream& operator>> (istream& is,  Person& pers);	
-	//friend bool operator ==(const Person& a, const string& b);
+	friend bool operator ==(const Person& a, const Person& b);
 	
 
 };
