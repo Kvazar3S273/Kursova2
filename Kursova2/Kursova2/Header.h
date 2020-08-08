@@ -141,20 +141,22 @@ public:
 		can.push_back(c);
 
 	}
-	void ShowCandidate()
-	{
-		cout << "=============================================\n";
-		cout << left << setw(18) << "№ п/п" << num << endl;
-		Color(14);
-		cout << left << setw(18) << "ПІБ" << candidate.GetSurname() << " " << candidate.GetName() << " " << candidate.GetPatronymic() << endl;
-		Color(7);
-		cout << left << setw(18) << "Партія" << party << endl;
-		cout << left << setw(18) << "Округ" << district << endl;
-		cout << left << setw(18) << "Дата реєстрації" << date << endl;
-		cout << left << setw(18) << "Рейтинг" << rating << endl;
-		cout << left << setw(18) << "Віддало голосів" << votes << endl;
-		cout << "=============================================\n";
-	}
+	//void ShowCandidate(Candidate&can)
+	//{
+	//	/*cout << "=============================================\n";
+	//	cout << left << setw(18) << "№ п/п" << can.num << endl;
+	//	Color(14);
+	//	cout << left << setw(18) << "ПІБ" << can.candidate.surname << " " << can.candidate.name << " " << can.candidate.patronymic << endl;
+	//	Color(7);
+	//	cout << left << setw(18) << "Партія" << can.party << endl;
+	//	cout << left << setw(18) << "Округ" << district << endl;
+	//	cout << left << setw(18) << "Дата реєстрації" << date << endl;
+	//	cout << left << setw(18) << "Рейтинг" << rating << endl;
+	//	cout << left << setw(18) << "Віддало голосів" << votes << endl;
+	//	cout << "=============================================\n";*/
+
+
+	//}
 
 	friend ostream& operator<< (ostream& out, const Candidate& cand);
 	friend istream& operator>> (istream& is,  Candidate& cand);
@@ -170,6 +172,7 @@ public:
 	}	 
 	friend bool operator==(const Candidate& a, const string& b);
 	friend bool operator!=(const Candidate& a, const string &b);
+	
 };
 
 bool operator==(const Candidate& a, const string& b)
@@ -228,13 +231,34 @@ bool compare_by_surname(Candidate& a, Candidate& b) //sort by surname.
 
 void readFile(vector <Candidate>& c, ifstream& file)
 {
-	file.open("new.txt");
-	for (Candidate can; file >> can;) 
+	file.open("new.txt",ios::in);
+	if (!file)
 	{
-		c.push_back(can);
+		cout << "File not open" << endl;
 	}
-	file.close();
+	else
+	{
+
+		Candidate can;
+
+		while (file>>can.candidate)
+        {
+			file.ignore();
+			getline(file,can.party);
+			file >> can.district,
+				file >> can.num,
+				file >> can.date,
+				file >> can.rating,
+				file >> can.votes;
+			file.get();
+			
+			c.push_back(can);
+		}
+		file.close();
+	}
 }
+
+
 
 
 void TableCap()
@@ -261,23 +285,45 @@ void TableCap()
 	out << left << setw(18) << "Рейтинг" << cand.rating << endl;
 	out << left << setw(18) << "Віддало голосів" << cand.votes << endl;
 	out << "=============================================\n";*/
-	
+	 /*  
 	out << setw(2) << " ";
 	out << left << cand.candidate;
 	out << setw(2) << " ";
-	out << left << setw(22) << cand.party;
-	out << left << setw(9) << cand.district;
+	out << left << setw(20) << cand.party;
+	out << left << setw(10) << cand.district;
 	out << left << setw(9) << cand.num;
 	out << left << setw(16) << cand.date;
 	out << left << setw(9) << cand.rating;
 	out << left << setw(6) << cand.votes << endl;
 
+	return out;*/
+
+	out << cand.candidate.surname<<endl;
+	out << cand.candidate.name << endl;
+	out << cand.candidate.patronymic << endl;
+	out << cand.party<<endl;
+	out << cand.district << endl;
+	out << cand.num<<endl;
+	out << cand.date<<endl;
+	out << cand.rating<<endl;
+	out << cand.votes << endl;
+
 	return out;
+
+
 }
 
 
   istream& operator>>(istream& is, Candidate& cand)
-  {
-   is >> cand.candidate >> cand.party >> cand.district >> cand.num >> cand.date >> cand.rating >> cand.votes;
-   return is;
+  {	
+	  
+	  is >> cand.candidate.surname>>cand.candidate.name>>cand.candidate.patronymic;
+	  is >> cand.party;
+	  is >> cand.district;
+	  is >> cand.num;
+	  is >> cand.date;
+	  is >> cand.rating;
+	  is >> cand.votes;
+      return is;
+   
   }

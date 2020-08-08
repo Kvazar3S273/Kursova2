@@ -10,23 +10,34 @@ void main()
 
 	//-----------read from file	---------
 	ifstream file;
-    readFile(can, file);		
+	readFile(can, file);	
+
 
 	//-----------out to console vector------------
 	TableCap();
 	for (it = can.begin(); it < can.end(); ++it)
-	{
-		cout << *it<< endl;
+	{		
+		cout << setw(2) << " ";
+		cout << left <<(*it).candidate;
+		cout << setw(2) << " ";
+		cout << left << setw(20) << (*it).party;
+		cout << left << setw(10) << (*it).district;
+		cout << left << setw(9) << (*it).num;
+		cout << left << setw(16) << (*it).date;
+		cout << left << setw(9) << (*it).rating;
+		cout << left << setw(6) << (*it).votes << endl;
 	}
 	cout << endl;
+
+
 	
 	
 	//---------------search by surname(lambda func.)--------
-	//cout << "\n\nEnter district of candidate to edit his info" << endl;
-	//string name;
-	//cin >> name;
-	//it = find(can.begin(), can.end(),name);
-	//cout << (*it).candidate.name << endl;
+	/*cout << "\n\nEnter district of candidate to edit his info" << endl;
+	int dist;
+	cin >> dist;
+	it = find(can.begin(), can.end(),name);
+	cout << (*it).candidate.name << endl;*/
 
 	//-----add new candidate-----	
 	//c1.Add(can);
@@ -52,7 +63,7 @@ void main()
 
 	 //-------------edit candidate-------
 
-	 cout << "\n\nВведіть повністю прізвище кандидата з великої літери для редагування інформації по ньому" << endl;
+	/* cout << "\n\nВведіть повністю прізвище кандидата з великої літери для редагування інформації по ньому" << endl;
 	 string _surname;
 	 cin >> _surname;
 
@@ -137,8 +148,8 @@ void main()
 	 default:
 		 cout << "Хибний вибір!";
 		 break;
-	 }
-	 //--------------------------------end of edit candidate
+	 }*/
+	// --------------------------------end of edit candidate
 
 
 	//----------delete candidate to position------------
@@ -178,20 +189,22 @@ void main()
 	
 	
 	//out to console vector after operations.
-	 cout << endl;
-	TableCap();
-	for (it = can.begin(); it < can.end(); ++it)
-	{
-		cout << *it << endl;//out to console vector.
-	}
-	cout << endl;
+	// cout << endl;
+	//TableCap();
+	
+	//
+	//for (it = can.begin(); it < can.end(); ++it)
+	//{
+	//	cout << *it << endl;//out to console vector.
+	//}
+	//cout << endl;
 
-
-	//----------------save to file----------
-	ofstream top("new.txt", ios_base::trunc);
-	copy(can.begin(), can.end(), ostream_iterator<Candidate>(top));
-	top.close();
-
+	
+	////----------------save to file----------
+	//ofstream top("new.txt", ios_base::trunc);
+	//copy(can.begin(), can.end(), ostream_iterator<Candidate>(top));
+	//top.close();
+	
 	
 	
 }
