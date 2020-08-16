@@ -9,6 +9,10 @@
 #include <vector>
 #include <iomanip>
 #include <algorithm>
+#include <ctime>
+
+ 
+
 
 using namespace std;
 void Ukr()	
@@ -97,28 +101,17 @@ public:
 	string party;
 	Person candidate;
 	int district;
-	int rating;
+	double rating;
 	int votes;
 	string date;
 //public:
-		
-	void CreateCandidate(string date,
-		int num, string party,
-		string surname, string name, string patronymic,
-		int district, int rating, int votes)
-	{
-		this->date = date;
-		this->num = num;
-		this->party = party;
-		this->district = district;
-		this->rating = rating;
-		this->votes = votes;
-		candidate.SetPerson(surname, name, patronymic);
-	}
+
+	
 	string GetSurname()
 	{
 		return(candidate.GetSurname());
 	}
+
 	void Add(vector<Candidate>& can)
 	{
 		Candidate c;
@@ -161,15 +154,17 @@ public:
 	friend ostream& operator<< (ostream& out, const Candidate& cand);
 	friend istream& operator>> (istream& is,  Candidate& cand);
 	friend bool operator == (const Candidate& c, const int& b);
+	
 	friend bool operator != (const Candidate& c, const int& b); 
 	friend bool operator <(const Candidate& c, const Candidate& b);
-	
+	friend bool operator >(const Candidate& c, const Candidate& b);
 	bool operator()(int val)const
 	{
-		return (val == district&& val == num&& 
-			val == rating&& val == votes);
-		
-	}	 
+		return (val == district|| val == num|| 
+			val == rating|| val == votes);		
+	}	
+
+	
 	friend bool operator==(const Candidate& a, const string& b);
 	friend bool operator!=(const Candidate& a, const string &b);
 	
@@ -195,11 +190,11 @@ bool operator==(const Candidate& a, const string& b)
 
 bool operator != (const Candidate& c, const int& b)
 {
-	/*return (c.district != b);
+	return (c.district != b);
 	return(c.num != b);
 	return(c.rating != b);
-	return(c.votes != b);*/
-	return(c.num != b || c.votes != b || c.district != b || c.rating != b);
+	return(c.votes != b);
+	//return(c.num != b || c.votes != b || c.district != b || c.rating != b);
 }
 bool operator<(const Candidate& c,const Candidate&b)
 {
@@ -209,14 +204,26 @@ bool operator<(const Candidate& c,const Candidate&b)
 	return(c.votes < b.votes);*/
 	return(c.num < b.num || c.votes < b.votes || c.district < b.district || c.rating < b.rating);
 }
+bool operator>(const Candidate& c, const Candidate& b)
+{
+	/*return (c.district > b.district);
+	return(c.num > b.num);
+	return(c.rating > b.rating);
+	return(c.votes > b.votes);*/
+	return(c.num < b.num || c.votes < b.votes || c.district < b.district || c.rating < b.rating);
+}
+
+
  bool operator == (const Candidate& c, const int& b)
 {
-	 /*return(c.num == b);
+	 return(c.num == b);
 	 return(c.votes == b);
 	 return (c.district == b);
-	 return(c.rating == b);*/
-	 return(c.num == b || c.votes == b || c.district == b || c.rating == b);
+	 return(c.rating == b);
+	 //return(c.num == b || c.votes == b || c.district == b || c.rating == b);
 }
+
+
 
 bool compared(Candidate& a, Candidate& b) //sort by name.
 {
@@ -228,6 +235,10 @@ bool compare_by_surname(Candidate& a, Candidate& b) //sort by surname.
 	return a.candidate.GetSurname() < b.candidate.GetSurname();
 }
 
+bool compare_by_party(Candidate& a, Candidate& b) //sort by party.
+{
+	return a.party > b.party;
+}
 
 void readFile(vector <Candidate>& c, ifstream& file)
 {
@@ -237,20 +248,18 @@ void readFile(vector <Candidate>& c, ifstream& file)
 		cout << "File not open" << endl;
 	}
 	else
-	{
-
-		Candidate can;
+	{	Candidate can;
 
 		while (file>>can.candidate)
         {
 			file.ignore();
 			getline(file,can.party);
-			file >> can.district,
+			    file >> can.district,
 				file >> can.num,
 				file >> can.date,
 				file >> can.rating,
 				file >> can.votes;
-			file.get();
+			    file.get();
 			
 			c.push_back(can);
 		}
@@ -327,3 +336,16 @@ void TableCap()
       return is;
    
   }
+
+
+  bool Equal(std::string a, std::string b) {
+	  if (a.size() == b.size()) {
+		  for (int i = 0; i < a.size(); i++)
+			  if (toupper(a[i]) != toupper(b[i]))
+				  return false;
+		  return true;
+	  }
+	  else return false;
+  }
+
+  
