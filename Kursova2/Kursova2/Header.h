@@ -134,22 +134,7 @@ public:
 		can.push_back(c);
 
 	}
-	//void ShowCandidate(Candidate&can)
-	//{
-	//	/*cout << "=============================================\n";
-	//	cout << left << setw(18) << "№ п/п" << can.num << endl;
-	//	Color(14);
-	//	cout << left << setw(18) << "ПІБ" << can.candidate.surname << " " << can.candidate.name << " " << can.candidate.patronymic << endl;
-	//	Color(7);
-	//	cout << left << setw(18) << "Партія" << can.party << endl;
-	//	cout << left << setw(18) << "Округ" << district << endl;
-	//	cout << left << setw(18) << "Дата реєстрації" << date << endl;
-	//	cout << left << setw(18) << "Рейтинг" << rating << endl;
-	//	cout << left << setw(18) << "Віддало голосів" << votes << endl;
-	//	cout << "=============================================\n";*/
-
-
-	//}
+	
 
 	friend ostream& operator<< (ostream& out, const Candidate& cand);
 	friend istream& operator>> (istream& is,  Candidate& cand);
@@ -163,8 +148,7 @@ public:
 		return (val == district|| val == num|| 
 			val == rating|| val == votes);		
 	}	
-
-	
+		
 	friend bool operator==(const Candidate& a, const string& b);
 	friend bool operator!=(const Candidate& a, const string &b);
 	
@@ -206,11 +190,11 @@ bool operator<(const Candidate& c,const Candidate&b)
 }
 bool operator>(const Candidate& c, const Candidate& b)
 {
-	/*return (c.district > b.district);
-	return(c.num > b.num);
-	return(c.rating > b.rating);
-	return(c.votes > b.votes);*/
-	return(c.num < b.num || c.votes < b.votes || c.district < b.district || c.rating < b.rating);
+	//return (c.district > b.district);
+	//return(c.num > b.num);
+	//return(c.rating > b.rating);
+	//return(c.votes > b.votes);
+	return(c.num > b.num || c.votes > b.votes || c.district > b.district || c.rating > b.rating);
 }
 
 
@@ -223,7 +207,7 @@ bool operator>(const Candidate& c, const Candidate& b)
 	 //return(c.num == b || c.votes == b || c.district == b || c.rating == b);
 }
 
-
+ 
 
 bool compared(Candidate& a, Candidate& b) //sort by name.
 {
@@ -237,7 +221,7 @@ bool compare_by_surname(Candidate& a, Candidate& b) //sort by surname.
 
 bool compare_by_party(Candidate& a, Candidate& b) //sort by party.
 {
-	return a.party > b.party;
+	return a.party < b.party;
 }
 
 void readFile(vector <Candidate>& c, ifstream& file)
@@ -338,14 +322,6 @@ void TableCap()
   }
 
 
-  bool Equal(std::string a, std::string b) {
-	  if (a.size() == b.size()) {
-		  for (int i = 0; i < a.size(); i++)
-			  if (toupper(a[i]) != toupper(b[i]))
-				  return false;
-		  return true;
-	  }
-	  else return false;
-  }
+  
 
   

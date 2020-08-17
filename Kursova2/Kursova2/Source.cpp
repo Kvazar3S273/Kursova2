@@ -18,7 +18,7 @@ void main()
 	TableCap();
 	double sum = 0;
 	double r,rait = 0;
-	int max = 0;
+		
 	for (it = can.begin(); it < can.end(); ++it)
 	{
 		
@@ -32,12 +32,13 @@ void main()
 		cout << left << setw(9) << (*it).rating;		
 		cout << left << setw(6) << (*it).votes << endl;*/
 		sum += (*it).votes;	
-				
+		
+
 	}
 	
 	
 
-	for (it = can.begin(); it < can.end(); ++it)
+	for (auto it = can.begin(); it < can.end(); ++it)
 	{
 		r = (*it).votes * 100 / sum;//find a percent of all list.
 		(*it).rating = r;//assign value.
@@ -51,9 +52,8 @@ void main()
 		cout << left << setw(9) << fixed << setprecision(1) << (*it).rating;
 		cout << left << setw(6) << (*it).votes << endl; 	
 		rait += (*it).rating;//for check(must be 100%).
-		if (max < (*it).votes)
-			max = (*it).votes;
-				
+		
+		
 	
 	}
 	cout << endl;
@@ -62,7 +62,8 @@ void main()
 	Color(10);
 	cout << "Final raiting  %  " << rait << endl;
 	Color(7);
-	cout << "Max value of votes are: " << max << endl;
+	
+	
 	
 
 	//---------------search by surname(lambda func.)--------
@@ -121,21 +122,43 @@ void main()
 
 	
 	//--------------search by district------------
-	//cout << "Enter district and you will see all candidates of this district" << endl;
-	//int distr=0;
-	//cin>>distr;
-	//int sum = 0;
-	//for (it = can.begin(); it != can.end(); it++)
-	//{
-	//	sort(can.begin(), can.end(), compare_by_surname);//in alphabetical order.
-	//	if ((*it).district == distr)
-	//	{			
-	//		sum+=(*it).votes ;			
-	//		cout << (*it).candidate;
-	//		cout << endl;
-	//	}		
-	//}
-	//cout << "Sum of votes is  " << sum << endl;
+	cout << "Enter district and you will see all candidates of this district" << endl;
+	int distr=0;
+	cin>>distr;
+	double s = 0;
+	double raiting_in = 0;
+
+
+	for (it = can.begin(); it != can.end(); it++)
+	{
+		sort(can.begin(), can.end(), compare_by_surname);//in alphabetical order.
+		if ((*it).district == distr)
+		{			
+			s += (*it).votes;
+		}
+	}
+
+	for (it = can.begin(); it != can.end(); it++)
+	{
+		sort(can.begin(), can.end(), compare_by_surname);//in alphabetical order.
+		if ((*it).district == distr)
+		{
+			raiting_in = (*it).votes * 100 / s;
+			cout << setw(2) << " ";
+			cout << left << (*it).candidate;
+			cout << setw(2) << " ";
+			cout << left << setw(20) << (*it).party;
+			cout << left << setw(9) << fixed << setprecision(1) << (*it).rating;
+			cout << left << setw(6) << (*it).votes;
+			cout << left << setw(6) << fixed << setprecision(1) << raiting_in;
+						
+			cout << endl;
+		}		
+	}
+	
+	cout << " Sum of votes is  " << s << endl;
+
+
 
 	// ------------count of results--------------
 	//cout << "There are" << count_if(begin(can), end(can), [distr](const Candidate& cur)
@@ -269,14 +292,32 @@ void main()
 
      //------sort by party(all list)-------
 	
-	//sort(can.begin(), can.end(),compare_by_party);
+	/*sort(can.begin(), can.end(),compare_by_party);
 
+	TableCap();
 	
+
+	for (it = can.begin(); it < can.end(); ++it)
+	{
+
+		cout << setw(2) << " ";
+		cout << left << (*it).candidate;
+		cout << setw(2) << " ";
+		cout << left << setw(20) << (*it).party;
+		cout << left << setw(10) << (*it).district;
+		cout << left << setw(9) << (*it).num;
+		cout << left << setw(16) << (*it).date;
+		cout << left << setw(9) << (*it).rating;
+		cout << left << setw(6) << (*it).votes << endl;
+		
+
+
+	}*/
 	//----------------save to file----------
-	ofstream top("new.txt", ios_base::trunc);
+	/*ofstream top("new.txt", ios_base::trunc);
 	copy(can.begin(), can.end(), ostream_iterator<Candidate>(top));
 	top.close();
-	
+	*/
 	
 	
 }
