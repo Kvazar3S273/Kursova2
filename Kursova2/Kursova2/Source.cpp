@@ -1,4 +1,4 @@
-#include "Header.h"
+ï»¿#include "Header.h"
 
 void main()
 {
@@ -12,6 +12,26 @@ void main()
 	//-----------read from file	---------
 	ifstream file;
 	readFile(can, file);
+
+
+
+
+
+
+
+	/*for (int i = 0; i < 400; i++)
+	{
+		Color(i);
+		cout << i << endl;
+		Color(7);
+	}*/
+
+	
+
+
+
+
+
 
 
 	//-----------out to console vector------------
@@ -31,9 +51,8 @@ void main()
 		cout << left << setw(16) << (*it).date;
 		cout << left << setw(9) << (*it).rating;		
 		cout << left << setw(6) << (*it).votes << endl;*/
-		sum += (*it).votes;	
 		
-
+		sum += (*it).votes;	
 	}
 	
 	
@@ -52,8 +71,6 @@ void main()
 		cout << left << setw(9) << fixed << setprecision(1) << (*it).rating;
 		cout << left << setw(6) << (*it).votes << endl; 	
 		rait += (*it).rating;//for check(must be 100%).
-		
-		
 	
 	}
 	cout << endl;
@@ -63,18 +80,28 @@ void main()
 	cout << "Final raiting  %  " << rait << endl;
 	Color(7);
 	
-	
-	
 
 	//---------------search by surname(lambda func.)--------
-	/*cout << "\n\nEnter surname of candidate to edit his info" << endl;
-	string name;
-	cin >> name;
-	it = find(can.begin(), can.end(),name);
-	cout << *it << endl;*/
+	//cout << "\n\nEnter surname of candidate to edit his info" << endl;
+	//string name;
+	//cin >> name;
+	//it = find(can.begin(), can.end(),name);
+	////cout << *it << endl;
+	//TableCap();
+	//cout << setw(2) << " ";
+	//cout << left << (*it).candidate;
+	//cout << setw(2) << " ";
+	//cout << left << setw(20) << (*it).party;
+	//cout << left << setw(10) << (*it).district;
+	//cout << left << setw(9) << (*it).num;
+	//cout << left << setw(16) << (*it).date;
+	//cout << left << setw(9) << fixed << setprecision(1) << (*it).rating;
+	//cout << left << setw(6) << (*it).votes << endl;
+	//cout << endl;
+
 
 	//--------------search by party------------
-	//cout << "Enter party and you will see all candidates of this pàrty" << endl;
+	//cout << "Enter party and you will see all candidates of this pÐ°rty" << endl;
 	//string part;
 	//double suma = 0;
 	//double percent = 0;
@@ -84,7 +111,7 @@ void main()
 	//{
 	//	if (_stricmp((*it).party.c_str(), part.c_str()) == 0)
 	//	{		
-	//				suma += (*it).votes;				
+	//		suma += (*it).votes;
 	//	}
 	//	
  //   }
@@ -94,70 +121,71 @@ void main()
 	//	_getch();
 	//}
 	//
-	//for (it = can.begin(); it != can.end(); it++)
-	//{
-	//	
-	//	int n =rand() % 12 ;		
-	//	if (_stricmp((*it).party.c_str(), part.c_str()) == 0)
+	//int col;
+	//
+	//for (it = can.begin(), col = 119; it != can.end(); col+=34, it++)
 	//	{
-	//		
-	//		sort(can.begin(), can.end(), compare_by_surname);//in alphabetical order.			
-	//		percent = (*it).votes * 100 / suma;
-	//		cout << (*it).candidate << "  " << (*it).votes << "  % ãîëîñ³â ïî îêðóãó " << fixed << setprecision(2) << percent << "  ";
-	//		
-	//		for (int i = 0; i < percent / 2; i++)
-	//		{
-	//			Color(n);
-	//			cout << (char)219;
-	//			Color(7);
 	//			
+	//		if (_stricmp((*it).party.c_str(), part.c_str()) == 0)
+	//		{
+	//			
+	//			//sort(can.begin(), can.end(), compare_by_surname);//in alphabetical order.			
+	//			percent = (*it).votes * 100 / suma;
+	//			cout << (*it).candidate << "  " << (*it).votes << "  % Ð³Ð¾Ð»Ð¾ÑÑ–Ð² Ð¿Ð¾ Ð¾ÐºÑ€ÑƒÐ³Ñƒ " << fixed << setprecision(2) << percent << "\t";
+
+	//			for (int i = 0; i < percent / 3; i++)
+	//			{
+	//				Color(col);
+	//				cout << " ";
+	//				Color(7);
+	//			}
+	//			cout << endl;
 	//		}
-	//		cout << endl;
-	//		
+
 	//	}
-	//	
-	//}
+	//
 	//cout << "Sum of votes for this party is " << suma << endl;
 
 
 	
 	//--------------search by district------------
-	cout << "Enter district and you will see all candidates of this district" << endl;
-	int distr=0;
-	cin>>distr;
-	double s = 0;
-	double raiting_in = 0;
+	//cout << "Enter district and you will see all candidates of this district" << endl;
+	//int distr=0;
+	//cin >> distr;
+	//double s = 0;
+	//double raiting_in = 0;
 
 
-	for (it = can.begin(); it != can.end(); it++)
-	{
-		sort(can.begin(), can.end(), compare_by_surname);//in alphabetical order.
-		if ((*it).district == distr)
-		{			
-			s += (*it).votes;
-		}
-	}
+	//for (it = can.begin(); it != can.end(); it++)
+	//{
+	//	sort(can.begin(), can.end(), compare_by_surname);//in alphabetical order.
+	//	if ((*it).district == distr)
+	//	{			
+	//		s += (*it).votes;
+	//	}
+	//}
+	//
+	//TableCap();
 
-	for (it = can.begin(); it != can.end(); it++)
-	{
-		sort(can.begin(), can.end(), compare_by_surname);//in alphabetical order.
-		if ((*it).district == distr)
-		{
-			raiting_in = (*it).votes * 100 / s;
-			cout << setw(2) << " ";
-			cout << left << (*it).candidate;
-			cout << setw(2) << " ";
-			cout << left << setw(20) << (*it).party;
-			cout << left << setw(9) << fixed << setprecision(1) << (*it).rating;
-			cout << left << setw(6) << (*it).votes;
-			cout << left << setw(6) << fixed << setprecision(1) << raiting_in;
-						
-			cout << endl;
-		}		
-	}
-	
-	cout << " Sum of votes is  " << s << endl;
-
+	//for (it = can.begin(); it != can.end(); it++)
+	//{
+	//	sort(can.begin(), can.end(), compare_by_surname);//in alphabetical order.
+	//	if ((*it).district == distr)
+	//	{
+	//		raiting_in = (*it).votes * 100 / s;
+	//		cout << setw(2) << " ";
+	//		cout << left << (*it).candidate;
+	//		cout << setw(2) << " ";
+	//		cout << left << setw(20) << (*it).party;
+	//		cout << left << setw(10) << (*it).district;
+	//		cout << left << setw(9) << (*it).num;
+	//		cout << left << setw(16) << (*it).date;
+	//		cout << left << setw(9) << fixed << setprecision(1) << (*it).rating;
+	//		cout << left << setw(6) << (*it).votes << endl;
+	//	}		
+	//}
+	//cout << endl;
+	//cout << " Sum of votes is  " << s << endl;
 
 
 	// ------------count of results--------------
@@ -172,24 +200,24 @@ void main()
 
 	 //-------------edit candidate-------
 
-	/* cout << "\n\nÂâåä³òü ïîâí³ñòþ ïð³çâèùå êàíäèäàòà ç âåëèêî¿ ë³òåðè äëÿ ðåäàãóâàííÿ ³íôîðìàö³¿ ïî íüîìó" << endl;
+	/* cout << "\n\nÐ’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð¿Ð¾Ð²Ð½Ñ–ÑÑ‚ÑŽ Ð¿Ñ€Ñ–Ð·Ð²Ð¸Ñ‰Ðµ ÐºÐ°Ð½Ð´Ð¸Ð´Ð°Ñ‚Ð° Ð· Ð²ÐµÐ»Ð¸ÐºÐ¾Ñ— Ð»Ñ–Ñ‚ÐµÑ€Ð¸ Ð´Ð»Ñ Ñ€ÐµÐ´Ð°Ð³ÑƒÐ²Ð°Ð½Ð½Ñ Ñ–Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ñ–Ñ— Ð¿Ð¾ Ð½ÑŒÐ¾Ð¼Ñƒ" << endl;
 	 string _surname;
 	 cin >> _surname;
 
 	 it = find(can.begin(), can.end(), _surname);
 	 if (it == can.end())
 	 {
-		cout << "Òàêîãî êàíäèäàòà íåìàº â ñïèñêàõ!" << endl;
+		cout << "Ð¢Ð°ÐºÐ¾Ð³Ð¾ ÐºÐ°Ð½Ð´Ð¸Ð´Ð°Ñ‚Ð° Ð½ÐµÐ¼Ð°Ñ” Ð² ÑÐ¿Ð¸ÑÐºÐ°Ñ…!" << endl;
 		return;
 	 }
-	 cout << "Ùî Âè õî÷åòå ðåäàãóâàòè?\n";
-	 cout << "1 - ïð³çâèùå, ³ì'ÿ, ïî-áàòüêîâ³\n";
-	 cout << "2 - ïàðò³þ\n";
-	 cout << "3 - îêðóã\n";
-	 cout << "4 - íîìåð â ñïèñêó\n";
-	 cout << "5 - äàòó ðåºñòðàö³¿\n";
-	 cout << "6 - ðåéòèíã\n";
-	 cout << "7 - ê³ëüê³ñòü îòðèìàíèõ ãîëîñ³â\n";
+	 cout << "Ð©Ð¾ Ð’Ð¸ Ñ…Ð¾Ñ‡ÐµÑ‚Ðµ Ñ€ÐµÐ´Ð°Ð³ÑƒÐ²Ð°Ñ‚Ð¸?\n";
+	 cout << "1 - Ð¿Ñ€Ñ–Ð·Ð²Ð¸Ñ‰Ðµ, Ñ–Ð¼'Ñ, Ð¿Ð¾-Ð±Ð°Ñ‚ÑŒÐºÐ¾Ð²Ñ–\n";
+	 cout << "2 - Ð¿Ð°Ñ€Ñ‚Ñ–ÑŽ\n";
+	 cout << "3 - Ð¾ÐºÑ€ÑƒÐ³\n";
+	 cout << "4 - Ð½Ð¾Ð¼ÐµÑ€ Ð² ÑÐ¿Ð¸ÑÐºÑƒ\n";
+	 cout << "5 - Ð´Ð°Ñ‚Ñƒ Ñ€ÐµÑ”ÑÑ‚Ñ€Ð°Ñ†Ñ–Ñ—\n";
+	 cout << "6 - Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³\n";
+	 cout << "7 - ÐºÑ–Ð»ÑŒÐºÑ–ÑÑ‚ÑŒ Ð¾Ñ‚Ñ€Ð¸Ð¼Ð°Ð½Ð¸Ñ… Ð³Ð¾Ð»Ð¾ÑÑ–Ð²\n";
 
 	 int choice;
 	 cin >> choice;
@@ -197,7 +225,7 @@ void main()
 	 {
 	 case 1:
 	 {
-		 cout << "Ââåä³òü íîâå ïð³çâèùå, ³ì'ÿ, ïî-áàòüêîâ³ êàíäèäàòà ÷åðåç Åíòåð:\n";
+		 cout << "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð½Ð¾Ð²Ðµ Ð¿Ñ€Ñ–Ð·Ð²Ð¸Ñ‰Ðµ, Ñ–Ð¼'Ñ, Ð¿Ð¾-Ð±Ð°Ñ‚ÑŒÐºÐ¾Ð²Ñ– ÐºÐ°Ð½Ð´Ð¸Ð´Ð°Ñ‚Ð° Ñ‡ÐµÑ€ÐµÐ· Ð•Ð½Ñ‚ÐµÑ€:\n";
 		 string newsurname, newname, newpatronymic;
 		 cin >> newsurname >> newname >> newpatronymic;
 		 (*it).candidate.surname = newsurname;
@@ -207,7 +235,7 @@ void main()
 	 }
 	 case 2:
 	 {
-		 cout << "Ââåä³òü íîâó íàçâó ïàðò³¿:\n";
+		 cout << "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð½Ð¾Ð²Ñƒ Ð½Ð°Ð·Ð²Ñƒ Ð¿Ð°Ñ€Ñ‚Ñ–Ñ—:\n";
 		 string newparty;
 		 cin.ignore(32767, '\n');
 		 getline(cin, newparty);
@@ -216,7 +244,7 @@ void main()
 	 }
 	 case 3:
 	 {
-		 cout << "Ââåä³òü íîâèé îêðóã:\n";
+		 cout << "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð½Ð¾Ð²Ð¸Ð¹ Ð¾ÐºÑ€ÑƒÐ³:\n";
 		 int newdistrict;
 		 cin >> newdistrict;
 		 (*it).district = newdistrict;
@@ -224,7 +252,7 @@ void main()
 	 }
 	 case 4:
 	 {
-		 cout << "Ââåä³òü íîâèé íîìåð ó ñïèñêó:\n";
+		 cout << "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð½Ð¾Ð²Ð¸Ð¹ Ð½Ð¾Ð¼ÐµÑ€ Ñƒ ÑÐ¿Ð¸ÑÐºÑƒ:\n";
 		 int newnum;
 		 cin >> newnum;
 		 (*it).num = newnum;
@@ -232,7 +260,7 @@ void main()
 	 }
 	 case 5:
 	 {
-		 cout << "Ââåä³òü íîâó äàòó ðåºñòðàö³¿:\n";
+		 cout << "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð½Ð¾Ð²Ñƒ Ð´Ð°Ñ‚Ñƒ Ñ€ÐµÑ”ÑÑ‚Ñ€Ð°Ñ†Ñ–Ñ—:\n";
 		 string newdate;
 		 cin >> newdate;
 		 (*it).date = newdate;
@@ -240,7 +268,7 @@ void main()
 	 }
 	 case 6:
 	 {
-		 cout << "Ââåä³òü íîâèé ðåéòèíã:\n";
+		 cout << "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð½Ð¾Ð²Ð¸Ð¹ Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³:\n";
 		 int newrating;
 		 cin >> newrating;
 		 (*it).rating = newrating;
@@ -248,14 +276,14 @@ void main()
 	 }
 	 case 7:
 	 {
-		 cout << "Ââåä³òü íîâó ê³ëüê³ñòü ãîëîñ³â:\n";
+		 cout << "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð½Ð¾Ð²Ñƒ ÐºÑ–Ð»ÑŒÐºÑ–ÑÑ‚ÑŒ Ð³Ð¾Ð»Ð¾ÑÑ–Ð²:\n";
 		 int newvotes;
 		 cin >> newvotes;
 		 (*it).votes = newvotes;
 		 break;
 	 }
 	 default:
-		 cout << "Õèáíèé âèá³ð!";
+		 cout << "Ð¥Ð¸Ð±Ð½Ð¸Ð¹ Ð²Ð¸Ð±Ñ–Ñ€!";
 		 break;
 	 }*/
 	// --------------------------------end of edit candidate
