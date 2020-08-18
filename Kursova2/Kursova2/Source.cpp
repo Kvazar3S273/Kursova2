@@ -22,31 +22,16 @@ void main()
 
 	//-----------out to console vector------------
 	TableCap();
-	double sum = 0;
-	double r,rait = 0;
+	int sum = 0;
 		
 	for (it = can.begin(); it < can.end(); ++it)
-	{
-		
-		/*cout << setw(2) << " ";
-		cout << left << (*it).candidate;
-		cout << setw(2) << " ";
-		cout << left << setw(20) << (*it).party;
-		cout << left << setw(10) << (*it).district;
-		cout << left << setw(9) << (*it).num;
-		cout << left << setw(16) << (*it).date;
-		cout << left << setw(9) << (*it).rating;		
-		cout << left << setw(6) << (*it).votes << endl;*/
-		
+	{		
 		sum += (*it).votes;	
-	}
-	
-	
+	}	
 
 	for (auto it = can.begin(); it < can.end(); ++it)
 	{
-		//r = (*it).votes * 100 / sum;//find a percent of all list.
-		//(*it).rating = r;//assign value.
+		
 		cout << setw(2) << " ";
 		cout << left << (*it).candidate;
 		cout << setw(2) << " ";
@@ -54,43 +39,39 @@ void main()
 		cout << left << setw(10) << (*it).district;
 		cout << left << setw(9) << (*it).num;
 		cout << left << setw(16) << (*it).date;
-		cout << left << setw(9) << fixed << setprecision(1) << (*it).rating;
+		cout << left << setw(9) << (*it).rating;
 		cout << left << setw(6) << (*it).votes << endl; 	
-		//rait += (*it).rating;//for check(must be 100%).
-	
+			
 	}
 	cout << endl;
 	Color(12);
-	cout << "Final sum of votes are " << fixed << setprecision(0)<< sum << endl;
-	Color(10);
-	cout << "Final raiting  %  " << rait << endl;
+	cout << "Final sum of votes are  " <<  sum << endl;
 	Color(7);
 	
 
 	//---------------search by surname(lambda func.)--------
-	//cout << "\n\nEnter surname of candidate to edit his info" << endl;
-	//string name;
-	//cin >> name;
-	//it = find(can.begin(), can.end(),name);
-	////cout << *it << endl;
-	//TableCap();
-	//cout << setw(2) << " ";
-	//cout << left << (*it).candidate;
-	//cout << setw(2) << " ";
-	//cout << left << setw(20) << (*it).party;
-	//cout << left << setw(10) << (*it).district;
-	//cout << left << setw(9) << (*it).num;
-	//cout << left << setw(16) << (*it).date;
-	//cout << left << setw(9) << fixed << setprecision(1) << (*it).rating;
-	//cout << left << setw(6) << (*it).votes << endl;
-	//cout << endl;
+	/*cout << "\n\nEnter surname of candidate to edit his info" << endl;
+	string name;
+	cin >> name;
+	it = find(can.begin(), can.end(),name);
+	
+	TableCap();
+	cout << setw(2) << " ";
+	cout << left << (*it).candidate;
+	cout << setw(2) << " ";
+	cout << left << setw(20) << (*it).party;
+	cout << left << setw(10) << (*it).district;
+	cout << left << setw(9) << (*it).num;
+	cout << left << setw(16) << (*it).date;
+	cout << left << setw(9) << fixed << setprecision(1) << (*it).rating;
+	cout << left << setw(6) << (*it).votes << endl;
+	cout << endl;*/
 
 
 	//--------------search by party------------
 	cout << "Enter party and you will see all candidates of this pаrty" << endl;
 	string part;
-	double suma = 0;
-	double percent = 0;
+	double suma = 0;	
 	getline(cin,part);
 	
 	for (it = can.begin(); it != can.end(); it++) 
@@ -118,61 +99,103 @@ void main()
 
 			if (_stricmp((*it).party.c_str(), part.c_str()) == 0)
 			{	
-				
-				percent = (*it).votes * 100 / suma;
-				cout << (*it).candidate << "  " << (*it).votes << "  % голосів по округу " << fixed << setprecision(2) << percent << "\t";
+				cout << setw(2) << " ";
+				cout << left << (*it).candidate;
+				cout << setw(2) << " ";
+				cout << left << setw(10) << (*it).district;
+				cout << left << setw(9) << (*it).num;
+				cout << left << setw(16) << (*it).date;
+				cout << left << setw(9) << fixed << setprecision(1) << (*it).rating;
+				cout << left << setw(6) << (*it).votes << endl;
+				//percent = (*it).votes * 100 / suma;
+				//cout << (*it).candidate << "  " << (*it).votes << " "<<(*it).district;
+				//cout << endl;
 
-				for (int i = 0; i < percent / 3; i++)
-				{
-					Color(col);
-					cout << " ";
-					Color(7);
-				}
-				cout << endl;
+				//for (int i = 0; i < percent / 3; i++)
+				//{
+				//	Color(col);
+				//	cout << " ";
+				//	Color(7);
+				//}
+				//cout << endl;
 			}
+			
 	}
-	
+	cout << endl;
+	Color(12);	
 	cout << "Sum of votes for this party is " << suma << endl;
+	Color(7);
 
 	
 	//--------------search by district------------
-	//cout << "Enter district and you will see all candidates of this district" << endl;
-	//int distr=0;
-	//cin >> distr;
-	//double s = 0;
-	//double raiting_in = 0;
+	cout << "Enter district and you will see all candidates of this district" << endl;
+	int distr=0;
+	double s = 0;//find sum;
+	double max = 0;//find max;
+	cin >> distr;
+	
+	for (it = can.begin(); it != can.end(); it++)
+	{
+		
+		if ((*it).district == distr)
+		{			
+			s += (*it).votes;
 
-
-	//for (it = can.begin(); it != can.end(); it++)
-	//{
-	//	sort(can.begin(), can.end(), compare_by_surname);//in alphabetical order.
-	//	if ((*it).district == distr)
-	//	{			
-	//		s += (*it).votes;
-	//	}
-	//}
-	//
+		}
+	}
+	
 	//TableCap();
+	
+	for (it = can.begin(), col = 119; it != can.end(); col += 34, it++)
+	{
+		sort(can.begin(), can.end(), [](const Candidate& lhs, const Candidate& rhs)
+				{
+				return lhs.rating > rhs.rating;
+				});	
 
-	//for (it = can.begin(); it != can.end(); it++)
-	//{
-	//	sort(can.begin(), can.end(), compare_by_surname);//in alphabetical order.
-	//	if ((*it).district == distr)
-	//	{
-	//		raiting_in = (*it).votes * 100 / s;
-	//		cout << setw(2) << " ";
-	//		cout << left << (*it).candidate;
-	//		cout << setw(2) << " ";
-	//		cout << left << setw(20) << (*it).party;
-	//		cout << left << setw(10) << (*it).district;
-	//		cout << left << setw(9) << (*it).num;
-	//		cout << left << setw(16) << (*it).date;
-	//		cout << left << setw(9) << fixed << setprecision(1) << (*it).rating;
-	//		cout << left << setw(6) << (*it).votes << endl;
-	//	}		
-	//}
-	//cout << endl;
-	//cout << " Sum of votes is  " << s << endl;
+		if ((*it).district == distr)
+		{
+			
+			cout << setw(2) << " ";
+			cout << left << (*it).candidate;
+			cout << setw(2) << " ";
+			cout << left << setw(20) << (*it).party;
+			cout << left << setw(9) << (*it).num;
+			cout << left << setw(9) <<fixed << setprecision(1) << (*it).rating;
+			cout << left << setw(6) << (*it).votes << endl;
+			(*it).rating = (*it).votes * 100 / s;
+			
+			for (int i = 0; i < (*it).rating / 3; i++)
+			{
+				Color(col);
+				cout << " ";
+				Color(7);
+			}
+			cout << endl;
+
+			
+		}		
+	}
+	cout << endl;
+	cout << " Sum of votes of this district is  " << s << endl;
+
+	for (it = can.begin(); it != can.end(); it++)
+	{		
+		if ((*it).district == distr)
+		{
+			
+			if (max < (*it).rating)
+			{
+				max = (*it).rating;
+			}
+
+		}
+		if ((*it).rating == max)
+		{
+			cout << " The winner is " << (*it).candidate << endl;
+		}
+
+	}
 
 
 	// ------------count of results--------------
