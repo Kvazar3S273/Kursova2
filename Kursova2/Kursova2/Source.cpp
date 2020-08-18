@@ -13,26 +13,12 @@ void main()
 	ifstream file;
 	readFile(can, file);
 
-
-
-
-
-
-
 	/*for (int i = 0; i < 400; i++)
 	{
 		Color(i);
 		cout << i << endl;
 		Color(7);
 	}*/
-
-	
-
-
-
-
-
-
 
 	//-----------out to console vector------------
 	TableCap();
