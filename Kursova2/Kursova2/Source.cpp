@@ -69,133 +69,164 @@ void main()
 
 
 	//--------------search by party------------
-	cout << "Enter party and you will see all candidates of this pаrty" << endl;
-	string part;
-	double suma = 0;	
-	getline(cin,part);
+	//cout << "Enter party and you will see all candidates of this pаrty" << endl;
+	//string part;
+	//double suma = 0;	
+	//getline(cin,part);
+	//
+	//for (it = can.begin(); it != can.end(); it++) 
+	//{
+	//	if (_stricmp((*it).party.c_str(), part.c_str()) == 0)
+	//	{		
+	//		suma += (*it).votes;
+	//	}
+	//	
+ //   }
+	//if (suma == 0)
+	//{
+	//	cout << "Wrong party! " << endl;
+	//	_getch();
+	//}
+	//
+	//int col;
+	//
+	//for (it = can.begin(), col = 119; it != can.end(); col+=34, it++)
+	//{
+	//	sort(can.begin(), can.end(), [](const Candidate& lhs, const Candidate& rhs)
+	//	{
+	//			return lhs.candidate.surname< rhs.candidate.surname;
+	//	});//in alphabetical order.		
+
+	//		if (_stricmp((*it).party.c_str(), part.c_str()) == 0)
+	//		{	
+	//			cout << setw(2) << " ";
+	//			cout << left << (*it).candidate;
+	//			cout << setw(2) << " ";
+	//			cout << left << setw(10) << (*it).district;
+	//			cout << left << setw(9) << (*it).num;
+	//			cout << left << setw(16) << (*it).date;
+	//			cout << left << setw(9) << fixed << setprecision(1) << (*it).rating;
+	//			cout << left << setw(6) << (*it).votes << endl;
+	//			//percent = (*it).votes * 100 / suma;
+	//			//cout << (*it).candidate << "  " << (*it).votes << " "<<(*it).district;
+	//			//cout << endl;
+
+	//			//for (int i = 0; i < percent / 3; i++)
+	//			//{
+	//			//	Color(col);
+	//			//	cout << " ";
+	//			//	Color(7);
+	//			//}
+	//			//cout << endl;
+	//		}
+	//		
+	//}
+	//cout << endl;
+	//Color(12);	
+	//cout << "Sum of votes for this party is " << suma << endl;
+	//Color(7);
+
 	
-	for (it = can.begin(); it != can.end(); it++) 
+	//--------------sort by party------------
+
+	string	parties[8] = { "Зелені дуби", "Наше майбутнє","Проти всіх","Бурштиновий рух",
+		"Народний союз","Сині обличчя","Невпевненість","Багаті депутати" };
+
+
+	for (int i = 0; i < 8; i++)
 	{
-		if (_stricmp((*it).party.c_str(), part.c_str()) == 0)
-		{		
-			suma += (*it).votes;
-		}
-		
-    }
-	if (suma == 0)
-	{
-		cout << "Wrong party! " << endl;
-		_getch();
-	}
-	
-	int col;
-	
-	for (it = can.begin(), col = 119; it != can.end(); col+=34, it++)
-	{
-		sort(can.begin(), can.end(), [](const Candidate& lhs, const Candidate& rhs)
+		cout << "-------------------Партія \<<" << parties[i] << "\>>-----------------" << endl;
+
+		for (it = can.begin(); it != can.end(); it++)
 		{
-				return lhs.candidate.surname< rhs.candidate.surname;
-		});//in alphabetical order.		
-
-			if (_stricmp((*it).party.c_str(), part.c_str()) == 0)
-			{	
-				cout << setw(2) << " ";
-				cout << left << (*it).candidate;
-				cout << setw(2) << " ";
-				cout << left << setw(10) << (*it).district;
-				cout << left << setw(9) << (*it).num;
-				cout << left << setw(16) << (*it).date;
-				cout << left << setw(9) << fixed << setprecision(1) << (*it).rating;
-				cout << left << setw(6) << (*it).votes << endl;
-				//percent = (*it).votes * 100 / suma;
-				//cout << (*it).candidate << "  " << (*it).votes << " "<<(*it).district;
-				//cout << endl;
-
-				//for (int i = 0; i < percent / 3; i++)
-				//{
-				//	Color(col);
-				//	cout << " ";
-				//	Color(7);
-				//}
-				//cout << endl;
-			}
-			
-	}
-	cout << endl;
-	Color(12);	
-	cout << "Sum of votes for this party is " << suma << endl;
-	Color(7);
-
-	
-	//--------------search by district------------
-	cout << "Enter district and you will see all candidates of this district" << endl;
-	int distr=0;
-	double s = 0;//find sum;
-	double max = 0;//find max;
-	cin >> distr;
-	
-	for (it = can.begin(); it != can.end(); it++)
-	{
-		
-		if ((*it).district == distr)
-		{			
-			s += (*it).votes;
-
-		}
-	}
-	
-	//TableCap();
-	
-	for (it = can.begin(), col = 119; it != can.end(); col += 34, it++)
-	{
-		sort(can.begin(), can.end(), [](const Candidate& lhs, const Candidate& rhs)
+			sort(can.begin(), can.end(), [](const Candidate& lhs, const Candidate& rhs)
 				{
-				return lhs.rating > rhs.rating;
-				});	
+					return lhs.candidate.surname < rhs.candidate.surname;
+				});//in alphabetical order.		
 
-		if ((*it).district == distr)
-		{
-			
-			cout << setw(2) << " ";
-			cout << left << (*it).candidate;
-			cout << setw(2) << " ";
-			cout << left << setw(20) << (*it).party;
-			cout << left << setw(9) << (*it).num;
-			cout << left << setw(9) <<fixed << setprecision(1) << (*it).rating;
-			cout << left << setw(6) << (*it).votes << endl;
-			(*it).rating = (*it).votes * 100 / s;
-			
-			for (int i = 0; i < (*it).rating / 3; i++)
+			if (_stricmp((*it).party.c_str(), parties[i].c_str()) == 0)
 			{
-				Color(col);
-				cout << " ";
-				Color(7);
+
+				//percent = (*it).votes * 100 / suma;
+				cout << (*it).candidate << "  " << (*it).votes << "\t";
+
+				cout << endl;
 			}
-			cout << endl;
-
-			
-		}		
-	}
-	cout << endl;
-	cout << " Sum of votes of this district is  " << s << endl;
-
-	for (it = can.begin(); it != can.end(); it++)
-	{		
-		if ((*it).district == distr)
-		{
-			
-			if (max < (*it).rating)
-			{
-				max = (*it).rating;
-			}
-
 		}
-		if ((*it).rating == max)
-		{
-			cout << " The winner is " << (*it).candidate << endl;
-		}
-
 	}
+
+
+
+
+	//--------------search by district------------
+	//cout << "Enter district and you will see all candidates of this district" << endl;
+	//int distr=0;
+	//double s = 0;//find sum;
+	//double max = 0;//find max;
+	//cin >> distr;
+	//
+	//for (it = can.begin(); it != can.end(); it++)
+	//{
+	//	
+	//	if ((*it).district == distr)
+	//	{			
+	//		s += (*it).votes;
+
+	//	}
+	//}
+	//
+	////TableCap();
+	//
+	//for (it = can.begin(), col = 119; it != can.end(); col += 34, it++)
+	//{
+	//	sort(can.begin(), can.end(), [](const Candidate& lhs, const Candidate& rhs)
+	//			{
+	//			return lhs.rating > rhs.rating;
+	//			});	
+
+	//	if ((*it).district == distr)
+	//	{
+	//		
+	//		cout << setw(2) << " ";
+	//		cout << left << (*it).candidate;
+	//		cout << setw(2) << " ";
+	//		cout << left << setw(20) << (*it).party;
+	//		cout << left << setw(9) << (*it).num;
+	//		cout << left << setw(9) <<fixed << setprecision(1) << (*it).rating;
+	//		cout << left << setw(6) << (*it).votes << endl;
+	//		(*it).rating = (*it).votes * 100 / s;
+	//		
+	//		for (int i = 0; i < (*it).rating / 3; i++)
+	//		{
+	//			Color(col);
+	//			cout << " ";
+	//			Color(7);
+	//		}
+	//		cout << endl;
+
+	//		
+	//	}		
+	//}
+	//cout << endl;
+	//cout << " Sum of votes of this district is  " << s << endl;
+
+	//for (it = can.begin(); it != can.end(); it++)
+	//{		
+	//	if ((*it).district == distr)
+	//	{
+	//		
+	//		if (max < (*it).rating)
+	//		{
+	//			max = (*it).rating;
+	//		}
+
+	//	}
+	//	if ((*it).rating == max)
+	//	{
+	//		cout << " The winner is " << (*it).candidate << endl;
+	//	}
+
+	//}
 
 
 	// ------------count of results--------------
