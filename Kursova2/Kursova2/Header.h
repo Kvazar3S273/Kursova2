@@ -214,10 +214,13 @@ bool compared(Candidate& a, Candidate& b) //sort by name.
 	return a.candidate.GetName() < b.candidate.GetName();
 
 }
+
 bool compare_by_surname(Candidate& a, Candidate& b) //sort by surname.
 {
 	return a.candidate.GetSurname() < b.candidate.GetSurname();
+	
 }
+
 
 bool compare_by_party(Candidate& a, Candidate& b) //sort by party.
 {

@@ -101,51 +101,52 @@ void main()
 
 
 	//--------------search by party------------
-	//cout << "Enter party and you will see all candidates of this pаrty" << endl;
-	//string part;
-	//double suma = 0;
-	//double percent = 0;
-	//getline(cin,part);
-	//
-	//for (it = can.begin(); it != can.end(); it++) 
-	//{
-	//	if (_stricmp((*it).party.c_str(), part.c_str()) == 0)
-	//	{		
-	//		suma += (*it).votes;
-	//	}
-	//	
- //   }
-	//if (suma == 0)
-	//{
-	//	cout << "Wrong party! " << endl;
-	//	_getch();
-	//}
-	//
-	//int col;
-	//
-	//for (it = can.begin(), col = 119; it != can.end(); col+=34, it++)
-	//	{
-	//			
-	//		if (_stricmp((*it).party.c_str(), part.c_str()) == 0)
-	//		{
-	//			
-	//			//sort(can.begin(), can.end(), compare_by_surname);//in alphabetical order.			
-	//			percent = (*it).votes * 100 / suma;
-	//			cout << (*it).candidate << "  " << (*it).votes << "  % голосів по округу " << fixed << setprecision(2) << percent << "\t";
+	cout << "Enter party and you will see all candidates of this pаrty" << endl;
+	string part;
+	double suma = 0;
+	double percent = 0;
+	getline(cin,part);
+	
+	for (it = can.begin(); it != can.end(); it++) 
+	{
+		if (_stricmp((*it).party.c_str(), part.c_str()) == 0)
+		{		
+			suma += (*it).votes;
+		}
+		
+    }
+	if (suma == 0)
+	{
+		cout << "Wrong party! " << endl;
+		_getch();
+	}
+	
+	int col;
+	
+	for (it = can.begin(), col = 119; it != can.end(); col+=34, it++)
+	{
+		sort(can.begin(), can.end(), [](const Candidate& lhs, const Candidate& rhs)
+		{
+				return lhs.candidate.surname< rhs.candidate.surname;
+		});//in alphabetical order.		
 
-	//			for (int i = 0; i < percent / 3; i++)
-	//			{
-	//				Color(col);
-	//				cout << " ";
-	//				Color(7);
-	//			}
-	//			cout << endl;
-	//		}
+			if (_stricmp((*it).party.c_str(), part.c_str()) == 0)
+			{	
+				
+				percent = (*it).votes * 100 / suma;
+				cout << (*it).candidate << "  " << (*it).votes << "  % голосів по округу " << fixed << setprecision(2) << percent << "\t";
 
-	//	}
-	//
-	//cout << "Sum of votes for this party is " << suma << endl;
-
+				for (int i = 0; i < percent / 3; i++)
+				{
+					Color(col);
+					cout << " ";
+					Color(7);
+				}
+				cout << endl;
+			}
+	}
+	
+	cout << "Sum of votes for this party is " << suma << endl;
 
 	
 	//--------------search by district------------
