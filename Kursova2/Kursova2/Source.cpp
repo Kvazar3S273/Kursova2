@@ -59,8 +59,8 @@ void main()
 
 	for (auto it = can.begin(); it < can.end(); ++it)
 	{
-		r = (*it).votes * 100 / sum;//find a percent of all list.
-		(*it).rating = r;//assign value.
+		//r = (*it).votes * 100 / sum;//find a percent of all list.
+		//(*it).rating = r;//assign value.
 		cout << setw(2) << " ";
 		cout << left << (*it).candidate;
 		cout << setw(2) << " ";
@@ -70,7 +70,7 @@ void main()
 		cout << left << setw(16) << (*it).date;
 		cout << left << setw(9) << fixed << setprecision(1) << (*it).rating;
 		cout << left << setw(6) << (*it).votes << endl; 	
-		rait += (*it).rating;//for check(must be 100%).
+		//rait += (*it).rating;//for check(must be 100%).
 	
 	}
 	cout << endl;
