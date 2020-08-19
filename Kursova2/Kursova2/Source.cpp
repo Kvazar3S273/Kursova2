@@ -252,15 +252,13 @@ void main()
 						{
 							return lhs.candidate.surname < rhs.candidate.surname;
 						});
-					//cout << (*it).candidate << " " << (*it).rating << endl;
+					cout << (*it).candidate << " " << (*it).rating << endl;
 
 					if (max < (*it).rating)
 					{
 						max = (*it).rating;
-
+						cout << max << endl;
 					}
-
-
 				}
 				if ((*it).rating == max)
 				{
