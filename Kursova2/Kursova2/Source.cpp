@@ -13,13 +13,6 @@ void main()
 	ifstream file;
 	readFile(can, file);
 
-	/*for (int i = 0; i < 400; i++)
-	{
-		Color(i);
-		cout << i << endl;
-		Color(7);
-	}*/
-
 	//-----------out to console vector------------
 	TableCap();
 	int sum = 0;
@@ -47,7 +40,7 @@ void main()
 	Color(12);
 	cout << "Final sum of votes are  " << sum << endl;
 	Color(7);
-
+	//--------------------------------------------
 
 	//---------------search by surname(lambda func.)--------
 	/*cout << "\n\nEnter surname of candidate to edit his info" << endl;
@@ -66,7 +59,7 @@ void main()
 	cout << left << setw(9) << fixed << setprecision(1) << (*it).rating;
 	cout << left << setw(6) << (*it).votes << endl;
 	cout << endl;*/
-
+	//--------------------------------------------------
 
 	//--------------search by party------------
 	//cout << "Enter party and you will see all candidates of this pаrty" << endl;
@@ -81,7 +74,7 @@ void main()
 	//		suma += (*it).votes;
 	//	}
 	//	
- //   }
+	//   }
 	//if (suma == 0)
 	//{
 	//	cout << "Wrong party! " << endl;
@@ -96,7 +89,6 @@ void main()
 	//	{
 	//			return lhs.candidate.surname< rhs.candidate.surname;
 	//	});//in alphabetical order.		
-
 	//		if (_stricmp((*it).party.c_str(), part.c_str()) == 0)
 	//		{	
 	//			cout << setw(2) << " ";
@@ -110,7 +102,6 @@ void main()
 	//			//percent = (*it).votes * 100 / suma;
 	//			//cout << (*it).candidate << "  " << (*it).votes << " "<<(*it).district;
 	//			//cout << endl;
-
 	//			//for (int i = 0; i < percent / 3; i++)
 	//			//{
 	//			//	Color(col);
@@ -125,46 +116,43 @@ void main()
 	//Color(12);	
 	//cout << "Sum of votes for this party is " << suma << endl;
 	//Color(7);
-
+	//-------------------------------------
 
 	//--------------sort by party------------
 
-	//string	parties[8] = { "Зелені дуби", "Наше майбутнє","Проти всіх","Бурштиновий рух",
-	//	"Народний союз","Сині обличчя","Невпевненість","Багаті депутати" };
+	string	parties[8] = { "Зелені дуби", "Наше майбутнє","Проти всіх","Бурштиновий рух",
+		"Народний союз","Сині обличчя","Невпевненість","Багаті депутати" };
 
-	//TableCap();
+	TableCap();
 
-	//for (int i = 0; i < 8; i++)
-	//{
-	//	cout << "\n                            ----------Партія \<<" << parties[i];
-	//	cout << "\>>----------\n" << endl;
+	for (int i = 0; i < 8; i++)
+	{
+		cout << "\n                            ----------Партія \<<" << parties[i];
+		cout << "\>>----------\n" << endl;
 
-	//	for (it = can.begin(); it != can.end(); it++)
-	//	{
-	//		sort(can.begin(), can.end(), [](const Candidate& lhs, const Candidate& rhs)
-	//			{
-	//				return lhs.candidate.surname < rhs.candidate.surname;
-	//			});//in alphabetical order.		
+		for (it = can.begin(); it != can.end(); it++)
+		{
+			sort(can.begin(), can.end(), [](const Candidate& lhs, const Candidate& rhs)
+				{
+					return lhs.candidate.surname < rhs.candidate.surname;
+				});//in alphabetical order.		
 
-	//		if (_stricmp((*it).party.c_str(), parties[i].c_str()) == 0)
-	//		{
-	//			cout << setw(2) << " ";
-	//			cout << left << (*it).candidate;
-	//			cout << setw(2) << " ";
-	//			cout << left << setw(20) << (*it).party;
-	//			cout << left << setw(10) << (*it).district;
-	//			cout << left << setw(9) << (*it).num;
-	//			cout << left << setw(16) << (*it).date;
-	//			cout << left << setw(9) << (*it).rating;
-	//			cout << left << setw(6) << (*it).votes << endl;
-	//		}
-	//	}
-	//}
+			if (_stricmp((*it).party.c_str(), parties[i].c_str()) == 0)
+			{
+				cout << setw(2) << " ";
+				cout << left << (*it).candidate;
+				cout << setw(2) << " ";
+				cout << left << setw(20) << (*it).party;
+				cout << left << setw(10) << (*it).district;
+				cout << left << setw(9) << (*it).num;
+				cout << left << setw(16) << (*it).date;
+				cout << left << setw(9) << (*it).rating;
+				cout << left << setw(6) << (*it).votes << endl;
+			}
+		}
+	}
 
 	//----------end sort by party---------------
-
-
-
 
 
 	//--------------search by district------------
@@ -237,7 +225,7 @@ void main()
 	//	}
 
 	//}
-
+	//----------------------------------------
 
 
     //----------finally tabel----------
@@ -248,7 +236,8 @@ void main()
 	//	{ return cur.district == distr; })<<"res";
 	//cout << endl;
     
-    const int size_dist=5;
+	//----------output winners--------------
+    /*const int size_dist=5;
    	int	res[size_dist] = {234,235,236,237,238};
 	double max[size_dist] ;
 
@@ -294,14 +283,16 @@ void main()
 		}		
 		
 		
-	}
-	
+	}*/
+	//-------------------------------
 	
 
 
 
 	//-----add new candidate-----	
 	//c1.Add(can);	 
+	//---------------------------
+
 
 	 //-------------edit candidate-------
 
@@ -394,8 +385,6 @@ void main()
 	 // --------------------------------end of edit candidate
 
 
-
-
 	 // ---------delete to argument--------
 	 /*int temp = 0;
 	 cout << "Enter num in list for delete";
@@ -414,23 +403,17 @@ void main()
 	 //sort(can.begin(), can.end(),// sort by district.
 	 //	[](const Candidate& a, const Candidate& b) -> bool
 	 //	{
-	 //		return a.district > b.district;
+	 //		return a.district < b.district;
 	 //	});
 
 	 //---------sort by surname-----
 	 //sort(can.begin(), can.end(),compare_by_surname);
 
-	 //---------sort by name------
-	 //sort(can.begin(), can.end(),compared);
 
-	  //------sort by party(all list)-------
+	 //-----------out to console vector------------
+	 /*TableCap();
 
-	 /*sort(can.begin(), can.end(),compare_by_party);
-
-	 TableCap();
-
-
-	 for (it = can.begin(); it < can.end(); ++it)
+	  for (auto it = can.begin(); it < can.end(); ++it)
 	 {
 
 		 cout << setw(2) << " ";
@@ -443,9 +426,12 @@ void main()
 		 cout << left << setw(9) << (*it).rating;
 		 cout << left << setw(6) << (*it).votes << endl;
 
+	 }
+	 cout << endl;*/
+	
+	 //----------------------------
 
 
-	 }*/
 	 //----------------save to file----------
 	 /*ofstream top("new.txt", ios_base::trunc);
 	 copy(can.begin(), can.end(), ostream_iterator<Candidate>(top));
