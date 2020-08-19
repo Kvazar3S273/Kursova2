@@ -242,44 +242,44 @@ void main()
 
    //----------finally tabel----------
 
- //   int	res[5] = { 234, 235,236,237,238 };
-	//double max = 0;
-	//for (int i = 0; i < 5; i++)
-	//{
-	//	cout << "-------------------Округ номер:  \<<" << res[i] << "\>>-----------------" << endl; 
+    int	res[5] = { 234, 235,236,237,238 };
+	double max = 0;
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "-------------------Округ номер:  \<<" << res[i] << "\>>-----------------" << endl; 
 
-	//		for (it = can.begin(); it != can.end(); it++)
-	//		{
-
-
-	//			if ((*it).district == res[i])
-	//			{
-	//				sort(can.begin(), can.end(), [](const Candidate& lhs, const Candidate& rhs)
-	//					{
-	//						return lhs.candidate.surname < rhs.candidate.surname;
-	//					});
-	//				//cout << (*it).candidate << " " << (*it).rating << endl;
-
-	//				if (max < (*it).rating)
-	//				{
-	//					max = (*it).rating;
-
-	//				}
+			for (it = can.begin(); it != can.end(); it++)
+			{
 
 
-	//			}
-	//			if ((*it).rating == max)
-	//			{
-	//				cout << " The winner from this district is " << (*it).candidate << endl;
-	//			}
+				if ((*it).district == res[i])
+				{
+					sort(can.begin(), can.end(), [](const Candidate& lhs, const Candidate& rhs)
+						{
+							return lhs.candidate.surname < rhs.candidate.surname;
+						});
+					//cout << (*it).candidate << " " << (*it).rating << endl;
 
-	//		}
+					if (max < (*it).rating)
+					{
+						max = (*it).rating;
+
+					}
+
+
+				}
+				if ((*it).rating == max)
+				{
+					cout << " The winner from this district is " << (*it).candidate << endl;
+				}
+
+			}
 
 
 
 
-	//}
-	//
+	}
+	
 
 
 	// ------------count of results--------------
