@@ -23,15 +23,15 @@ void main()
 	//-----------out to console vector------------
 	TableCap();
 	int sum = 0;
-		
+
 	for (it = can.begin(); it < can.end(); ++it)
-	{		
-		sum += (*it).votes;	
-	}	
+	{
+		sum += (*it).votes;
+	}
 
 	for (auto it = can.begin(); it < can.end(); ++it)
 	{
-		
+
 		cout << setw(2) << " ";
 		cout << left << (*it).candidate;
 		cout << setw(2) << " ";
@@ -40,21 +40,21 @@ void main()
 		cout << left << setw(9) << (*it).num;
 		cout << left << setw(16) << (*it).date;
 		cout << left << setw(9) << (*it).rating;
-		cout << left << setw(6) << (*it).votes << endl; 	
-			
+		cout << left << setw(6) << (*it).votes << endl;
+
 	}
 	cout << endl;
 	Color(12);
-	cout << "Final sum of votes are  " <<  sum << endl;
+	cout << "Final sum of votes are  " << sum << endl;
 	Color(7);
-	
+
 
 	//---------------search by surname(lambda func.)--------
 	/*cout << "\n\nEnter surname of candidate to edit his info" << endl;
 	string name;
 	cin >> name;
 	it = find(can.begin(), can.end(),name);
-	
+
 	TableCap();
 	cout << setw(2) << " ";
 	cout << left << (*it).candidate;
@@ -126,34 +126,37 @@ void main()
 	//cout << "Sum of votes for this party is " << suma << endl;
 	//Color(7);
 
-	
+
 	//--------------sort by party------------
 
-	string	parties[8] = { "Зелені дуби", "Наше майбутнє","Проти всіх","Бурштиновий рух",
-		"Народний союз","Сині обличчя","Невпевненість","Багаті депутати" };
+	//string	parties[8] = { "Зелені дуби", "Наше майбутнє","Проти всіх","Бурштиновий рух",
+	//	"Народний союз","Сині обличчя","Невпевненість","Багаті депутати" };
 
 
-	for (int i = 0; i < 8; i++)
-	{
-		cout << "-------------------Партія \<<" << parties[i] << "\>>-----------------" << endl;
+	//for (int i = 0; i < 8; i++)
+	//{
+	//	cout << "-------------------Партія \<<" << parties[i] << "\>>-----------------" << endl;
 
-		for (it = can.begin(); it != can.end(); it++)
-		{
-			sort(can.begin(), can.end(), [](const Candidate& lhs, const Candidate& rhs)
-				{
-					return lhs.candidate.surname < rhs.candidate.surname;
-				});//in alphabetical order.		
+	//	for (it = can.begin(); it != can.end(); it++)
+	//	{
+	//		sort(can.begin(), can.end(), [](const Candidate& lhs, const Candidate& rhs)
+	//			{
+	//				return lhs.candidate.surname < rhs.candidate.surname;
+	//			});//in alphabetical order.		
 
-			if (_stricmp((*it).party.c_str(), parties[i].c_str()) == 0)
-			{
+	//		if (_stricmp((*it).party.c_str(), parties[i].c_str()) == 0)
+	//		{				
+	//			cout << (*it).candidate << "  " << (*it).votes << "\t";
+	//			cout << endl;
+	//		}
+	//	}
+	//}
 
-				//percent = (*it).votes * 100 / suma;
-				cout << (*it).candidate << "  " << (*it).votes << "\t";
 
-				cout << endl;
-			}
-		}
-	}
+
+
+
+
 
 
 
@@ -176,6 +179,7 @@ void main()
 	//}
 	//
 	////TableCap();
+	//int col;
 	//
 	//for (it = can.begin(), col = 119; it != can.end(); col += 34, it++)
 	//{
@@ -223,10 +227,53 @@ void main()
 	//	}
 	//	if ((*it).rating == max)
 	//	{
-	//		cout << " The winner is " << (*it).candidate << endl;
+	//		cout << " The winner from this district is " << (*it).candidate << endl;
 	//	}
 
 	//}
+
+
+
+   //----------finally tabel----------
+
+    int	res[5] = { 234, 235,236,237,238 };
+	double max = 0;
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "-------------------Округ номер:  \<<" << res[i] << "\>>-----------------" << endl; 
+
+			for (it = can.begin(); it != can.end(); it++)
+			{
+
+
+				if ((*it).district == res[i])
+				{
+					sort(can.begin(), can.end(), [](const Candidate& lhs, const Candidate& rhs)
+						{
+							return lhs.candidate.surname < rhs.candidate.surname;
+						});
+					//cout << (*it).candidate << " " << (*it).rating << endl;
+
+					if (max < (*it).rating)
+					{
+						max = (*it).rating;
+
+					}
+
+
+				}
+				if ((*it).rating == max)
+				{
+					cout << " The winner from this district is " << (*it).candidate << endl;
+				}
+
+			}
+
+
+
+
+	}
+	
 
 
 	// ------------count of results--------------
