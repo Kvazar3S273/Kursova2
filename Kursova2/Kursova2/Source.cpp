@@ -166,97 +166,103 @@ void main()
 
 
 	//--------------search by district------------
-	cout << "Введіть номер округу, щоб побачити всіх кандидатів, що по ньому балотуються" << endl;
-	cout << "(доступні округи: 234..238)\n" << endl;
-	int distr=0;
-	int s = 0;//find sum;
-	double max = 0;//find max;
-	double t = 0;
-	cin >> distr;
+	//Color(12);
+	//cout << "\t---------------------------------------------------------------------------" << endl;
+	//Color(7);
+	//cout << "\tВведіть номер округу, щоб побачити всіх кандидатів, що по ньому балотуються" << endl;
+	//cout << "\t                     (доступні округи: 234..238)" << endl;
+	//Color(12);
+	//cout << "\t---------------------------------------------------------------------------" << endl;
+	//Color(7);
+	//int distr=0;
+	//int s = 0;//find sum;
+	//double max = 0;//find max;
+	//double t = 0;
+	//cin >> distr;
 
-	try
-	{
-		if (distr < 234 || distr>238)
-			throw "Ви вийшли за межі рекомендованого діапазону округів!";
-	}
-	catch (const char* exception)
-	{
-		cout << exception << endl;
-	}
+	//try
+	//{
+	//	if (distr < 234 || distr>238)
+	//		throw "Ви вийшли за межі рекомендованого діапазону округів!";
+	//}
+	//catch (const char* exception)
+	//{
+	//	cout << exception << endl;
+	//}
 
-	for (it = can.begin(); it != can.end(); it++)
-	{
-		
-		if ((*it).district == distr)
-		{			
-			s += (*it).votes;
-		}
-	}
-	
-	//TableCap();
-	int col;
-	cout << endl;
-	for (it = can.begin(), col = 119; it != can.end(); col += 17, it++)
-	{
-		sort(can.begin(), can.end(), [](const Candidate& lhs, const Candidate& rhs)
-				{
-				return lhs.rating > rhs.rating;
-				});	
+	//for (it = can.begin(); it != can.end(); it++)
+	//{
+	//	
+	//	if ((*it).district == distr)
+	//	{			
+	//		s += (*it).votes;
+	//	}
+	//}
+	//
+	//cout << endl;
+	//TableCapDistrict();
+	//int col;
+	//for (it = can.begin(), col = 119; it != can.end(); col += 17, it++)
+	//{
+	//	sort(can.begin(), can.end(), [](const Candidate& lhs, const Candidate& rhs)
+	//			{
+	//			return lhs.rating > rhs.rating;
+	//			});	
 
-		if ((*it).district == distr)
-		{
-			
-			cout << setw(2) << " ";
-			cout << left << (*it).candidate;
-			cout << setw(2) << " ";
-			cout << left << setw(20) << (*it).party;
-			cout << left << setw(9) << (*it).num;
-			(*it).rating = (double)(*it).votes * 100 / s;
-			cout << left << setw(9) <<fixed << setprecision(2) << (*it).rating;
-			cout << left << setw(6) << (*it).votes << "\t";
-			t += (*it).rating;
-			for (int i = 0; i < (*it).rating / 3; i++)
-			{
-				Color(col);
-				cout << " ";
-				Color(7);
-			}
-			cout << endl;
+	//	if ((*it).district == distr)
+	//	{
+	//		
+	//		cout << setw(2) << " ";
+	//		cout << left << (*it).candidate;
+	//		cout << setw(2) << " ";
+	//		cout << left << setw(24) << (*it).party;
+	//		cout << left << setw(9) << (*it).num;
+	//		(*it).rating = (double)(*it).votes * 100 / s;
+	//		cout << left << setw(6) << (*it).votes << "\t";
+	//		cout << left << setw(9) <<fixed << setprecision(2) << (*it).rating;
+	//		t += (*it).rating;
+	//		for (int i = 0; i < (*it).rating / 3; i++)
+	//		{
+	//			Color(col);
+	//			cout << " ";
+	//			Color(7);
+	//		}
+	//		cout << endl;
 
-			
-		}		
-	}
-	Color(14);
-	cout << "                                    Всього голосів по даному округу: ";
-	Color(10);
-	cout << s << endl;
-	Color(7);
-	//cout << "Check,% "<< t << endl;
+	//		
+	//	}		
+	//}
+	//Color(14);
+	//cout << "                              Всього голосів по даному округу: ";
+	//Color(10);
+	//cout << s << endl;
+	//Color(7);
+	////cout << "Check,% "<< t << endl;
 
-	for (it = can.begin(); it != can.end(); it++)
-	{		
-		if ((*it).district == distr)
-		{
-			
-			if (max < (*it).rating)
-			{
-				max = (*it).rating;
-			}
+	//for (it = can.begin(); it != can.end(); it++)
+	//{		
+	//	if ((*it).district == distr)
+	//	{
+	//		
+	//		if (max < (*it).rating)
+	//		{
+	//			max = (*it).rating;
+	//		}
 
-		}
-		if ((*it).rating == max)
-		{
-			cout << "\n  Переможець в даному окрузі:\t";
-			Color(12);
-			cout << (*it).candidate;
-			Color(7);
-			cout << " з результатом: ";
-			Color(12);
-			cout << (*it).rating << " %" << endl;
-			Color(7);
-		}
+	//	}
+	//	if ((*it).rating == max)
+	//	{
+	//		cout << "\n  Переможець в даному окрузі:\t";
+	//		Color(12);
+	//		cout << (*it).candidate;
+	//		Color(7);
+	//		cout << " з результатом: ";
+	//		Color(12);
+	//		cout << (*it).rating << " %" << endl;
+	//		Color(7);
+	//	}
 
-	}
+	//}
 	////----------------------------------------
 
 
@@ -264,35 +270,29 @@ void main()
 	
     
 	//----------output winners--------------
-    /*const int size_dist=5;
+    const int size_dist=5;
    	int	res[size_dist] = {234,235,236,237,238};
-	double max[size_dist] ;
-
+	double max[size_dist];
+	Color(12);
+	cout << "\t\t\tПереможці виборів по округах\n" << endl;
+	Color(7);
+	TableCapWinners();
 	for (int i = 0; i <size_dist; i++)
 	{
-		cout << "-------------------Округ номер:  \<<" << res[i] << "\>>-----------------" << endl;
-
+		cout << setw(3) << "  " << res[i] << " ";
 		for (it = can.begin(); it != can.end(); it++)
 		{
 			sort(can.begin(), can.end(), [](const Candidate& lhs, const Candidate& rhs)
 				{
 					return lhs.candidate.surname < rhs.candidate.surname;
 				});
-			
-				if ((*it).district == res[i])
+			if ((*it).district == res[i])
+			{
+				if (max[i] < (*it).rating)
 				{
-					cout << (*it).candidate << " " << (*it).rating << endl;
-					
-
-					if (max[i] < (*it).rating)
-					{
-						max[i] = (*it).rating;
-
-					}
-
-				}			
-				
-				
+					max[i] = (*it).rating;
+				}
+			}
 		}
 		
 		for (it = can.begin(); it != can.end(); it++)
@@ -301,22 +301,19 @@ void main()
 			{
 				if ((*it).rating == max[i])
 				{
-					cout << "The winner from this district is " << max[i] <<" "<<(*it).candidate<< endl;
-					
+					cout << setw(3) << " ";
+					cout << (*it).candidate;
+					cout << setw(3) << " ";
+					cout << left << setw(22) << (*it).party;
+					cout << (*it).votes << endl;
 				}
-
 			}
-
 		}		
-		
-		
-	}*/
+	}
 	//-------------------------------
 	
 
 
-
-	
 
 
 	 //-------------edit candidate-------
