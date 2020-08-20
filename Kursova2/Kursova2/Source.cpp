@@ -37,11 +37,18 @@ void main()
 		cout << left << setw(6) << (*it).votes << endl;
 		
 	}
-	cout << endl;
+	/*cout << endl;
 	Color(12);
 	cout << "Final sum of votes are  " << sum << endl;
-	Color(7);
+	Color(7);*/
 	
+	Color(14);
+	cout << "\n                                                             Всього голосів по всіх округах: ";
+	Color(12);
+	cout << sum << endl;
+	Color(7);
+	cout << "\n\n";
+
 	
 	//-----add new candidate-----	
 	//c1.Add(can);	
@@ -159,27 +166,37 @@ void main()
 
 
 	//--------------search by district------------
-	cout << "Enter district and you will see all candidates of this district" << endl;
+	cout << "Введіть номер округу, щоб побачити всіх кандидатів, що по ньому балотуються" << endl;
+	cout << "(доступні округи: 234..238)\n" << endl;
 	int distr=0;
-	double s = 0;//find sum;
+	int s = 0;//find sum;
 	double max = 0;//find max;
 	double t = 0;
 	cin >> distr;
-	
+
+	try
+	{
+		if (distr < 234 || distr>238)
+			throw "Ви вийшли за межі рекомендованого діапазону округів!";
+	}
+	catch (const char* exception)
+	{
+		cout << exception << endl;
+	}
+
 	for (it = can.begin(); it != can.end(); it++)
 	{
 		
 		if ((*it).district == distr)
 		{			
 			s += (*it).votes;
-
 		}
 	}
 	
 	//TableCap();
 	int col;
-	
-	for (it = can.begin(), col = 119; it != can.end(); col += 34, it++)
+	cout << endl;
+	for (it = can.begin(), col = 119; it != can.end(); col += 17, it++)
 	{
 		sort(can.begin(), can.end(), [](const Candidate& lhs, const Candidate& rhs)
 				{
@@ -194,9 +211,9 @@ void main()
 			cout << setw(2) << " ";
 			cout << left << setw(20) << (*it).party;
 			cout << left << setw(9) << (*it).num;
-			(*it).rating = (*it).votes * 100 / s;
+			(*it).rating = (double)(*it).votes * 100 / s;
 			cout << left << setw(9) <<fixed << setprecision(2) << (*it).rating;
-			cout << left << setw(6) << (*it).votes << endl;			
+			cout << left << setw(6) << (*it).votes << "\t";
 			t += (*it).rating;
 			for (int i = 0; i < (*it).rating / 3; i++)
 			{
@@ -209,9 +226,12 @@ void main()
 			
 		}		
 	}
-	cout << endl;
-	cout << " Sum of votes of this district is  " << s << endl;
-	cout << "Check,% "<< t << endl;
+	Color(14);
+	cout << "                                    Всього голосів по даному округу: ";
+	Color(10);
+	cout << s << endl;
+	Color(7);
+	//cout << "Check,% "<< t << endl;
 
 	for (it = can.begin(); it != can.end(); it++)
 	{		
@@ -226,7 +246,14 @@ void main()
 		}
 		if ((*it).rating == max)
 		{
-			cout << " The winner from this district is " << (*it).candidate << endl;
+			cout << "\n  Переможець в даному окрузі:\t";
+			Color(12);
+			cout << (*it).candidate;
+			Color(7);
+			cout << " з результатом: ";
+			Color(12);
+			cout << (*it).rating << " %" << endl;
+			Color(7);
 		}
 
 	}
