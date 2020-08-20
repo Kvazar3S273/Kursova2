@@ -52,6 +52,190 @@ void main()
 	
 	//-----add new candidate-----	
 	//c1.Add(can);	
+
+
+
+
+
+
+
+
+
+	
+		Candidate c;
+
+		cout << "Введіть через ентер прізвище, ім'я, по-батькові кандидата" << endl;
+		cin >> c.candidate;
+		cout << "Введіть номер ,який відповідає партії" << endl;
+		int result = 0;
+		cout << "1 - <<Наше майбутнє >>" << endl;
+		cout << "2 - <<Багаті депутати >>" << endl;
+		cout << "3 - <<Невпевненість >>" << endl;
+		cout << "4 - <<Сині обличчя >>" << endl;
+		cout << "5 - <<Народний союз >>" << endl;
+		cout << "6 - <<Бурштиновий рух >>" << endl;
+		cout << "7 - <<Зелені дуби >>" << endl;
+		cout << "8 - <<Проти всіх >>" << endl;
+		cin >> result;
+		switch (result)
+		{
+		case 1:
+		{
+			string newname = "Наше майбутнє";
+			cout << "Ви вибрали партію <<Наше майбутнє>>" << endl;
+			c.party = newname;
+			break;
+		}
+		case 2:
+		{
+			string newname = "Багаті депутати";
+			cout << "Ви вибрали партію <<Багаті депутати>>" << endl;
+			c.party = newname;
+			break;
+		}
+		case 3:
+		{
+			string newname = "Невпевненість";
+			cout << "Ви вибрали партію <<Невпевненість>>" << endl;
+			c.party = newname;
+			break;
+		}
+		case 4:
+		{
+			string newname = "Сині обличчя";
+			cout << "Ви вибрали партію <<Сині обличчя>>" << endl;
+			c.party = newname;
+			break;
+		}
+		case 5:
+		{
+			string newname = "Народний союз";
+			cout << "Ви вибрали партію <<Народний союз>>" << endl;
+			c.party = newname;
+			break;
+		}
+		case 6:
+		{
+			string newname = "Бурштиновий рух";
+			cout << "Ви вибрали партію <<Бурштиновий рух>>" << endl;
+			c.party = newname;
+			break;
+		}
+		case 7:
+		{
+			string newname = "Зелені дуби"; cout << "Ви вибрали партію <<Зелені дуби>>" << endl; 	c.party = newname;	break;
+		}
+		case 8:
+		{
+			string newname = "Проти всіх";
+			cout << "Ви вибрали партію <<Проти всіх>>" << endl;
+			c.party = newname;
+			break;
+		}
+		default:
+		{
+			cout << " Wrong way! ";
+			break;
+		}
+		}
+		cout << "Введіть округ кандидата" << endl;
+		cin >> c.district;
+		cout << "Введіть номер кандидата в бюлетені" << endl;
+		cin >> c.num;
+		cout << "Введіть дату реєстрації кандидата у вигляді ДД-ММ-РРРР" << endl;
+		cin >> c.date;
+		cout << "Введіть кількість голосів, відданих за кандидата" << endl;
+		cin >> c.votes;
+		can.push_back(c);
+
+	
+	int s_ = 0;//find sum;
+	double max_ = 0;//find max;
+	double t_ = 0;
+
+
+		for (it = can.begin(); it != can.end(); it++)
+	{
+		
+		if ((*it).district == c.district)
+		{			
+			s_ += (*it).votes;
+		}
+	}
+	
+	cout << endl;
+	//TableCapDistrict();
+	int col;
+	for (it = can.begin(), col = 119; it != can.end(); col += 17, it++)
+	{
+		sort(can.begin(), can.end(), [](const Candidate& lhs, const Candidate& rhs)
+				{
+				return lhs.rating > rhs.rating;
+				});	
+
+		if ((*it).district == c.district)
+		{
+			
+			//cout << setw(2) << " ";
+			//cout << left << (*it).candidate;
+			//cout << setw(2) << " ";
+			//cout << left << setw(24) << (*it).party;
+			//cout << left << setw(9) << (*it).num;
+			(*it).rating = (double)(*it).votes * 100 / s_;
+			//cout << left << setw(6) << (*it).votes << "\t";
+			//cout << left << setw(9) <<fixed << setprecision(2) << (*it).rating;
+			t_ += (*it).rating;
+			/*for (int i = 0; i < (*it).rating / 3; i++)
+			{
+				Color(col);
+				cout << " ";
+				Color(7);
+			}
+			cout << endl;
+			*/
+			
+		}		
+	}
+	/*Color(14);
+	cout << "                              Всього голосів по даному округу: ";
+	Color(10);
+	cout << s_ << endl;
+	Color(7);*/
+	//cout << "Check,% "<< t << endl;
+
+	for (it = can.begin(); it != can.end(); it++)
+	{		
+		if ((*it).district == c.district)
+		{
+			
+			if (max_ < (*it).rating)
+			{
+				max_ = (*it).rating;
+			}
+
+		}
+		/*if ((*it).rating == max_)
+		{
+			cout << "\n  Переможець в даному окрузі:\t";
+			Color(12);
+			cout << (*it).candidate;
+			Color(7);
+			cout << " з результатом: ";
+			Color(12);
+			cout << (*it).rating << " %" << endl;
+			Color(7);
+		}*/
+
+	}
+
+
+
+
+
+
+
+
+
 	//---------------search by surname(lambda func.)--------
 	/*cout << "\n\nEnter surname of candidate to edit his info" << endl;
 	string name;
@@ -270,7 +454,7 @@ void main()
 	
     
 	//----------output winners--------------
-    const int size_dist=5;
+   /* const int size_dist=5;
    	int	res[size_dist] = {234,235,236,237,238};
 	double max[size_dist];
 	Color(12);
@@ -309,7 +493,7 @@ void main()
 				}
 			}
 		}		
-	}
+	}*/
 	//-------------------------------
 	
 
@@ -444,7 +628,7 @@ void main()
 
 
 
-	 /*TableCap();
+	 TableCap();
 
 	  for (auto it = can.begin(); it < can.end(); ++it)
 	 {
@@ -460,7 +644,7 @@ void main()
 		 cout << left << setw(6) << (*it).votes << endl;
 
 	 }
-	 cout << endl;*/
+	 cout << endl;
 	
 	 //----------------------------
 

@@ -112,7 +112,7 @@ public:
 		return(candidate.GetSurname());
 	}
 
-	void Add(vector<Candidate>& can)
+	/*void Add(vector<Candidate>& can)
 	{
 		Candidate c;
 	
@@ -176,10 +176,7 @@ public:
 		}
 		case 7:
 		{
-			string newname = "Зелені дуби";
-			cout << "Ви вибрали партію <<Зелені дуби>>"<<endl;
-			c.party = newname;
-			break;
+			string newname = "Зелені дуби"; cout << "Ви вибрали партію <<Зелені дуби>>"<<endl; 	c.party = newname;	break;
 		}
 		case 8:
 		{
@@ -204,7 +201,7 @@ public:
 		cin >> c.votes;
 		can.push_back(c);
 
-	}
+	}*/
 	
 
 	friend ostream& operator<< (ostream& out, const Candidate& cand);
