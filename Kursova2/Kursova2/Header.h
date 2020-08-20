@@ -118,17 +118,88 @@ public:
 	
 		cout << "Введіть через ентер прізвище, ім'я, по-батькові кандидата" << endl;
 		cin >> c.candidate;
-		cout << "Введіть партію кандидата (або безробітний)" << endl;
-		cin.ignore(32767, '\n');
-		getline(cin, c.party);
+		cout << "Введіть номер ,який відповідає партії" << endl;
+		int result=0;		
+		cout << "Choose number for party from this list:" << endl;
+		cout << "Choose '1' to select party <<Наше майбутнє >>" << endl;
+		cout << "Choose '2' to select party <<Багаті депутати >>" << endl;
+		cout << "Choose '3' to select party <<Невпевненість >>" << endl;
+		cout << "Choose '4' to select party <<Сині обличчя >>" << endl;
+		cout << "Choose '5' to select party <<Народний союз >>" << endl;
+		cout << "Choose '6' to select party <<Бурштиновий рух >>" << endl;
+		cout << "Choose '7' to select party <<Зелені дуби >>" << endl;
+		cout << "Choose '8' to select party <<Проти всіх >>" << endl;
+		cin >> result;
+		switch (result)
+		{
+		case 1:
+		{
+			string newname="Наше майбутнє";
+			cout << "Ви вибрали партію <<Наше майбутнє>>" << endl;
+			c.party = newname;
+			break;
+		}
+		case 2:
+		{
+			string newname = "Багаті депутати";
+			cout << "Ви вибрали партію <<Багаті депутати>>"<<endl;
+			c.party = newname;
+			break;
+		}
+		case 3:
+		{
+			string newname = "Невпевненість";
+			cout << "Ви вибрали партію <<Невпевненість>>"<<endl;
+			c.party = newname;
+			break;
+		}
+		case 4:
+		{
+			string newname = "Сині обличчя";
+			cout << "Ви вибрали партію <<Сині обличчя>>"<<endl;
+			c.party = newname;
+			break;
+		}
+		case 5:
+		{
+			string newname = "Народний союз";
+			cout << "Ви вибрали партію <<Народний союз>>"<<endl;
+			c.party = newname;
+			break;
+		}
+		case 6:
+		{
+			string newname = "Бурштиновий рух";
+			cout << "Ви вибрали партію <<Бурштиновий рух>>"<<endl;
+			c.party = newname;
+			break;
+		}
+		case 7:
+		{
+			string newname = "Зелені дуби";
+			cout << "Ви вибрали партію <<Зелені дуби>>"<<endl;
+			c.party = newname;
+			break;
+		}
+		case 8:
+		{
+			string newname = "Проти всіх";
+			cout << "Ви вибрали партію <<Проти всіх>>"<<endl;
+			c.party = newname;
+			break;
+		}
+		default:
+		{
+			cout << " Wrong way! ";
+			break;
+		}
+		}
 		cout << "Введіть округ кандидата" << endl;
 		cin >> c.district;
 		cout << "Введіть номер кандидата в бюлетені" << endl;
 		cin >> c.num;
 		cout << "Введіть дату реєстрації кандидата у вигляді ДД-ММ-РРРР" << endl;
 		cin >> c.date;		
-		cout << "Введіть рейтинг кандидата" << endl;
-		cin >> c.rating;
 		cout << "Введіть кількість голосів, відданих за кандидата" << endl;
 		cin >> c.votes;
 		can.push_back(c);

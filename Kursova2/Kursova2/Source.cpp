@@ -42,8 +42,9 @@ void main()
 	cout << "Final sum of votes are  " << sum << endl;
 	Color(7);
 	
-	//--------------------------------------------
-
+	
+	//-----add new candidate-----	
+	//c1.Add(can);	
 	//---------------search by surname(lambda func.)--------
 	/*cout << "\n\nEnter surname of candidate to edit his info" << endl;
 	string name;
@@ -193,9 +194,9 @@ void main()
 			cout << setw(2) << " ";
 			cout << left << setw(20) << (*it).party;
 			cout << left << setw(9) << (*it).num;
-			cout << left << setw(9) <<fixed << setprecision(2) << (*it).rating;
-			cout << left << setw(6) << (*it).votes << endl;
 			(*it).rating = (*it).votes * 100 / s;
+			cout << left << setw(9) <<fixed << setprecision(2) << (*it).rating;
+			cout << left << setw(6) << (*it).votes << endl;			
 			t += (*it).rating;
 			for (int i = 0; i < (*it).rating / 3; i++)
 			{
@@ -210,7 +211,7 @@ void main()
 	}
 	cout << endl;
 	cout << " Sum of votes of this district is  " << s << endl;
-	cout << t << endl;
+	cout << "Check,% "<< t << endl;
 
 	for (it = can.begin(); it != can.end(); it++)
 	{		
@@ -229,16 +230,11 @@ void main()
 		}
 
 	}
-	//----------------------------------------
+	////----------------------------------------
 
 
-    //----------finally tabel----------
-    
-	// ------------count of results--------------
-
-	//cout << "There are" << count_if(begin(can), end(can), [distr](const Candidate& cur)
-	//	{ return cur.district == distr; })<<"res";
-	//cout << endl;
+        
+	
     
 	//----------output winners--------------
     /*const int size_dist=5;
@@ -293,9 +289,7 @@ void main()
 
 
 
-	//-----add new candidate-----	
-	//c1.Add(can);	 
-	//---------------------------
+	
 
 
 	 //-------------edit candidate-------
@@ -316,8 +310,7 @@ void main()
 	 cout << "3 - округ\n";
 	 cout << "4 - номер в списку\n";
 	 cout << "5 - дату реєстрації\n";
-	 cout << "6 - рейтинг\n";
-	 cout << "7 - кількість отриманих голосів\n";
+	 cout << "6 - кількість отриманих голосів\n";
 
 	 int choice;
 	 cin >> choice;
@@ -366,15 +359,8 @@ void main()
 		 (*it).date = newdate;
 		 break;
 	 }
+	 
 	 case 6:
-	 {
-		 cout << "Введіть новий рейтинг:\n";
-		 int newrating;
-		 cin >> newrating;
-		 (*it).rating = newrating;
-		 break;
-	 }
-	 case 7:
 	 {
 		 cout << "Введіть нову кількість голосів:\n";
 		 int newvotes;
@@ -386,17 +372,17 @@ void main()
 		 cout << "Хибний вибір!";
 		 break;
 	 }*/
-	 // --------------------------------end of edit candidate
+	 // ----------------end of edit candidate---------
 
 
 	 // ---------delete to argument--------
 	 /*int temp = 0;
-	 cout << "Enter num in list for delete";
+	 cout << "Enter votes for delete";
 	 cin >> temp;
-	 can.erase(remove_if(can.begin(),can.end(), [temp](const Candidate& c) { return c.num ==temp;}), end(can));*/
+	 can.erase(remove_if(can.begin(),can.end(), [temp](const Candidate& c) { return c.votes ==temp;}), end(can));*/
 
 	 //------------delete to surname----!!!!
-	 /*string surname;
+	/* string surname;
 	 cout << "Enter surname for delete";
 	 cin >> surname;
 	 can.erase(remove_if(can.begin(), can.end(), [surname](const Candidate& c)
@@ -415,6 +401,25 @@ void main()
 
 
 	 //-----------out to console vector------------
+
+	 //for (auto it = can.begin(); it < can.end(); ++it)
+	 //{
+
+		// cout << setw(2) << " ";
+		// cout << left << (*it).candidate;
+		// cout << setw(2) << " ";
+		// cout << left << setw(20) << (*it).party;
+		// cout << left << setw(10) << (*it).district;
+		// cout << left << setw(9) << (*it).num;
+		// cout << left << setw(16) << (*it).date;
+		// cout << left << setw(9) << fixed << setprecision(2) << (*it).rating;
+		// cout << left << setw(6) << (*it).votes << endl;
+
+	 //}
+	 //cout << endl;
+
+
+
 	 /*TableCap();
 
 	  for (auto it = can.begin(); it < can.end(); ++it)
