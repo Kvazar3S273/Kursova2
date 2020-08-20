@@ -11,8 +11,6 @@
 #include <algorithm>
 #include <ctime>
 
- 
-
 
 using namespace std;
 void Ukr()	
@@ -65,8 +63,6 @@ public:
 	friend ostream& operator<< (ostream& out, const Person& pers);
 	friend istream& operator>> (istream& is,  Person& pers);	
 	friend bool operator ==(const Person& a, const Person& b);
-	
-
 };
 
 ostream& operator<< (ostream& out, const Person& pers)	//overload of operator << for person
@@ -92,8 +88,6 @@ bool operator == (const Person& c, const Person& b)
 	return(c == b);
 }
 
-
-
 class Candidate		//class Candidate - the main class!!!
 {
 public:
@@ -104,105 +98,11 @@ public:
 	double rating;
 	int votes;
 	string date;
-//public:
-
 	
 	string GetSurname()
 	{
 		return(candidate.GetSurname());
 	}
-
-	/*void Add(vector<Candidate>& can)
-	{
-		Candidate c;
-	
-		cout << "Введіть через ентер прізвище, ім'я, по-батькові кандидата" << endl;
-		cin >> c.candidate;
-		cout << "Введіть номер ,який відповідає партії" << endl;
-		int result=0;		
-		cout << "Choose number for party from this list:" << endl;
-		cout << "Choose '1' to select party <<Наше майбутнє >>" << endl;
-		cout << "Choose '2' to select party <<Багаті депутати >>" << endl;
-		cout << "Choose '3' to select party <<Невпевненість >>" << endl;
-		cout << "Choose '4' to select party <<Сині обличчя >>" << endl;
-		cout << "Choose '5' to select party <<Народний союз >>" << endl;
-		cout << "Choose '6' to select party <<Бурштиновий рух >>" << endl;
-		cout << "Choose '7' to select party <<Зелені дуби >>" << endl;
-		cout << "Choose '8' to select party <<Проти всіх >>" << endl;
-		cin >> result;
-		switch (result)
-		{
-		case 1:
-		{
-			string newname="Наше майбутнє";
-			cout << "Ви вибрали партію <<Наше майбутнє>>" << endl;
-			c.party = newname;
-			break;
-		}
-		case 2:
-		{
-			string newname = "Багаті депутати";
-			cout << "Ви вибрали партію <<Багаті депутати>>"<<endl;
-			c.party = newname;
-			break;
-		}
-		case 3:
-		{
-			string newname = "Невпевненість";
-			cout << "Ви вибрали партію <<Невпевненість>>"<<endl;
-			c.party = newname;
-			break;
-		}
-		case 4:
-		{
-			string newname = "Сині обличчя";
-			cout << "Ви вибрали партію <<Сині обличчя>>"<<endl;
-			c.party = newname;
-			break;
-		}
-		case 5:
-		{
-			string newname = "Народний союз";
-			cout << "Ви вибрали партію <<Народний союз>>"<<endl;
-			c.party = newname;
-			break;
-		}
-		case 6:
-		{
-			string newname = "Бурштиновий рух";
-			cout << "Ви вибрали партію <<Бурштиновий рух>>"<<endl;
-			c.party = newname;
-			break;
-		}
-		case 7:
-		{
-			string newname = "Зелені дуби"; cout << "Ви вибрали партію <<Зелені дуби>>"<<endl; 	c.party = newname;	break;
-		}
-		case 8:
-		{
-			string newname = "Проти всіх";
-			cout << "Ви вибрали партію <<Проти всіх>>"<<endl;
-			c.party = newname;
-			break;
-		}
-		default:
-		{
-			cout << " Wrong way! ";
-			break;
-		}
-		}
-		cout << "Введіть округ кандидата" << endl;
-		cin >> c.district;
-		cout << "Введіть номер кандидата в бюлетені" << endl;
-		cin >> c.num;
-		cout << "Введіть дату реєстрації кандидата у вигляді ДД-ММ-РРРР" << endl;
-		cin >> c.date;		
-		cout << "Введіть кількість голосів, відданих за кандидата" << endl;
-		cin >> c.votes;
-		can.push_back(c);
-
-	}*/
-	
 
 	friend ostream& operator<< (ostream& out, const Candidate& cand);
 	friend istream& operator>> (istream& is,  Candidate& cand);
@@ -219,20 +119,17 @@ public:
 		
 	friend bool operator==(const Candidate& a, const string& b);
 	friend bool operator!=(const Candidate& a, const string &b);
-	
 };
 
 bool operator==(const Candidate& a, const string& b)
 {
 	return (a.candidate.name == b || a.candidate.patronymic == b || a.candidate.surname == b || a.date == b||a.party==b);
-
 }
 
  bool operator!=(const Candidate& a, const string& b)
  {
 	 return (a.candidate.name != b || a.candidate.patronymic != b || a.candidate.surname != b||
 		 a.date != b || a.party != b);
-
  }
 
  bool name(Candidate a, Candidate b)//search by surname.
@@ -265,7 +162,6 @@ bool operator>(const Candidate& c, const Candidate& b)
 	return(c.num > b.num || c.votes > b.votes || c.district > b.district || c.rating > b.rating);
 }
 
-
  bool operator == (const Candidate& c, const int& b)
 {
 	 return(c.num == b);
@@ -275,20 +171,15 @@ bool operator>(const Candidate& c, const Candidate& b)
 	 //return(c.num == b || c.votes == b || c.district == b || c.rating == b);
 }
 
- 
-
 bool compared(Candidate& a, Candidate& b) //sort by name.
 {
 	return a.candidate.GetName() < b.candidate.GetName();
-
 }
 
 bool compare_by_surname(Candidate& a, Candidate& b) //sort by surname.
 {
 	return a.candidate.GetSurname() < b.candidate.GetSurname();
-	
 }
-
 
 bool compare_by_party(Candidate& a, Candidate& b) //sort by party.
 {
@@ -321,9 +212,6 @@ void readFile(vector <Candidate>& c, ifstream& file)
 		file.close();
 	}
 }
-
-
-
 
 void TableCap()
 {
@@ -392,10 +280,7 @@ void TableCapWinners()
 	out << cand.votes << endl;
 
 	return out;
-
-
 }
-
 
   istream& operator>>(istream& is, Candidate& cand)
   {	
@@ -410,8 +295,3 @@ void TableCapWinners()
       return is;
    
   }
-
-
-  
-
-  
