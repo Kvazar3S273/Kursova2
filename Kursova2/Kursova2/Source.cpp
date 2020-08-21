@@ -4,7 +4,6 @@ void main()
 {
 	srand(time(NULL));
 	Ukr();
-	//Candidate c1;
 	vector<Candidate> can;
 	vector<Candidate>::iterator it;
 
@@ -16,7 +15,7 @@ void main()
 	//-----------out to console vector------------
 	TableCap();
 	int sum = 0;
-	
+
 
 	for (it = can.begin(); it < can.end(); ++it)
 	{
@@ -33,15 +32,15 @@ void main()
 		cout << left << setw(10) << (*it).district;
 		cout << left << setw(9) << (*it).num;
 		cout << left << setw(16) << (*it).date;
-		cout << left << setw(9) << fixed<< setprecision(2) <<(*it).rating;
+		cout << left << setw(9) << fixed << setprecision(2) << (*it).rating;
 		cout << left << setw(6) << (*it).votes << endl;
-		
+
 	}
 	/*cout << endl;
 	Color(12);
 	cout << "Final sum of votes are  " << sum << endl;
 	Color(7);*/
-	
+
 	Color(14);
 	cout << "\n                                                             Всього голосів по всіх округах: ";
 	Color(12);
@@ -49,9 +48,8 @@ void main()
 	Color(7);
 	cout << "\n\n";
 
-	
+
 	//--------------add new candidate--------------------------------	
-	//c1.Add(can);	
 
 	//Candidate c;
 
@@ -127,21 +125,20 @@ void main()
 	//can.push_back(c);
 
 	//
-	//int s_ = 0;//find sum;
-	//double max_ = 0;//find max;
-	//double t_ = 0;
+	//int s1 = 0;//find sum;
+	//double max1 = 0;//find max;
+	//double t1 = 0;
 
 	//for (it = can.begin(); it != can.end(); it++)
 	//{
 	//	if ((*it).district == c.district)
 	//	{
-	//		s_ += (*it).votes;
+	//		s1 += (*it).votes;
 	//	}
 	//}
 	//
 	//cout << endl;
-	//int col;
-	//for (it = can.begin(), col = 119; it != can.end(); col += 17, it++)
+	//for (it = can.begin(); it != can.end(); it++)
 	//{
 	//	sort(can.begin(), can.end(), [](const Candidate& lhs, const Candidate& rhs)
 	//		{
@@ -150,8 +147,8 @@ void main()
 
 	//	if ((*it).district == c.district)
 	//	{
-	//		(*it).rating = (double)(*it).votes * 100 / s_;
-	//		t_ += (*it).rating;
+	//		(*it).rating = (double)(*it).votes * 100 / s1;
+	//		t1 += (*it).rating;
 	//	}		
 	//}
 
@@ -159,9 +156,9 @@ void main()
 	//{		
 	//	if ((*it).district == c.district)
 	//	{
-	//		if (max_ < (*it).rating)
+	//		if (max1 < (*it).rating)
 	//		{
-	//			max_ = (*it).rating;
+	//			max1 = (*it).rating;
 	//		}
 	//	}
 	//}
@@ -284,112 +281,115 @@ void main()
 
 
 	//--------------search by district------------
-	//Color(12);
-	//cout << "\t---------------------------------------------------------------------------" << endl;
-	//Color(7);
-	//cout << "\tВведіть номер округу, щоб побачити всіх кандидатів, що по ньому балотуються" << endl;
-	//cout << "\t                     (доступні округи: 234..238)" << endl;
-	//Color(12);
-	//cout << "\t---------------------------------------------------------------------------" << endl;
-	//Color(7);
-	//int distr = 0;
-	//int s = 0;//find sum;
-	//double max = 0;//find max;
-	//double t = 0;
-	//cin >> distr;
 
-	//try
-	//{
-	//	if (distr < 234 || distr>238)
-	//		throw "Ви вийшли за межі рекомендованого діапазону округів!";
-	//}
-	//catch (const char* exception)
-	//{
-	//	cout << exception << endl;
-	//}
+	Color(12);
+	cout << "\t---------------------------------------------------------------------------" << endl;
+	Color(7);
+	cout << "\tВведіть номер округу, щоб побачити всіх кандидатів, що по ньому балотуються" << endl;
+	cout << "\t                     (доступні округи: 234..238)" << endl;
+	Color(12);
+	cout << "\t---------------------------------------------------------------------------" << endl;
+	Color(7);
+	int distr = 0;
+	int s2= 0;//find sum;
+	double max2 = 0;//find max;
+	double t2 = 0;
+	cin >> distr;
 
-	//for (it = can.begin(); it != can.end(); it++)
-	//{
-	//	
-	//	if ((*it).district == distr)
-	//	{			
-	//		s += (*it).votes;
-	//	}
-	//}
-	//
-	//cout << endl;
-	//TableCapDistrict();
-	//int col;
-	//for (it = can.begin(), col = 119; it != can.end(); col += 17, it++)
-	//{
-	//	sort(can.begin(), can.end(), [](const Candidate& lhs, const Candidate& rhs)
-	//			{
-	//			return lhs.rating > rhs.rating;
-	//			});	
+	try
+	{
+		if (distr < 234 || distr>238)
+			throw "Ви вийшли за межі рекомендованого діапазону округів!";
+	}
+	catch (const char* exception)
+	{
+		cout << exception << endl;
+	}
 
-	//	if ((*it).district == distr)
-	//	{
-	//		
-	//		cout << setw(2) << " ";
-	//		cout << left << (*it).candidate;
-	//		cout << setw(2) << " ";
-	//		cout << left << setw(24) << (*it).party;
-	//		cout << left << setw(9) << (*it).num;
-	//		(*it).rating = (double)(*it).votes * 100 / s;
-	//		cout << left << setw(6) << (*it).votes << "\t";
-	//		cout << left << setw(9) <<fixed << setprecision(2) << (*it).rating;
-	//		t += (*it).rating;
-	//		for (int i = 0; i < (*it).rating / 3; i++)
-	//		{
-	//			Color(col);
-	//			cout << " ";
-	//			Color(7);
-	//		}
-	//		cout << endl;
+	for (it = can.begin(); it != can.end(); it++)
+	{
+		
+		if ((*it).district == distr)
+		{			
+			s2 += (*it).votes;
+		}
+	}
+	
+	cout << endl;
+	TableCapDistrict();
+	int col;
+	for (it = can.begin(), col= 119; it != can.end(); col += 17, it++)
+	{
+		sort(can.begin(), can.end(), [](const Candidate& lhs, const Candidate& rhs)
+				{
+				return lhs.rating > rhs.rating;
+				});	
 
-	//		
-	//	}		
-	//}
-	//Color(14);
-	//cout << "                              Всього голосів по даному округу: ";
-	//Color(10);
-	//cout << s << endl;
-	//Color(7);
-	//
+		if ((*it).district == distr)
+		{
+			
+			cout << setw(2) << " ";
+			cout << left << (*it).candidate;
+			cout << setw(2) << " ";
+			cout << left << setw(24) << (*it).party;
+			cout << left << setw(9) << (*it).num;
+			(*it).rating = (double)(*it).votes * 100 / s2;
+			cout << left << setw(6) << (*it).votes << "\t";
+			cout << left << setw(9) <<fixed << setprecision(2) << (*it).rating;
+			t2 += (*it).rating;
+			for (int i = 0; i < (*it).rating / 3; i++)
+			{
+				Color(col);
+				cout << " ";
+				Color(7);
+			}
+			cout << endl;
 
-	//for (it = can.begin(); it != can.end(); it++)
-	//{		
-	//	if ((*it).district == distr)
-	//	{
-	//		
-	//		if (max < (*it).rating)
-	//		{
-	//			max = (*it).rating;
-	//		}
+			
+		}		
+	}
+	Color(14);
+	cout << "                              Всього голосів по даному округу: ";
+	Color(10);
+	cout << s2 << endl;
+	Color(7);
+	
 
-	//	}
-	//	if ((*it).rating == max)
-	//	{
-	//		cout << "\n  Переможець в даному окрузі:\t";
-	//		Color(12);
-	//		cout << (*it).candidate;
-	//		Color(7);
-	//		cout << " з результатом: ";
-	//		Color(12);
-	//		cout << (*it).rating << " %" << endl;
-	//		Color(7);
-	//	}
+	for (it = can.begin(); it != can.end(); it++)
+	{		
+		if ((*it).district == distr)
+		{
+			
+			if (max2 < (*it).rating)
+			{
+				max2 = (*it).rating;
+			}
 
-	//}
+		}
+		if ((*it).rating == max2)
+		{
+			cout << "\n  Переможець в даному окрузі:\t";
+			Color(12);
+			cout << (*it).candidate;
+			Color(7);
+			cout << " з результатом: ";
+			Color(12);
+			cout << (*it).rating << " %" << endl;
+			Color(7);
+		}
+
+	}
+
+
 	////----------------------------------------
 
 
-        
-	
-    
+
+
+
 	//----------output winners--------------
   /*  const int size_dist=5;
-   	int	res[size_dist] = {234,235,236,237,238};
+	int	res[size_dist] = {234,235,236,237,238};
 	double max[size_dist];
 	Color(12);
 	cout << "\t\t\tПереможці виборів по округах\n" << endl;
@@ -412,7 +412,7 @@ void main()
 				}
 			}
 		}
-		
+
 		for (it = can.begin(); it != can.end(); it++)
 		{
 			if ((*it).district == res[i])
@@ -426,174 +426,214 @@ void main()
 					cout << (*it).votes << endl;
 				}
 			}
-		}		
+		}
 	}*/
 	//-------------------------------
-	
+
 
 	 //-------------edit candidate-------
 
-	 cout << "\n\nВведіть повністю прізвище кандидата для редагування інформації по ньому" << endl;
-	 string _surname;
-	 getline(cin, _surname);
-	 auto flag = 0;
-	
-	 for (it = can.begin(); it != can.end(); it++)
-	 {   
-		 if (_stricmp((*it).candidate.surname.c_str(), _surname.c_str()) == 0)
-		 {
-			 flag = 1;
-			 cout << "Що Ви хочете редагувати?\n";
-			 cout << "1 - прізвище, ім'я, по-батькові\n";
-			 cout << "2 - партію\n";
-			 cout << "3 - округ\n";
-			 cout << "4 - номер в списку\n";
-			 cout << "5 - дату реєстрації\n";
-			 cout << "6 - кількість отриманих голосів\n";
+	//cout << "\n\nВведіть повністю прізвище кандидата для редагування інформації по ньому" << endl;
+	//string _surname;
+	//getline(cin, _surname);
+	//auto flag = 0;
 
-			 int choice;
-			 cin >> choice;
-			 switch (choice)
-			 {
-			 case 1:
-			 {
-				 cout << "Введіть нове прізвище, ім'я, по-батькові кандидата через Ентер:\n";
-				 string newsurname, newname, newpatronymic;
-				 cin >> newsurname >> newname >> newpatronymic;
-				 (*it).candidate.surname = newsurname;
-				 (*it).candidate.name = newname;
-				 (*it).candidate.patronymic = newpatronymic;
-				 break;
-			 }
-			 case 2:
-			 {
-				 cout << "Введіть нову назву партії:\n";
-				 string newparty;
-				 cin.ignore(32767, '\n');
-				 getline(cin, newparty);
-				 (*it).party = newparty;
-				 break;
-			 }
-			 case 3:
-			 {
-				 cout << "Введіть новий округ:\n";
-				 int newdistrict;
-				 cin >> newdistrict;
-				 (*it).district = newdistrict;
-				 break;
-			 }
-			 case 4:
-			 {
-				 cout << "Введіть новий номер у списку:\n";
-				 int newnum;
-				 cin >> newnum;
-				 (*it).num = newnum;
-				 break;
-			 }
-			 case 5:
-			 {
-				 cout << "Введіть нову дату реєстрації:\n";
-				 string newdate;
-				 cin >> newdate;
-				 (*it).date = newdate;
-				 break;
-			 }
+	//for (it = can.begin(); it != can.end(); it++)
+	//{
+	//	if (_stricmp((*it).candidate.surname.c_str(), _surname.c_str()) == 0)
+	//	{
+	//		flag = 1;
+	//		cout << "Що Ви хочете редагувати?\n";
+	//		cout << "1 - прізвище, ім'я, по-батькові\n";
+	//		cout << "2 - партію\n";
+	//		cout << "3 - округ\n";
+	//		cout << "4 - номер в списку\n";
+	//		cout << "5 - дату реєстрації\n";
+	//		cout << "6 - кількість отриманих голосів\n";
 
-			 case 6:
-			 {
-				 cout << "Введіть нову кількість голосів:\n";
-				 int newvotes;
-				 cin >> newvotes;
-				 (*it).votes = newvotes;
-				 break;
-			 }
-			 default:
-				 cout << "Хибний вибір!";
-				 break;
+	//		int choice;
+	//		cin >> choice;
+	//		switch (choice)
+	//		{
+	//		case 1:
+	//		{
+	//			cout << "Введіть нове прізвище, ім'я, по-батькові кандидата через Ентер:\n";
+	//			string newsurname, newname, newpatronymic;
+	//			cin >> newsurname >> newname >> newpatronymic;
+	//			(*it).candidate.surname = newsurname;
+	//			(*it).candidate.name = newname;
+	//			(*it).candidate.patronymic = newpatronymic;
+	//			break;
+	//		}
+	//		case 2:
+	//		{
+	//			cout << "Введіть нову назву партії:\n";
+	//			string newparty;
+	//			cin.ignore(32767, '\n');
+	//			getline(cin, newparty);
+	//			(*it).party = newparty;
+	//			break;
+	//		}
+	//		case 3:
+	//		{
+	//			cout << "Введіть новий округ:\n";
+	//			int newdistrict;
+	//			cin >> newdistrict;
+	//			(*it).district = newdistrict;
+	//			break;
+	//		}
+	//		case 4:
+	//		{
+	//			cout << "Введіть новий номер у списку:\n";
+	//			int newnum;
+	//			cin >> newnum;
+	//			(*it).num = newnum;
+	//			break;
+	//		}
+	//		case 5:
+	//		{
+	//			cout << "Введіть нову дату реєстрації:\n";
+	//			string newdate;
+	//			cin >> newdate;
+	//			(*it).date = newdate;
+	//			break;
+	//		}
 
-			 }
-		 }
-		
-		 
-	 }
-	 if (flag == 0)
-	 {
-		 cout << "Кандидата з таким прізвищем не існує!";
-	 }
-	 // ----------------end of edit candidate---------
+	//		case 6:
+	//		{
+	//			cout << "Введіть нову кількість голосів:\n";
+	//			int newvotes;
+	//			cin >> newvotes;
+	//			(*it).votes = newvotes;
+	//			break;
+	//		}
+	//		default:
+	//			cout << "Хибний вибір!";
+	//			break;
+
+	//		}
+	//	}
 
 
-	 // ---------delete to argument--------
-	 /*int temp = 0;
-	 cout << "Введіть кількість голосів";
-	 cin >> temp;
-	 can.erase(remove_if(can.begin(),can.end(), [temp](const Candidate& c) { return c.votes ==temp;}), end(can));*/
+	//}
+	//if (flag == 0)
+	//{
+	//	cout << "Кандидата з таким прізвищем не існує!";
+	//}
+	//
+	//
+	//int s3 = 0;//find sum;
+	//double max3 = 0;//find max;
+	//double t3 = 0;
 
-	 //------------delete to surname----!!!!
-	 /*string surname;
-	 cout << "Введіть прізвище кандидата, якого Ви хочете видалити \n";
-	 cin >> surname;
-	 can.erase(remove_if(can.begin(), can.end(), [surname](const Candidate& c)
-	 { return c.candidate.surname == surname; }), end(can)); */
+	//for (it = can.begin(); it != can.end(); it++)
+	//{
+	//	if ((*it).district == (*it).district)
+	//	{
+	//		s3 += (*it).votes;
+	//	}
+	//}
+	//
+	//cout << endl;
+	//for (it = can.begin(); it != can.end(); it++)
+	//{
+	//	sort(can.begin(), can.end(), [](const Candidate& lhs, const Candidate& rhs)
+	//		{
+	//			return lhs.rating > rhs.rating;
+	//		});
 
+	//	if ((*it).district == (*it).district)
+	//	{
+	//		(*it).rating = (double)(*it).votes * 100 / s3;
+	//		t3 += (*it).rating;
+	//	}		
+	//}
 
-	 //----------sort by district---------
-	 //sort(can.begin(), can.end(),// sort by district.
-	 //	[](const Candidate& a, const Candidate& b) -> bool
-	 //	{
-	 //		return a.district < b.district;
-	 //	});
+	//for (it = can.begin(); it != can.end(); it++)
+	//{		
+	//	if ((*it).district == (*it).district)
+	//	{
+	//		if (max3 < (*it).rating)
+	//		{
+	//			max3 = (*it).rating;
+	//		}
+	//	}
+	//}
 
-	 //---------sort by surname-----
-	 //sort(can.begin(), can.end(),compare_by_surname);
-
-
-	 //-----------out to console vector------------
-
-	 //for (auto it = can.begin(); it < can.end(); ++it)
-	 //{
-
-		// cout << setw(2) << " ";
-		// cout << left << (*it).candidate;
-		// cout << setw(2) << " ";
-		// cout << left << setw(20) << (*it).party;
-		// cout << left << setw(10) << (*it).district;
-		// cout << left << setw(9) << (*it).num;
-		// cout << left << setw(16) << (*it).date;
-		// cout << left << setw(9) << fixed << setprecision(2) << (*it).rating;
-		// cout << left << setw(6) << (*it).votes << endl;
-
-	 //}
-	 //cout << endl;
-
-
-
-	 //TableCap();
-
-	 // for (auto it = can.begin(); it < can.end(); ++it)
-	 //{
-
-		// cout << setw(2) << " ";
-		// cout << left << (*it).candidate;
-		// cout << setw(2) << " ";
-		// cout << left << setw(20) << (*it).party;
-		// cout << left << setw(10) << (*it).district;
-		// cout << left << setw(9) << (*it).num;
-		// cout << left << setw(16) << (*it).date;
-		// cout << left << setw(9) << (*it).rating;
-		// cout << left << setw(6) << (*it).votes << endl;
-
-	 //}
-	 //cout << endl;
-	
-	 //----------------------------
+	// ----------------end of edit candidate---------
 
 
-	 //----------------save to file----------
-	 ofstream top("new.txt", ios_base::trunc);
-	 copy(can.begin(), can.end(), ostream_iterator<Candidate>(top));
-	 top.close();
-	 
+	// ---------delete to argument--------
+	/*int temp = 0;
+	cout << "Введіть кількість голосів";
+	cin >> temp;
+	can.erase(remove_if(can.begin(),can.end(), [temp](const Candidate& c) { return c.votes ==temp;}), end(can));*/
+
+	//------------delete to surname----!!!!
+	/*string surname;
+	cout << "Введіть прізвище кандидата, якого Ви хочете видалити \n";
+	cin >> surname;
+	can.erase(remove_if(can.begin(), can.end(), [surname](const Candidate& c)
+	{ return c.candidate.surname == surname; }), end(can)); */
+
+
+	//----------sort by district---------
+	//sort(can.begin(), can.end(),// sort by district.
+	//	[](const Candidate& a, const Candidate& b) -> bool
+	//	{
+	//		return a.district < b.district;
+	//	});
+
+	//---------sort by surname-----
+	//sort(can.begin(), can.end(),compare_by_surname);
+
+
+	//-----------out to console vector------------
+
+	//for (auto it = can.begin(); it < can.end(); ++it)
+	//{
+
+	   // cout << setw(2) << " ";
+	   // cout << left << (*it).candidate;
+	   // cout << setw(2) << " ";
+	   // cout << left << setw(20) << (*it).party;
+	   // cout << left << setw(10) << (*it).district;
+	   // cout << left << setw(9) << (*it).num;
+	   // cout << left << setw(16) << (*it).date;
+	   // cout << left << setw(9) << fixed << setprecision(2) << (*it).rating;
+	   // cout << left << setw(6) << (*it).votes << endl;
+
+	//}
+	//cout << endl;
+
+
+
+	TableCap();
+
+	for (auto it = can.begin(); it < can.end(); ++it)
+	{
+
+		cout << setw(2) << " ";
+		cout << left << (*it).candidate;
+		cout << setw(2) << " ";
+		cout << left << setw(20) << (*it).party;
+		cout << left << setw(10) << (*it).district;
+		cout << left << setw(9) << (*it).num;
+		cout << left << setw(16) << (*it).date;
+		cout << left << setw(9) << (*it).rating;
+		cout << left << setw(6) << (*it).votes << endl;
+
+	}
+	cout << endl;
+
+	//----------------------------
+
+
+	//----------------save to file----------
+	ofstream top("new.txt", ios_base::trunc);
+	copy(can.begin(), can.end(), ostream_iterator<Candidate>(top));
+	top.close();
+
 
 
 }
