@@ -13,7 +13,7 @@
 
 
 using namespace std;
-void Ukr()	
+void Ukr()
 {
 	setlocale(LC_CTYPE, "ukr");
 	SetConsoleCP(1251);
@@ -22,6 +22,13 @@ void Ukr()
 void Color(int color)
 {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+}
+void SetPos(int x, int y)
+{
+	COORD cPos;
+	cPos.Y = y;
+	cPos.X = x;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), cPos);
 }
 class Person	//class of person (surname, name, patronymic)
 {
@@ -36,7 +43,7 @@ public:
 	}
 	void SetName()
 	{
-		this->name= name;
+		this->name = name;
 	}
 
 	string GetName()
@@ -47,7 +54,7 @@ public:
 	{
 		return patronymic;
 	}
-	Person(){}
+	Person() {}
 	Person(string surname, string name, string patronymic)
 	{
 		this->surname = surname;
@@ -61,7 +68,7 @@ public:
 		this->patronymic = patronymic;
 	}
 	friend ostream& operator<< (ostream& out, const Person& pers);
-	friend istream& operator>> (istream& is,  Person& pers);	
+	friend istream& operator>> (istream& is, Person& pers);
 	friend bool operator ==(const Person& a, const Person& b);
 };
 
@@ -73,7 +80,7 @@ ostream& operator<< (ostream& out, const Person& pers)	//overload of operator <<
 	return out;
 }
 
-istream& operator>> (istream& is,  Person& pers)	//overload of operator >> for person
+istream& operator>> (istream& is, Person& pers)	//overload of operator >> for person
 {
 	is >> pers.surname >> pers.name >> pers.patronymic;
 	return is;
@@ -98,44 +105,44 @@ public:
 	double rating;
 	int votes;
 	string date;
-	
+
 	string GetSurname()
 	{
 		return(candidate.GetSurname());
 	}
 
 	friend ostream& operator<< (ostream& out, const Candidate& cand);
-	friend istream& operator>> (istream& is,  Candidate& cand);
+	friend istream& operator>> (istream& is, Candidate& cand);
 	friend bool operator == (const Candidate& c, const int& b);
-	
-	friend bool operator != (const Candidate& c, const int& b); 
+
+	friend bool operator != (const Candidate& c, const int& b);
 	friend bool operator <(const Candidate& c, const Candidate& b);
 	friend bool operator >(const Candidate& c, const Candidate& b);
 	bool operator()(int val)const
 	{
-		return (val == district|| val == num|| 
-			val == rating|| val == votes);		
-	}	
-		
+		return (val == district || val == num ||
+			val == rating || val == votes);
+	}
+
 	friend bool operator==(const Candidate& a, const string& b);
-	friend bool operator!=(const Candidate& a, const string &b);
+	friend bool operator!=(const Candidate& a, const string& b);
 };
 
 bool operator==(const Candidate& a, const string& b)
 {
-	return (a.candidate.name == b || a.candidate.patronymic == b || a.candidate.surname == b || a.date == b||a.party==b);
+	return (a.candidate.name == b || a.candidate.patronymic == b || a.candidate.surname == b || a.date == b || a.party == b);
 }
 
- bool operator!=(const Candidate& a, const string& b)
- {
-	 return (a.candidate.name != b || a.candidate.patronymic != b || a.candidate.surname != b||
-		 a.date != b || a.party != b);
- }
+bool operator!=(const Candidate& a, const string& b)
+{
+	return (a.candidate.name != b || a.candidate.patronymic != b || a.candidate.surname != b ||
+		a.date != b || a.party != b);
+}
 
- bool name(Candidate a, Candidate b)//search by surname.
- {
-	 return a.candidate.GetSurname() == b.candidate.GetSurname();
- }
+bool name(Candidate a, Candidate b)//search by surname.
+{
+	return a.candidate.GetSurname() == b.candidate.GetSurname();
+}
 
 bool operator != (const Candidate& c, const int& b)
 {
@@ -145,7 +152,7 @@ bool operator != (const Candidate& c, const int& b)
 	return(c.votes != b);
 	//return(c.num != b || c.votes != b || c.district != b || c.rating != b);
 }
-bool operator<(const Candidate& c,const Candidate&b)
+bool operator<(const Candidate& c, const Candidate& b)
 {
 	/*return (c.district < b.district);
 	return(c.num < b.num);
@@ -162,13 +169,13 @@ bool operator>(const Candidate& c, const Candidate& b)
 	return(c.num > b.num || c.votes > b.votes || c.district > b.district || c.rating > b.rating);
 }
 
- bool operator == (const Candidate& c, const int& b)
+bool operator == (const Candidate& c, const int& b)
 {
-	 return(c.num == b);
-	 return(c.votes == b);
-	 return (c.district == b);
-	 return(c.rating == b);
-	 //return(c.num == b || c.votes == b || c.district == b || c.rating == b);
+	return(c.num == b);
+	return(c.votes == b);
+	return (c.district == b);
+	return(c.rating == b);
+	//return(c.num == b || c.votes == b || c.district == b || c.rating == b);
 }
 
 bool compared(Candidate& a, Candidate& b) //sort by name.
@@ -188,25 +195,26 @@ bool compare_by_party(Candidate& a, Candidate& b) //sort by party.
 
 void readFile(vector <Candidate>& c, ifstream& file)
 {
-	file.open("new.txt",ios::in);
+	file.open("new.txt", ios::in);
 	if (!file)
 	{
 		cout << "File not open" << endl;
 	}
 	else
-	{	Candidate can;
+	{
+		Candidate can;
 
-		while (file>>can.candidate)
-        {
+		while (file >> can.candidate)
+		{
 			file.ignore();
-			getline(file,can.party);
-			    file >> can.district,
+			getline(file, can.party);
+			file >> can.district,
 				file >> can.num,
 				file >> can.date,
 				file >> can.rating,
 				file >> can.votes;
-			    file.get();
-			
+			file.get();
+
 			c.push_back(can);
 		}
 		file.close();
@@ -233,6 +241,16 @@ void TableCapDistrict()
 	cout << "=================================================================================================\n";
 }
 
+void TableCapParty()
+{
+	cout << "====================================================================================\n";
+	Color(14);
+	cout << "|      Прізвище, і'мя,        | Округ |  Номер |     Дата     |   К-сть  | Рейтинг |" << endl;
+	cout << "|   по-батькові кандидата     |       |в списку|  реєстрації  |  голосів | в окрузі|" << endl;
+	Color(7);
+	cout << "====================================================================================\n";
+}
+
 void TableCapWinners()
 {
 	cout << "======================================================================\n";
@@ -243,7 +261,7 @@ void TableCapWinners()
 	cout << "======================================================================\n";
 }
 
-   ostream& operator<< (ostream& out, const Candidate& cand)	//overload of operator << for candidate
+ostream& operator<< (ostream& out, const Candidate& cand)	//overload of operator << for candidate
 {
 	/*out << "=============================================\n";
 	out << left << setw(18) << "№ п/п" << cand.num << endl;
@@ -256,42 +274,42 @@ void TableCapWinners()
 	out << left << setw(18) << "Рейтинг" << cand.rating << endl;
 	out << left << setw(18) << "Віддало голосів" << cand.votes << endl;
 	out << "=============================================\n";*/
-	 /*  
-	out << setw(2) << " ";
-	out << left << cand.candidate;
-	out << setw(2) << " ";
-	out << left << setw(20) << cand.party;
-	out << left << setw(10) << cand.district;
-	out << left << setw(9) << cand.num;
-	out << left << setw(16) << cand.date;
-	out << left << setw(9) << cand.rating;
-	out << left << setw(6) << cand.votes << endl;
+	/*
+   out << setw(2) << " ";
+   out << left << cand.candidate;
+   out << setw(2) << " ";
+   out << left << setw(20) << cand.party;
+   out << left << setw(10) << cand.district;
+   out << left << setw(9) << cand.num;
+   out << left << setw(16) << cand.date;
+   out << left << setw(9) << cand.rating;
+   out << left << setw(6) << cand.votes << endl;
 
-	return out;*/
+   return out;*/
 
-	out << cand.candidate.surname<<endl;
+	out << cand.candidate.surname << endl;
 	out << cand.candidate.name << endl;
 	out << cand.candidate.patronymic << endl;
-	out << cand.party<<endl;
+	out << cand.party << endl;
 	out << cand.district << endl;
-	out << cand.num<<endl;
-	out << cand.date<<endl;
-	out << cand.rating<<endl;
+	out << cand.num << endl;
+	out << cand.date << endl;
+	out << cand.rating << endl;
 	out << cand.votes << endl;
 
 	return out;
 }
 
-  istream& operator>>(istream& is, Candidate& cand)
-  {	
-	  
-	  is >> cand.candidate.surname>>cand.candidate.name>>cand.candidate.patronymic;
-	  is >> cand.party;
-	  is >> cand.district;
-	  is >> cand.num;
-	  is >> cand.date;
-	  is >> cand.rating;
-	  is >> cand.votes;
-      return is;
-   
-  }
+istream& operator>>(istream& is, Candidate& cand)
+{
+
+	is >> cand.candidate.surname >> cand.candidate.name >> cand.candidate.patronymic;
+	is >> cand.party;
+	is >> cand.district;
+	is >> cand.num;
+	is >> cand.date;
+	is >> cand.rating;
+	is >> cand.votes;
+	return is;
+
+}
