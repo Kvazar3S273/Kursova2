@@ -171,7 +171,7 @@ void main()
 
 
 	//---------------search by surname(lambda func.)--------
-	/*cout << "\n\nEnter surname of candidate to edit his info" << endl;
+	/*cout << "\n\nВведіть прізвище кандидата для перегляду інформації по ньому" << endl;
 	string name;
 	cin >> name;
 	it = find(can.begin(), can.end(),name);
@@ -190,7 +190,7 @@ void main()
 	//--------------------------------------------------
 
 	//--------------search by party------------
-	//cout << "Enter party and you will see all candidates of this pаrty" << endl;
+	//cout << "Введіть повну назву партії, щоб переглянути всіх кандидатів з цієї партії" << endl;
 	//string part;
 	//double suma = 0;	
 	//getline(cin,part);
@@ -388,7 +388,7 @@ void main()
 	
     
 	//----------output winners--------------
-   /* const int size_dist=5;
+    const int size_dist=5;
    	int	res[size_dist] = {234,235,236,237,238};
 	double max[size_dist];
 	Color(12);
@@ -427,16 +427,13 @@ void main()
 				}
 			}
 		}		
-	}*/
+	}
 	//-------------------------------
 	
 
-
-
-
 	 //-------------edit candidate-------
 
-	 /*cout << "\n\nВведіть повністю прізвище кандидата з великої літери для редагування інформації по ньому" << endl;
+	 /*cout << "\n\nВведіть повністю прізвище кандидата для редагування інформації по ньому" << endl;
 	 string _surname;
 	 cin >> _surname;
 
@@ -519,13 +516,13 @@ void main()
 
 	 // ---------delete to argument--------
 	 /*int temp = 0;
-	 cout << "Enter votes for delete";
+	 cout << "Введіть кількість голосів";
 	 cin >> temp;
 	 can.erase(remove_if(can.begin(),can.end(), [temp](const Candidate& c) { return c.votes ==temp;}), end(can));*/
 
 	 //------------delete to surname----!!!!
 	 /*string surname;
-	 cout << "Enter surname for delete \n";
+	 cout << "Введіть прізвище кандидата, якого Ви хочете видалити \n";
 	 cin >> surname;
 	 can.erase(remove_if(can.begin(), can.end(), [surname](const Candidate& c)
 	 { return c.candidate.surname == surname; }), end(can)); */
