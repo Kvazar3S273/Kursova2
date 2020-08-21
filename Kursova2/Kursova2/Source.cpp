@@ -523,21 +523,26 @@ void main()
 			getline(cin, _surname);
 			auto flag = 0;
 
-			it = find(can.begin(), can.end(), _surname);
-
-			cout << "\n\nЗнайдено по запиту:\n";
-			TableCap();
-			cout << setw(2) << " ";
-			cout << left << (*it).candidate;
-			cout << setw(2) << " ";
-			cout << left << setw(20) << (*it).party;
-			cout << left << setw(10) << (*it).district;
-			cout << left << setw(9) << (*it).num;
-			cout << left << setw(16) << (*it).date;
-			cout << left << setw(9) << fixed << setprecision(1) << (*it).rating;
-			cout << left << setw(6) << (*it).votes << endl;
-			cout << endl;
-
+			for (it = can.begin(); it != can.end(); it++)	//----Я ВЖЕ ЗРОБИВ - НЕ ТРЕБА ПЕРЕРОБЛЯТИ!!! :) 
+															//---ГЛЯНЬ 686 РЯДОК - ТАМ ТРЕБА ЦЕ САМЕ ПОПРАВИТИ - 
+															//---НЕ ВИДАЛЯЄ ПО ПРІЗВИЩУ БЕЗ РЕГІСТРА
+			{
+				if (_stricmp((*it).candidate.surname.c_str(), _surname.c_str()) == 0)
+				{
+					cout << "\n\nЗнайдено по запиту:\n";
+					TableCap();
+					cout << setw(2) << " ";
+					cout << left << (*it).candidate;
+					cout << setw(2) << " ";
+					cout << left << setw(20) << (*it).party;
+					cout << left << setw(10) << (*it).district;
+					cout << left << setw(9) << (*it).num;
+					cout << left << setw(16) << (*it).date;
+					cout << left << setw(9) << fixed << setprecision(1) << (*it).rating;
+					cout << left << setw(6) << (*it).votes << endl;
+					cout << endl;
+				}
+			}
 
 			for (it = can.begin(); it != can.end(); it++)
 			{
@@ -680,7 +685,7 @@ void main()
 			cin >> surname;
 			can.erase(remove_if(can.begin(), can.end(), [surname](const Candidate& c)
 				{ return c.candidate.surname == surname; }), end(can));
-			_getch();
+			//_getch();
 			break;
 		}
 		case '7':
@@ -689,74 +694,99 @@ void main()
 
 			Candidate c;
 
-			cout << "Введіть через (Enter) прізвище, ім'я, по-батькові кандидата" << endl;
+			Color(12);
+			cout << "\n\n\t-------------------------------------------------------------" << endl;
+			Color(15);
+			cout << "\t Введіть через (Enter) прізвище, ім'я, по-батькові кандидата" << endl;
+			Color(12);
+			cout << "\t-------------------------------------------------------------" << endl;
+			Color(7);
 			cin >> c.candidate;
-			cout << "Введіть номер, який відповідає партії" << endl;
+
+			Color(14);
+			cout << "\n\n\t---------------------------------------" << endl;
+			Color(7);
+			cout << "\t Введіть номер, який відповідає партії\n\n";
+			cout << "\t 1 - <<Наше майбутнє>>\n";
+			cout << "\t 2 - <<Багаті депутати>>\n";
+			cout << "\t 3 - <<Невпевненість>>\n";
+			cout << "\t 4 - <<Сині обличчя>>\n";
+			cout << "\t 5 - <<Народний союз>>\n";
+			cout << "\t 6 - <<Бурштиновий рух>>\n";
+			cout << "\t 7 - <<Зелені дуби>>\n";
+			cout << "\t 8 - <<Проти всіх>>\n";
+			Color(14);
+			cout << "\t---------------------------------------" << endl;
+			Color(7);
 			int result = 0;
-			cout << "1 - <<Наше майбутнє >>" << endl;
-			cout << "2 - <<Багаті депутати >>" << endl;
-			cout << "3 - <<Невпевненість >>" << endl;
-			cout << "4 - <<Сині обличчя >>" << endl;
-			cout << "5 - <<Народний союз >>" << endl;
-			cout << "6 - <<Бурштиновий рух >>" << endl;
-			cout << "7 - <<Зелені дуби >>" << endl;
-			cout << "8 - <<Проти всіх >>" << endl;
 			cin >> result;
 			switch (result)
 			{
 			case 1:
 			{
-				string newname = "Наше майбутнє"; cout << "Ви вибрали партію <<Наше майбутнє>>" << endl; c.party = newname;
+				string newname = "Наше майбутнє"; cout << "\n\tВи вибрали партію <<Наше майбутнє>>" << endl; c.party = newname;
 				break;
 			}
 			case 2:
 			{
-				string newname = "Багаті депутати"; cout << "Ви вибрали партію <<Багаті депутати>>" << endl; c.party = newname;
+				string newname = "Багаті депутати"; cout << "\n\tВи вибрали партію <<Багаті депутати>>" << endl; c.party = newname;
 				break;
 			}
 			case 3:
 			{
-				string newname = "Невпевненість"; cout << "Ви вибрали партію <<Невпевненість>>" << endl; c.party = newname;
+				string newname = "Невпевненість"; cout << "\n\tВи вибрали партію <<Невпевненість>>" << endl; c.party = newname;
 				break;
 			}
 			case 4:
 			{
-				string newname = "Сині обличчя"; cout << "Ви вибрали партію <<Сині обличчя>>" << endl; c.party = newname;
+				string newname = "Сині обличчя"; cout << "\n\tВи вибрали партію <<Сині обличчя>>" << endl; c.party = newname;
 				break;
 			}
 			case 5:
 			{
-				string newname = "Народний союз"; cout << "Ви вибрали партію <<Народний союз>>" << endl; c.party = newname;
+				string newname = "Народний союз"; cout << "\n\tВи вибрали партію <<Народний союз>>" << endl; c.party = newname;
 				break;
 			}
 			case 6:
 			{
-				string newname = "Бурштиновий рух"; cout << "Ви вибрали партію <<Бурштиновий рух>>" << endl; c.party = newname;
+				string newname = "Бурштиновий рух"; cout << "\n\tВи вибрали партію <<Бурштиновий рух>>" << endl; c.party = newname;
 				break;
 			}
 			case 7:
 			{
-				string newname = "Зелені дуби"; cout << "Ви вибрали партію <<Зелені дуби>>" << endl; 	c.party = newname;
+				string newname = "Зелені дуби"; cout << "\n\tВи вибрали партію <<Зелені дуби>>" << endl; 	c.party = newname;
 				break;
 			}
 			case 8:
 			{
-				string newname = "Проти всіх"; cout << "Ви вибрали партію <<Проти всіх>>" << endl; c.party = newname;
+				string newname = "Проти всіх"; cout << "\n\tВи вибрали партію <<Проти всіх>>" << endl; c.party = newname;
 				break;
 			}
 			default:
 			{
-				cout << " Неправильний вибір! ";
+				cout << "\tНеправильний вибір! ";
 				break;
 			}
 			}
-			cout << "Введіть округ кандидата" << endl;
+
+			Color(14); cout << "\n\t---------------------------------------" << endl; Color(7);
+			cout << "\tВведіть округ кандидата" << endl;
+			Color(14); cout << "\t---------------------------------------" << endl; Color(7);
 			cin >> c.district;
-			cout << "Введіть номер кандидата в бюлетені" << endl;
+
+			Color(14); cout << "\n\t---------------------------------------" << endl; Color(7);
+			cout << "\tВведіть номер кандидата в бюлетені" << endl;
+			Color(14); cout << "\t---------------------------------------" << endl; Color(7);
 			cin >> c.num;
-			cout << "Введіть дату реєстрації кандидата у вигляді ДД.ММ.РРРР" << endl;
+
+			Color(14); cout << "\n\t-----------------------------------------------------------" << endl; Color(7);
+			cout << "\tВведіть дату реєстрації кандидата у вигляді ДД.ММ.РРРР" << endl;
+			Color(14); cout << "\t-----------------------------------------------------------" << endl; Color(7);
 			cin >> c.date;
-			cout << "Введіть кількість голосів, відданих за кандидата" << endl;
+
+			Color(14); cout << "\n\t---------------------------------------" << endl; Color(7);
+			cout << "\tВведіть кількість голосів, відданих за кандидата" << endl;
+			Color(14); cout << "\t---------------------------------------" << endl; Color(7);
 			cin >> c.votes;
 			can.push_back(c);
 
