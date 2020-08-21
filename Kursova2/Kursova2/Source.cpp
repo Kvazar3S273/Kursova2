@@ -355,7 +355,7 @@ void main()
 	//Color(10);
 	//cout << s << endl;
 	//Color(7);
-	////cout << "Check,% "<< t << endl;
+	//
 
 	//for (it = can.begin(); it != can.end(); it++)
 	//{		
@@ -388,7 +388,7 @@ void main()
 	
     
 	//----------output winners--------------
-    const int size_dist=5;
+  /*  const int size_dist=5;
    	int	res[size_dist] = {234,235,236,237,238};
 	double max[size_dist];
 	Color(12);
@@ -427,90 +427,99 @@ void main()
 				}
 			}
 		}		
-	}
+	}*/
 	//-------------------------------
 	
 
 	 //-------------edit candidate-------
 
-	 /*cout << "\n\nВведіть повністю прізвище кандидата для редагування інформації по ньому" << endl;
+	 cout << "\n\nВведіть повністю прізвище кандидата для редагування інформації по ньому" << endl;
 	 string _surname;
-	 cin >> _surname;
+	 getline(cin, _surname);
+	 auto flag = 0;
+	
+	 for (it = can.begin(); it != can.end(); it++)
+	 {   
+		 if (_stricmp((*it).candidate.surname.c_str(), _surname.c_str()) == 0)
+		 {
+			 flag = 1;
+			 cout << "Що Ви хочете редагувати?\n";
+			 cout << "1 - прізвище, ім'я, по-батькові\n";
+			 cout << "2 - партію\n";
+			 cout << "3 - округ\n";
+			 cout << "4 - номер в списку\n";
+			 cout << "5 - дату реєстрації\n";
+			 cout << "6 - кількість отриманих голосів\n";
 
-	 it = find(can.begin(), can.end(), _surname);
-	 if (it == can.end())
-	 {
-		cout << "Такого кандидата немає в списках!" << endl;
-		return;
-	 }
-	 cout << "Що Ви хочете редагувати?\n";
-	 cout << "1 - прізвище, ім'я, по-батькові\n";
-	 cout << "2 - партію\n";
-	 cout << "3 - округ\n";
-	 cout << "4 - номер в списку\n";
-	 cout << "5 - дату реєстрації\n";
-	 cout << "6 - кількість отриманих голосів\n";
+			 int choice;
+			 cin >> choice;
+			 switch (choice)
+			 {
+			 case 1:
+			 {
+				 cout << "Введіть нове прізвище, ім'я, по-батькові кандидата через Ентер:\n";
+				 string newsurname, newname, newpatronymic;
+				 cin >> newsurname >> newname >> newpatronymic;
+				 (*it).candidate.surname = newsurname;
+				 (*it).candidate.name = newname;
+				 (*it).candidate.patronymic = newpatronymic;
+				 break;
+			 }
+			 case 2:
+			 {
+				 cout << "Введіть нову назву партії:\n";
+				 string newparty;
+				 cin.ignore(32767, '\n');
+				 getline(cin, newparty);
+				 (*it).party = newparty;
+				 break;
+			 }
+			 case 3:
+			 {
+				 cout << "Введіть новий округ:\n";
+				 int newdistrict;
+				 cin >> newdistrict;
+				 (*it).district = newdistrict;
+				 break;
+			 }
+			 case 4:
+			 {
+				 cout << "Введіть новий номер у списку:\n";
+				 int newnum;
+				 cin >> newnum;
+				 (*it).num = newnum;
+				 break;
+			 }
+			 case 5:
+			 {
+				 cout << "Введіть нову дату реєстрації:\n";
+				 string newdate;
+				 cin >> newdate;
+				 (*it).date = newdate;
+				 break;
+			 }
 
-	 int choice;
-	 cin >> choice;
-	 switch (choice)
-	 {
-	 case 1:
-	 {
-		 cout << "Введіть нове прізвище, ім'я, по-батькові кандидата через Ентер:\n";
-		 string newsurname, newname, newpatronymic;
-		 cin >> newsurname >> newname >> newpatronymic;
-		 (*it).candidate.surname = newsurname;
-		 (*it).candidate.name = newname;
-		 (*it).candidate.patronymic = newpatronymic;
-		 break;
+			 case 6:
+			 {
+				 cout << "Введіть нову кількість голосів:\n";
+				 int newvotes;
+				 cin >> newvotes;
+				 (*it).votes = newvotes;
+				 break;
+			 }
+			 default:
+				 cout << "Хибний вибір!";
+				 break;
+
+			 }
+		 }
+		
+		 
 	 }
-	 case 2:
+	 if (flag == 0)
 	 {
-		 cout << "Введіть нову назву партії:\n";
-		 string newparty;
-		 cin.ignore(32767, '\n');
-		 getline(cin, newparty);
-		 (*it).party = newparty;
-		 break;
+		 cout << "Кандидата з таким прізвищем не існує!";
 	 }
-	 case 3:
-	 {
-		 cout << "Введіть новий округ:\n";
-		 int newdistrict;
-		 cin >> newdistrict;
-		 (*it).district = newdistrict;
-		 break;
-	 }
-	 case 4:
-	 {
-		 cout << "Введіть новий номер у списку:\n";
-		 int newnum;
-		 cin >> newnum;
-		 (*it).num = newnum;
-		 break;
-	 }
-	 case 5:
-	 {
-		 cout << "Введіть нову дату реєстрації:\n";
-		 string newdate;
-		 cin >> newdate;
-		 (*it).date = newdate;
-		 break;
-	 }
-	 
-	 case 6:
-	 {
-		 cout << "Введіть нову кількість голосів:\n";
-		 int newvotes;
-		 cin >> newvotes;
-		 (*it).votes = newvotes;
-		 break;
-	 }
-	 default:
-		 cout << "Хибний вибір!";
-		 break;
-	 }*/
 	 // ----------------end of edit candidate---------
 
 
