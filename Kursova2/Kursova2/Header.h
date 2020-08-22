@@ -193,6 +193,7 @@ bool compare_by_party(Candidate& a, Candidate& b) //sort by party.
 	return a.party < b.party;
 }
 
+
 void readFile(vector <Candidate>& c, ifstream& file)
 {
 	file.open("new.txt", ios::in);

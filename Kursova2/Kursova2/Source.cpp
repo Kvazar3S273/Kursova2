@@ -263,19 +263,25 @@ void main()
 						Color(7);
 						string name;
 						cin >> name;
-						it = find(can.begin(), can.end(), name);
+						//it = find(can.begin(), can.end(), name);
 
-						TableCap();
-						cout << setw(2) << " ";
-						cout << left << (*it).candidate;
-						cout << setw(2) << " ";
-						cout << left << setw(20) << (*it).party;
-						cout << left << setw(10) << (*it).district;
-						cout << left << setw(9) << (*it).num;
-						cout << left << setw(16) << (*it).date;
-						cout << left << setw(9) << fixed << setprecision(1) << (*it).rating;
-						cout << left << setw(6) << (*it).votes << endl;
-						cout << endl;
+						for (it = can.begin(); it != can.end(); it++)//----ВИПРАВИЛА(МОЖНА ВВОДИТИ З МАЛЕНЬКОЇ)----
+						{
+							if (_stricmp((*it).candidate.surname.c_str(), name.c_str()) == 0)
+							{
+								TableCap();
+								cout << setw(2) << " ";
+								cout << left << (*it).candidate;
+								cout << setw(2) << " ";
+								cout << left << setw(20) << (*it).party;
+								cout << left << setw(10) << (*it).district;
+								cout << left << setw(9) << (*it).num;
+								cout << left << setw(16) << (*it).date;
+								cout << left << setw(9) << fixed << setprecision(1) << (*it).rating;
+								cout << left << setw(6) << (*it).votes << endl;
+								cout << endl;
+							}
+						}
 					}
 					else if (choice == '2')
 					{
@@ -674,7 +680,7 @@ void main()
 		case '6':
 		{
 			//------------delete by surname----
-			string surname;
+			string s;
 			Color(12);
 			cout << "\t------------------------------------------------------" << endl;
 			Color(15);
@@ -682,10 +688,44 @@ void main()
 			Color(12);
 			cout << "\t------------------------------------------------------" << endl;
 			Color(7);
-			cin >> surname;
-			can.erase(remove_if(can.begin(), can.end(), [surname](const Candidate& c)
-				{ return c.candidate.surname == surname; }), end(can));
-			//_getch();
+			cin >> s;
+			auto flag = 0;
+			for (it = can.begin(); it != can.end(); it++)//!!!!----ВИПРАВИЛА(МОЖНА ВИДАЛЕННЯ ВВОДИТИ З МАЛЕНЬКОЇ)!!!
+			{
+				if (_stricmp((*it).candidate.surname.c_str(), s.c_str()) == 0)
+				{
+					s.front() = toupper(s.front());
+					flag = 1;
+					cout << "Видалено зі списку кандидата з наступними даними : " << endl;
+					TableCap();
+					cout << setw(2) << " ";
+					cout << left << (*it).candidate;
+					cout << setw(2) << " ";
+					cout << left << setw(20) << (*it).party;
+					cout << left << setw(10) << (*it).district;
+					cout << left << setw(9) << (*it).num;
+					cout << left << setw(16) << (*it).date;
+					cout << left << setw(9) << fixed << setprecision(1) << (*it).rating;
+					cout << left << setw(6) << (*it).votes << endl;
+					cout << endl;
+				}
+			}
+			
+			for (it = can.begin(); it != can.end(); it++)
+			{	
+				    s.front() = toupper(s.front());				   
+					can.erase(remove_if(can.begin(), can.end(), [s](const Candidate& c)
+						{ return c.candidate.surname ==s; }), end(can));			
+
+			}	
+
+			if (flag == 0)
+			{
+				cout << "Кандидата з таким прізвищем не існує " << endl;
+			}
+
+				
+			_getch();
 			break;
 		}
 		case '7':
