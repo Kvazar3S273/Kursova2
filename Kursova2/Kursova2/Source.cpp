@@ -263,7 +263,7 @@ void main()
 						Color(7);
 						string name;
 						cin >> name;
-						//it = find(can.begin(), can.end(), name);
+						
 
 						for (it = can.begin(); it != can.end(); it++)
 						{
@@ -673,8 +673,7 @@ void main()
 				}
 			}
 
-			//----------------end of edit candidate-------- -
-			//_getch();
+			
 			break;
 		}
 		case '6':
