@@ -265,7 +265,7 @@ void main()
 						cin >> name;
 						//it = find(can.begin(), can.end(), name);
 
-						for (it = can.begin(); it != can.end(); it++)//----ВИПРАВИЛА(МОЖНА ВВОДИТИ З МАЛЕНЬКОЇ)----
+						for (it = can.begin(); it != can.end(); it++)
 						{
 							if (_stricmp((*it).candidate.surname.c_str(), name.c_str()) == 0)
 							{
@@ -529,9 +529,9 @@ void main()
 			getline(cin, _surname);
 			auto flag = 0;
 
-			for (it = can.begin(); it != can.end(); it++)	//----Я ВЖЕ ЗРОБИВ - НЕ ТРЕБА ПЕРЕРОБЛЯТИ!!! :) 
-															//---ГЛЯНЬ 686 РЯДОК - ТАМ ТРЕБА ЦЕ САМЕ ПОПРАВИТИ - 
-															//---НЕ ВИДАЛЯЄ ПО ПРІЗВИЩУ БЕЗ РЕГІСТРА
+			for (it = can.begin(); it != can.end(); it++)	 
+															 
+															
 			{
 				if (_stricmp((*it).candidate.surname.c_str(), _surname.c_str()) == 0)
 				{
@@ -690,7 +690,7 @@ void main()
 			Color(7);
 			cin >> s;
 			auto flag = 0;
-			for (it = can.begin(); it != can.end(); it++)//!!!!----ВИПРАВИЛА(МОЖНА ВИДАЛЕННЯ ВВОДИТИ З МАЛЕНЬКОЇ)!!!
+			for (it = can.begin(); it != can.end(); it++)
 			{
 				if (_stricmp((*it).candidate.surname.c_str(), s.c_str()) == 0)
 				{
